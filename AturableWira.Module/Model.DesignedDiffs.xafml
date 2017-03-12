@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Company="Aturable.com" Copyright="Copyright (c) 2017 Aturable.com, All Rights Reserved" Description="Aturable business application for everyone">
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="16.2.5.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="16.2.5.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="16.2.5.0" IsNewNode="True" />
+  </SchemaModules>
+</Application>
