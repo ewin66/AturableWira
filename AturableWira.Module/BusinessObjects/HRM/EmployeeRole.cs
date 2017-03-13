@@ -16,7 +16,7 @@ using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 namespace AturableWira.Module.BusinessObjects.HRM
 {
   [DefaultClassOptions]
-  //[ImageName("BO_Contact")]
+  [ImageName("BO_Role")]
   //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
   //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
   //[Persistent("DatabaseTableName")]

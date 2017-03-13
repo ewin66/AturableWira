@@ -182,7 +182,7 @@
     <Compile Include="BusinessObjects\ERP\TransactionItem.cs" />
     <Compile Include="BusinessObjects\ETC\Enums.cs" />
     <Compile Include="BusinessObjects\HRM\Employee.cs" />
-    <Compile Include="BusinessObjects\SYS\AccountRole.cs" />
+    <Compile Include="BusinessObjects\HRM\EmployeeRole.cs" />
     <Compile Include="BusinessObjects\SYS\AddressDetail.cs" />
     <Compile Include="BusinessObjects\SYS\Country.cs" />
     <Compile Include="BusinessObjects\SYS\People.cs" />
@@ -227,6 +227,8 @@
     <None Include="FunctionalTests\config.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Images\BO_Building.png" />
+    <EmbeddedResource Include="Images\BO_Building_32x32.png" />
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>

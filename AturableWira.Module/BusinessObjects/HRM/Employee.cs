@@ -18,7 +18,7 @@ using AturableWira.Module.BusinessObjects.SYS;
 namespace AturableWira.Module.BusinessObjects.HRM
 {
   [DefaultClassOptions]
-  //[ImageName("BO_Contact")]
+  [ImageName("BO_User")]
   //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
   //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
   //[Persistent("DatabaseTableName")]
