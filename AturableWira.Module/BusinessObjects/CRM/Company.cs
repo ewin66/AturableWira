@@ -16,7 +16,7 @@ namespace AturableWira.Module.BusinessObjects.CRM
 {
     [DefaultClassOptions]
     [ImageName("BO_Building")]
-    [DefaultProperty("Norman")]
+    [DefaultProperty("Name")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
