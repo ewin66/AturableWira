@@ -4,7 +4,6 @@ using System.Text;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp;
 using System.ComponentModel;
-using DevExpress.ExpressApp.DC;
 using DevExpress.Data.Filtering;
 using DevExpress.Persistent.Base;
 using System.Collections.Generic;
@@ -16,7 +15,7 @@ namespace AturableWira.Module.BusinessObjects.SYS
 {
     [DefaultClassOptions]
     //[ImageName("BO_Contact")]
-    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
+    [DefaultProperty("Name")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
@@ -47,6 +46,7 @@ namespace AturableWira.Module.BusinessObjects.SYS
         //}
         string name;
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleRequiredField]
         public string Name
         {
             get
@@ -60,6 +60,7 @@ namespace AturableWira.Module.BusinessObjects.SYS
         }
         Region region;
         [Association("Region-SubRegions")]
+        [RuleRequiredField]
         public Region Region
         {
             get

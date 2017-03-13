@@ -129,7 +129,7 @@ namespace AturableWira.Module.BusinessObjects.SYS
                 SetPropertyValue("PostalCode", ref postalCode, value);
             }
         }
-        private const string defaultFullAddressFormat = "{Street}, {SubRegion}, {Region}, {Province}, {PostalCode}, {Country}";
+        private const string defaultFullAddressFormat = "{Street}, {SubRegion}, {Region}, {Province}, {Country}, {PostalCode}";
         private static string fullAddressFormat = defaultFullAddressFormat;
         public static string FullAddressFormat
         {
