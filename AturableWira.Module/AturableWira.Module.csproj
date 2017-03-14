@@ -176,7 +176,8 @@
     <Compile Include="BusinessObjects\CRM\Quote.cs" />
     <Compile Include="BusinessObjects\ERP\Invoice.cs" />
     <Compile Include="BusinessObjects\ERP\Product.cs" />
-    <Compile Include="BusinessObjects\ERP\Purchasing.cs" />
+    <Compile Include="BusinessObjects\ERP\PurchaseOrder.cs" />
+    <Compile Include="BusinessObjects\ERP\Quotation.cs" />
     <Compile Include="BusinessObjects\ERP\Service.cs" />
     <Compile Include="BusinessObjects\ERP\Transaction.cs" />
     <Compile Include="BusinessObjects\ERP\TransactionItem.cs" />
@@ -232,6 +233,10 @@
     <EmbeddedResource Include="Images\BO_Building_32x32.png" />
     <EmbeddedResource Include="Images\BO_Invoice_32x32.png" />
     <EmbeddedResource Include="Images\BO_Invoice.png" />
+    <EmbeddedResource Include="Images\BO_Quote.png" />
+    <EmbeddedResource Include="Images\BO_Quote_32x32.png" />
+    <EmbeddedResource Include="Images\BO_Order.png" />
+    <EmbeddedResource Include="Images\BO_Order_32x32.png" />
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>

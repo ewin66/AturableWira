@@ -15,14 +15,14 @@ using DevExpress.Persistent.Validation;
 namespace AturableWira.Module.BusinessObjects.ERP
 {
     [DefaultClassOptions]
-    //[ImageName("BO_Contact")]
+    [ImageName("BO_Order")]
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class Purchasing : Transaction
+    public class PurchaseOrder : Transaction
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public Purchasing(Session session)
+        public PurchaseOrder(Session session)
             : base(session)
         {
         }
