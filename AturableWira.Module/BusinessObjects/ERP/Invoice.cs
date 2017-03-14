@@ -15,7 +15,7 @@ using DevExpress.Persistent.Validation;
 namespace AturableWira.Module.BusinessObjects.ERP
 {
     [DefaultClassOptions]
-    //[ImageName("BO_Contact")]
+    [ImageName("BO_Invoice")]
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]

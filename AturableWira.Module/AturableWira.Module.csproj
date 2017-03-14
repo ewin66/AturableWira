@@ -220,6 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FunctionalTests\sample.ets" />
+    <None Include="FunctionalTests\StartWin.ets" />
     <None Include="Images\ReadMe.txt" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
@@ -229,6 +230,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Images\BO_Building.png" />
     <EmbeddedResource Include="Images\BO_Building_32x32.png" />
+    <EmbeddedResource Include="Images\BO_Invoice_32x32.png" />
+    <EmbeddedResource Include="Images\BO_Invoice.png" />
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>

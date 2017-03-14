@@ -16,7 +16,7 @@ using DevExpress.ExpressApp.Editors;
 namespace AturableWira.Module.BusinessObjects.ERP
 {
     [DefaultClassOptions]
-    //[ImageName("BO_Contact")]
+    [ImageName("BO_Product")]
     [DefaultProperty("Name")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
