@@ -97,5 +97,17 @@ namespace AturableWira.Module.BusinessObjects.ERP
                 SetPropertyValue("Description", ref description, value);
             }
         }
+        decimal price;
+        public decimal Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                SetPropertyValue("Price", ref price, value);
+            }
+        }
     }
 }

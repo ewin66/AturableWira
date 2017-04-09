@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Company="Aturable.com" Copyright="Copyright (C) 2017 Aturable.com, All Rights Reserved" Description="AturableWira, Aturable application for everyone" Title="AturableWira">
-  <Options FormStyle="Ribbon" UIType="TabbedMDI" />
+  <NavigationItems RootGroupsStyle="OutlookAnimated" />
+  <Options FormStyle="Ribbon" UIType="SingleWindowSDI" />
   <SchemaModules>
     <SchemaModule Name="CloneObjectModule" Version="16.2.5.0" IsNewNode="True" />
     <SchemaModule Name="SchedulerModuleBase" Version="16.2.5.0" IsNewNode="True" />

@@ -38,7 +38,6 @@ namespace AturableWira.Module.BusinessObjects.ERP
         }
         protected override void OnLoaded()
         {
-            Reset();
             base.OnLoaded();
         }
         //private string _PersistentProperty;
@@ -120,16 +119,57 @@ namespace AturableWira.Module.BusinessObjects.ERP
                 SetPropertyValue("Contact", ref contact, value);
             }
         }
-        double? sumSubTotal = null;
-        public double? SumSubTotal
+        [PersistentAlias("Items.Sum(Amount)")]
+        public decimal SubTotal
         {
             get
             {
-                if (!IsLoading && !IsSaving && sumSubTotal == null)
-                    UpdateSumSubTotal(false);
-                return sumSubTotal;
+                if (Items.Count > 0)
+                {
+                    return (decimal)EvaluateAlias("SubTotal");
+                }
+                else { return 0; }
+                
             }
         }
+
+        decimal discountAmount;
+        public decimal DiscountAmount
+        {
+            get
+            {
+                return discountAmount;
+            }
+            set
+            {
+                SetPropertyValue("DiscountAmount", ref discountAmount, value);
+            }
+        }
+
+        decimal discountPercent;
+        [ModelDefault("DisplayFormat", "{0:N2}%")]
+        [ModelDefault("EditMask", "N2")]
+        public decimal DiscountPercent
+        {
+            get
+            {
+                return discountPercent;
+            }
+            set
+            {
+                SetPropertyValue("DiscountPercent", ref discountPercent, value);
+            }
+        }
+
+        [PersistentAlias("SubTotal - DiscountAmount - (SubTotal * (DiscountPercent/100))")]
+        public decimal Total
+        {
+            get
+            {
+                return (decimal)EvaluateAlias("Total");
+            }
+        }
+
         [Association("Transaction-Items"), Aggregated]
         public XPCollection<TransactionItem> Items
         {
@@ -137,21 +177,6 @@ namespace AturableWira.Module.BusinessObjects.ERP
             {
                 return GetCollection<TransactionItem>("Items");
             }
-        }
-
-        public void UpdateSumSubTotal(bool forceChangeEvents)
-        {
-            double? oldSumSubTotal = sumSubTotal;
-            double tempSumSubTotal = 0;
-            foreach (TransactionItem item in Items)
-                tempSumSubTotal += item.SubTotal;
-            sumSubTotal = tempSumSubTotal;
-            if (forceChangeEvents)
-                OnChanged("SumSubTotal", oldSumSubTotal, sumSubTotal);
-        }
-        private void Reset()
-        {
-            sumSubTotal = null;
         }
     }
 }

@@ -48,6 +48,7 @@ namespace AturableWira.Module.BusinessObjects.ERP
         //}
         Product product;
         [RuleRequiredField]
+        [ImmediatePostData]
         public Product Product
         {
             get
@@ -60,6 +61,7 @@ namespace AturableWira.Module.BusinessObjects.ERP
             }
         }
         int quantity;
+        [ImmediatePostData]
         public int Quantity
         {
             get
@@ -71,32 +73,27 @@ namespace AturableWira.Module.BusinessObjects.ERP
                 SetPropertyValue("Quantity", ref quantity, value);
             }
         }
-        double price;
-        public double Price
+        decimal discount;
+        public decimal Discount
         {
             get
             {
-                return price;
+                return discount;
             }
             set
             {
-                SetPropertyValue("Price", ref price, value);
+                SetPropertyValue("Discount", ref discount, value);
             }
         }
-        [PersistentAlias("Quantity * Price")]
-        public double SubTotal
+        [PersistentAlias("(Quantity * Product.Price)-Discount")]
+        public decimal Amount
         {
             get
             {
-                object tempObject = EvaluateAlias("SubTotal");
-                if (tempObject != null)
-                {
-                    return (double)tempObject;
-                }
+                if (Product != null)
+                    return (decimal)EvaluateAlias("Amount");
                 else
-                {
                     return 0;
-                }
             }
         }
         Transaction transaction;
@@ -109,13 +106,7 @@ namespace AturableWira.Module.BusinessObjects.ERP
             }
             set
             {
-                Transaction oldTransaction = transaction;
                 SetPropertyValue("Transaction", ref transaction, value);
-                if (!IsLoading && !IsSaving && oldTransaction != transaction)
-                {
-                    oldTransaction = oldTransaction ?? transaction;
-                    oldTransaction.UpdateSumSubTotal(true);
-                }
             }
         }
     }
