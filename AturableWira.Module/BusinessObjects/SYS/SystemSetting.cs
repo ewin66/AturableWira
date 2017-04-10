@@ -10,19 +10,20 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using AturableWira.Module.BusinessObjects.SYS;
 
-namespace AturableWira.Module.BusinessObjects.CRM
+namespace AturableWira.Module.BusinessObjects.SYS
 {
     [DefaultClassOptions]
-    [ImageName("BO_Building")]
-    [DefaultProperty("Name")]
+    //[ImageName("BO_Contact")]
+    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class Company : BaseObject
+    [RuleObjectExists("AnotherSettingExists", DefaultContexts.Save, "True", InvertResult = true, CustomMessageTemplate = "Another setting object already exists.")]
+    [RuleCriteria("CannotDeleteSetting", DefaultContexts.Delete, "False", CustomMessageTemplate = "Cannot delete Setting.")]
+    public class SystemSetting : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public Company(Session session)
+        public SystemSetting(Session session)
             : base(session)
         {
         }
@@ -45,29 +46,17 @@ namespace AturableWira.Module.BusinessObjects.CRM
         //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
         //    this.PersistentProperty = "Paid";
         //}
-        string name;
+        string companyName;
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string Name
+        public string CompanyName
         {
             get
             {
-                return name;
+                return companyName;
             }
             set
             {
-                SetPropertyValue("Name", ref name, value);
-            }
-        }
-        DateTime anniversary;
-        public DateTime Anniversary
-        {
-            get
-            {
-                return anniversary;
-            }
-            set
-            {
-                SetPropertyValue("Anniversary", ref anniversary, value);
+                SetPropertyValue("CompanyName", ref companyName, value);
             }
         }
         AddressDetail address;
@@ -83,15 +72,6 @@ namespace AturableWira.Module.BusinessObjects.CRM
                 SetPropertyValue("Address", ref address, value);
             }
         }
-        [Association("Company-Contacts")]
-        public XPCollection<Contact> Contacts
-        {
-            get
-            {
-                return GetCollection<Contact>("Contacts");
-            }
-        }
-
         decimal maximumBalance;
         public decimal MaximumBalance
         {
