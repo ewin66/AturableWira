@@ -16,14 +16,14 @@ using DevExpress.ExpressApp.Editors;
 namespace AturableWira.Module.BusinessObjects.ERP
 {
   [DefaultClassOptions]
-  [ImageName("BO_Product")]
-  [DefaultProperty("Name")]
+  [ImageName("BO_Category")]
+  //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
   //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
   //[Persistent("DatabaseTableName")]
   // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-  public class Product : BaseObject
+  public class ProductCategory : BaseObject
   { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-    public Product(Session session)
+    public ProductCategory(Session session)
         : base(session)
     {
     }
@@ -47,7 +47,7 @@ namespace AturableWira.Module.BusinessObjects.ERP
     //    this.PersistentProperty = "Paid";
     //}
     string name;
-    [RuleRequiredField]
+    [Size(SizeAttribute.DefaultStringMappingFieldSize)]
     public string Name
     {
       get
@@ -57,30 +57,6 @@ namespace AturableWira.Module.BusinessObjects.ERP
       set
       {
         SetPropertyValue("Name", ref name, value);
-      }
-    }
-    bool discontinued;
-    public bool Discontinued
-    {
-      get
-      {
-        return discontinued;
-      }
-      set
-      {
-        SetPropertyValue("Discontinued", ref discontinued, value);
-      }
-    }
-    MediaDataObject image;
-    public MediaDataObject Image
-    {
-      get
-      {
-        return image;
-      }
-      set
-      {
-        SetPropertyValue("Image", ref image, value);
       }
     }
     string description;
@@ -95,30 +71,6 @@ namespace AturableWira.Module.BusinessObjects.ERP
       set
       {
         SetPropertyValue("Description", ref description, value);
-      }
-    }
-    decimal price;
-    public decimal Price
-    {
-      get
-      {
-        return price;
-      }
-      set
-      {
-        SetPropertyValue("Price", ref price, value);
-      }
-    }
-    double weight;
-    public double Weight
-    {
-      get
-      {
-        return weight;
-      }
-      set
-      {
-        SetPropertyValue("Weight", ref weight, value);
       }
     }
   }

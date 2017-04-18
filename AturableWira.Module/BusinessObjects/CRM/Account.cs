@@ -11,19 +11,19 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using DevExpress.ExpressApp.Editors;
+using AturableWira.Module.BusinessObjects.HRM;
 
-namespace AturableWira.Module.BusinessObjects.ERP
+namespace AturableWira.Module.BusinessObjects.CRM
 {
   [DefaultClassOptions]
-  [ImageName("BO_Product")]
-  [DefaultProperty("Name")]
+  //[ImageName("BO_Contact")]
+  //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
   //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
   //[Persistent("DatabaseTableName")]
   // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-  public class Product : BaseObject
+  public class Account : Customer
   { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-    public Product(Session session)
+    public Account(Session session)
         : base(session)
     {
     }
@@ -31,6 +31,7 @@ namespace AturableWira.Module.BusinessObjects.ERP
     {
       base.AfterConstruction();
       // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+      Owner = Session.GetObjectByKey<Employee>(SecuritySystem.CurrentUserId);
     }
     //private string _PersistentProperty;
     //[XafDisplayName("My display name"), ToolTip("My hint message")]
@@ -46,79 +47,25 @@ namespace AturableWira.Module.BusinessObjects.ERP
     //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
     //    this.PersistentProperty = "Paid";
     //}
-    string name;
-    [RuleRequiredField]
-    public string Name
+
+    Contact primaryContact;
+    public Contact PrimaryContact
     {
       get
       {
-        return name;
+        return primaryContact;
       }
       set
       {
-        SetPropertyValue("Name", ref name, value);
+        SetPropertyValue("PrimaryContact", ref primaryContact, value);
       }
     }
-    bool discontinued;
-    public bool Discontinued
+    [Association("Account-Contacts")]
+    public XPCollection<Contact> Contacts
     {
       get
       {
-        return discontinued;
-      }
-      set
-      {
-        SetPropertyValue("Discontinued", ref discontinued, value);
-      }
-    }
-    MediaDataObject image;
-    public MediaDataObject Image
-    {
-      get
-      {
-        return image;
-      }
-      set
-      {
-        SetPropertyValue("Image", ref image, value);
-      }
-    }
-    string description;
-    [Size(SizeAttribute.Unlimited)]
-    [EditorAlias(EditorAliases.HtmlPropertyEditor)]
-    public string Description
-    {
-      get
-      {
-        return description;
-      }
-      set
-      {
-        SetPropertyValue("Description", ref description, value);
-      }
-    }
-    decimal price;
-    public decimal Price
-    {
-      get
-      {
-        return price;
-      }
-      set
-      {
-        SetPropertyValue("Price", ref price, value);
-      }
-    }
-    double weight;
-    public double Weight
-    {
-      get
-      {
-        return weight;
-      }
-      set
-      {
-        SetPropertyValue("Weight", ref weight, value);
+        return GetCollection<Contact>("Contacts");
       }
     }
   }

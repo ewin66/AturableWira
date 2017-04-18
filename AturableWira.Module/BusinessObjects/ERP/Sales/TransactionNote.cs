@@ -4,6 +4,7 @@ using System.Text;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp;
 using System.ComponentModel;
+using DevExpress.ExpressApp.DC;
 using DevExpress.Data.Filtering;
 using DevExpress.Persistent.Base;
 using System.Collections.Generic;
@@ -11,20 +12,19 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 
-namespace AturableWira.Module.BusinessObjects.SYS
+namespace AturableWira.Module.BusinessObjects.ERP.Sales
 {
    [DefaultClassOptions]
    [NavigationItem(false)]
+   [CreatableItem(false)]
    //[ImageName("BO_Contact")]
    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
    //[Persistent("DatabaseTableName")]
    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-   [RuleObjectExists("AnotherSettingExists", DefaultContexts.Save, "True", InvertResult = true, CustomMessageTemplate = "Another setting object already exists.")]
-   [RuleCriteria("CannotDeleteSetting", DefaultContexts.Delete, "False", CustomMessageTemplate = "Cannot delete Setting.")]
-   public class SystemSetting : BaseObject
+   public class TransactionNote : AturableWira.Module.BusinessObjects.SYS.Note
    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-      public SystemSetting(Session session)
+      public TransactionNote(Session session)
           : base(session)
       {
       }
@@ -47,66 +47,17 @@ namespace AturableWira.Module.BusinessObjects.SYS
       //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
       //    this.PersistentProperty = "Paid";
       //}
-      string companyName;
-      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-      public string CompanyName
+      Transaction transaction;
+      [Association("Transaction-Notes")]
+      public Transaction Transaction
       {
          get
          {
-            return companyName;
+            return transaction;
          }
          set
          {
-            SetPropertyValue("CompanyName", ref companyName, value);
-         }
-      }
-      AddressDetail address;
-      [Aggregated, ExpandObjectMembers(ExpandObjectMembers.Never)]
-      public AddressDetail Address
-      {
-         get
-         {
-            return address;
-         }
-         set
-         {
-            SetPropertyValue("Address", ref address, value);
-         }
-      }
-      decimal creditLimit;
-      public decimal CreditLimit
-      {
-         get
-         {
-            return creditLimit;
-         }
-         set
-         {
-            SetPropertyValue("CreditLimit", ref creditLimit, value);
-         }
-      }
-      int codeDigits;
-      public int CodeDigits
-      {
-         get
-         {
-            return codeDigits;
-         }
-         set
-         {
-            SetPropertyValue("CodeDigits", ref codeDigits, value);
-         }
-      }
-      MediaDataObject companyLogo;
-      public MediaDataObject CompanyLogo
-      {
-         get
-         {
-            return companyLogo;
-         }
-         set
-         {
-            SetPropertyValue("CompanyLogo", ref companyLogo, value);
+            SetPropertyValue("Transaction", ref transaction, value);
          }
       }
    }

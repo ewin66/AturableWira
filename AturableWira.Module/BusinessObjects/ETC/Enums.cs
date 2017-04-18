@@ -14,5 +14,19 @@ namespace AturableWira.Module.BusinessObjects.ETC
             Male,
             Female
         }
+    public enum MaritalStatus
+    {
+      None,
+      Single,
+      Married,
+      Divorced,
+      Widowed
     }
+
+    public enum CustomerStatus
+    {
+      Active = 1,
+      Inactive = 0
+    }
+  }
 }

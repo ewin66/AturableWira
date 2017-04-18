@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Contact_DetailView">
+      <Items Id="Items">
+        <PropertyEditor Id="Address.SubRegion" PropertyName="Address.SubRegion" />
+        <PropertyEditor Id="Address.Street" PropertyName="Address.Street" />
+        <PropertyEditor Id="Address.Region" PropertyName="Address.Region" />
+        <PropertyEditor Id="Address.Province" PropertyName="Address.Province" />
+        <PropertyEditor Id="Address.PostalCode" PropertyName="Address.PostalCode" />
+        <PropertyEditor Id="Address.Country" PropertyName="Address.Country" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Item1">
+              <LayoutGroup Id="Auto99a80509-59b9-4c30-9073-9d7b917d174c">
+                <LayoutItem Id="Address.SubRegion" ViewItem="Address.SubRegion" />
+                <LayoutItem Id="Address.Region" ViewItem="Address.Region" />
+                <LayoutItem Id="Address.Province" ViewItem="Address.Province" />
+                <LayoutItem Id="Address.Country" ViewItem="Address.Country" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto89e3df1c-1c14-4bcd-9bfc-23eacae73a46">
+                <LayoutItem Id="Address.PostalCode" ViewItem="Address.PostalCode" />
+                <LayoutItem Id="Address.Street" ViewItem="Address.Street" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Customer">
+              <LayoutGroup Id="Customer_col1">
+                <LayoutItem Id="Address" RelativeSize="28.571428571428573" Index="3" Removed="True" />
+                <LayoutItem Id="Email" RelativeSize="15" Index="4" Removed="True" />
+                <LayoutItem Id="OfficePhone" RelativeSize="35" Index="4" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

@@ -14,4 +14,596 @@
     <SchemaModule Name="SchedulerModuleBase" Version="16.2.5.0" IsNewNode="True" />
     <SchemaModule Name="SystemModule" Version="16.2.5.0" IsNewNode="True" />
   </SchemaModules>
+  <Views>
+    <DetailView Id="Account_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="66.470588235294116">
+            <LayoutGroup Id="Account" RelativeSize="58.849557522123895" Caption="Primary Contact">
+              <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="54.887218045112782" Caption="Summary" IsNewNode="True">
+                <LayoutItem Id="Name" ViewItem="Name" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                <LayoutGroup Id="Auto52cd67c2-ccde-4c24-bf5e-9fb6a7863fd1" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="71.428571428571431" IsNewNode="True">
+                  <LayoutGroup Id="Auto9762bf98-b498-40cd-8930-009de11e0d16" ShowCaption="False" Caption="" Index="0" RelativeSize="49.913644214162346" IsNewNode="True">
+                    <LayoutItem Id="PrimaryContact" ViewItem="PrimaryContact" Index="0" RelativeSize="30" IsNewNode="True" />
+                    <LayoutItem Id="OfficePhone" ViewItem="OfficePhone" Index="1" RelativeSize="30" IsNewNode="True" />
+                    <LayoutItem Id="Fax" ViewItem="Fax" Index="2" RelativeSize="40" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto052da7c3-64de-4bfb-9e04-850649341472" ShowCaption="False" Caption="" Index="1" RelativeSize="50.086355785837654" IsNewNode="True">
+                    <LayoutItem Id="OtherPhone" ViewItem="OtherPhone" Index="0" RelativeSize="30" IsNewNode="True" />
+                    <LayoutItem Id="Website" ViewItem="Website" Index="1" RelativeSize="30" IsNewNode="True" />
+                    <LayoutItem Id="Email" ViewItem="Email" Index="2" RelativeSize="40" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="45.112781954887218" Caption="Address" Direction="Horizontal" IsNewNode="True">
+                <LayoutGroup Id="Autodfb15b1e-2754-488d-b6f9-0add39fa50e8" ShowCaption="False" Caption="" Index="0" RelativeSize="49.913644214162346" IsNewNode="True">
+                  <LayoutItem Id="Street" ViewItem="Street" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                  <LayoutItem Id="Country" ViewItem="Country" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                  <LayoutItem Id="Province" ViewItem="Province" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Autoa786c7eb-7876-4375-9b93-db8ae3d399a5" ShowCaption="False" Caption="" Index="1" RelativeSize="50.086355785837654" IsNewNode="True">
+                  <LayoutItem Id="Region" ViewItem="Region" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                  <LayoutItem Id="SubRegion" ViewItem="SubRegion" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                  <LayoutItem Id="PostalCode" ViewItem="PostalCode" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutItem Id="PrimaryContact" Index="1" RelativeSize="48.387096774193552" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Item3" ShowCaption="True" Caption="Social Media" CaptionLocation="Top" Index="1" RelativeSize="19.911504424778762" Direction="Horizontal" IsNewNode="True">
+              <LayoutGroup Id="Auto53913c47-ca3e-4c6c-a4d0-8b807a507f6a" ShowCaption="False" Caption="" Index="0" RelativeSize="49.913644214162346" IsNewNode="True">
+                <LayoutItem Id="Facebook" ViewItem="Facebook" Index="0" RelativeSize="50" IsNewNode="True" />
+                <LayoutItem Id="LinkedIn" ViewItem="LinkedIn" Index="1" RelativeSize="50" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="Twitter" ViewItem="Twitter" Index="1" RelativeSize="50.086355785837654" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Customer" RelativeSize="21.238938053097346" Caption="Administration" Index="2" Direction="Vertical">
+              <LayoutGroup Id="Customer_col1" RelativeSize="100" Caption="Customer_col1">
+                <LayoutGroup Id="Auto98e7de0e-fd23-4f40-8b1a-824cbafa5853" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="50" IsNewNode="True">
+                  <LayoutItem Id="CreditLimit" ViewItem="CreditLimit" Index="0" RelativeSize="49.913644214162346" IsNewNode="True" />
+                  <LayoutItem Id="Status" ViewItem="Status" Index="1" RelativeSize="50.086355785837654" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="Status" Index="0" RelativeSize="36.363636363636367" Removed="True" />
+                <LayoutItem Id="CreditLimit" Index="1" RelativeSize="27.272727272727273" Removed="True" />
+                <LayoutItem Id="Owner" Index="1" RelativeSize="50" />
+                <LayoutItem Id="Street" Index="3" RelativeSize="10.344827586206897" Removed="True" />
+                <LayoutItem Id="Country" Index="4" RelativeSize="10.344827586206897" Removed="True" />
+                <LayoutItem Id="Province" Index="5" RelativeSize="10.344827586206897" Removed="True" />
+                <LayoutItem Id="Region" Index="6" RelativeSize="10.344827586206897" Removed="True" />
+                <LayoutItem Id="SubRegion" Index="7" RelativeSize="10.344827586206897" Removed="True" />
+                <LayoutItem Id="PostalCode" Index="8" RelativeSize="13.793103448275861" Removed="True" />
+                <LayoutItem Id="Name" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Customer_col2" RelativeSize="49.913644214162346" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="Facebook" RelativeSize="36.363636363636367" Index="0" Removed="True" />
+                <LayoutItem Id="HomePhone" RelativeSize="28.571428571428573" Index="0" Removed="True" />
+                <LayoutItem Id="Twitter" RelativeSize="27.272727272727273" Index="1" Removed="True" />
+                <LayoutItem Id="Fax" RelativeSize="10.344827586206897" Index="2" Removed="True" />
+                <LayoutItem Id="LinkedIn" RelativeSize="36.363636363636367" Index="2" Removed="True" />
+                <LayoutItem Id="OtherPhone" RelativeSize="10.344827586206897" Index="2" Removed="True" />
+                <LayoutItem Id="Website" RelativeSize="10.344827586206897" Index="2" Removed="True" />
+                <LayoutItem Id="Email" RelativeSize="13.793103448275861" Removed="True" />
+                <LayoutItem Id="OfficePhone" RelativeSize="10.344827586206897" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="33.529411764705884">
+            <LayoutGroup Id="Quotes" RelativeSize="100" Index="0">
+              <LayoutItem Id="Quotes" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Invoices" RelativeSize="100" Index="1">
+              <LayoutItem Id="Invoices" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Orders" RelativeSize="100" Index="2">
+              <LayoutItem Id="Orders" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Contacts" RelativeSize="100" Index="3">
+              <LayoutItem Id="Contacts" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Notes" RelativeSize="100">
+              <LayoutItem Id="Notes" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Contact_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="82.619647355163721">
+            <LayoutGroup Id="Contact" RelativeSize="22.256097560975611" Caption="Details">
+              <LayoutGroup Id="Contact_col1" RelativeSize="49.745676500508644">
+                <LayoutItem Id="FirstName" RelativeSize="28.571428571428573" />
+                <LayoutItem Id="LastName" RelativeSize="21.428571428571427" />
+                <LayoutItem Id="Account" ViewItem="Account" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                <LayoutItem Id="Birthday" Index="3" RelativeSize="28.571428571428573" Removed="True" />
+                <LayoutItem Id="JobTitle" Index="3" RelativeSize="28.571428571428573" />
+                <LayoutItem Id="Photo" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Contact_col2" Direction="Vertical" RelativeSize="50.254323499491356" Caption="Contact_col2">
+                <LayoutItem Id="Photo" ViewItem="Photo" Index="0" RelativeSize="100" IsNewNode="True" />
+                <LayoutItem Id="Account" ViewItem="Account" Index="1" RelativeSize="72.279260780287473" Removed="True" />
+                <LayoutItem Id="Anniversary" Removed="True" />
+                <LayoutItem Id="Gender" Removed="True" />
+                <LayoutItem Id="MaritalStatus" Removed="True" />
+                <LayoutItem Id="MobilePhone" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="17.378048780487806" Caption="Contact" Direction="Horizontal" IsNewNode="True">
+              <LayoutGroup Id="Autod7c74733-d5a2-458d-a062-a350f3122639" ShowCaption="False" Caption="Autod7c74733-d5a2-458d-a062-a350f3122639(12)" Index="0" RelativeSize="49.745676500508644" IsNewNode="True">
+                <LayoutItem Id="Email" ViewItem="Email" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="HomePhone" ViewItem="HomePhone" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="OfficePhone" ViewItem="OfficePhone" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Autobe9d940b-7642-453e-83c8-3fabcebf19a1" ShowCaption="False" Caption="Autobe9d940b-7642-453e-83c8-3fabcebf19a1(15)" Index="1" RelativeSize="50.254323499491356" IsNewNode="True">
+                <LayoutItem Id="MobilePhone" ViewItem="MobilePhone" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="Fax" ViewItem="Fax" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="OtherPhone" ViewItem="OtherPhone" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item5" ShowCaption="True" Caption="Social Media" CaptionLocation="Top" Direction="Horizontal" Index="2" RelativeSize="13.719512195121951" IsNewNode="True">
+              <LayoutGroup Id="Auto5857f720-906a-4773-b2a7-c71e4c11a375" ShowCaption="False" Caption="Auto5857f720-906a-4773-b2a7-c71e4c11a375(20)" Index="0" RelativeSize="49.745676500508644" IsNewNode="True">
+                <LayoutItem Id="Facebook" ViewItem="Facebook" Index="0" RelativeSize="50" IsNewNode="True" />
+                <LayoutItem Id="LinkedIn" ViewItem="LinkedIn" Index="1" RelativeSize="50" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="Twitter" ViewItem="Twitter" Index="1" RelativeSize="50.254323499491356" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="3" RelativeSize="17.378048780487806" Caption="Primary Address" Direction="Horizontal" IsNewNode="True">
+              <LayoutGroup Id="Autod4391f18-a341-4166-81fc-55e9db9d31a5" ShowCaption="False" Caption="Autod4391f18-a341-4166-81fc-55e9db9d31a5(25)" Index="0" RelativeSize="49.745676500508644" IsNewNode="True">
+                <LayoutItem Id="Street" ViewItem="Street" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="Country" ViewItem="Country" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="Province" ViewItem="Province" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto36cadca2-381a-42cb-bee4-4d49c7773175" ShowCaption="False" Caption="Auto36cadca2-381a-42cb-bee4-4d49c7773175(29)" Index="1" RelativeSize="50.254323499491356" IsNewNode="True">
+                <LayoutItem Id="Region" ViewItem="Region" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="SubRegion" ViewItem="SubRegion" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="PostalCode" ViewItem="PostalCode" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Index="4" RelativeSize="14.634146341463415" Caption="Administration" Direction="Vertical" IsNewNode="True">
+              <LayoutGroup Id="Auto3540faae-1582-4ac2-a94d-ab4352111d43" ShowCaption="False" Caption="Auto3540faae-1582-4ac2-a94d-ab4352111d43(34)" Direction="Horizontal" Index="0" RelativeSize="54.285714285714285" IsNewNode="True">
+                <LayoutItem Id="Owner" ViewItem="Owner" Index="0" RelativeSize="49.745676500508644" IsNewNode="True" />
+                <LayoutItem Id="CreditLimit" ViewItem="CreditLimit" Index="1" RelativeSize="50.254323499491356" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="Status" ViewItem="Status" Index="1" RelativeSize="45.714285714285715" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Customer" RelativeSize="14.634146341463415" Index="5" Caption="Personal Information">
+              <LayoutGroup Id="Customer_col1" RelativeSize="49.745676500508644" Caption="Customer_col1">
+                <LayoutItem Id="MaritalStatus" ViewItem="MaritalStatus" Index="0" RelativeSize="50" IsNewNode="True" />
+                <LayoutItem Id="Owner" RelativeSize="28.571428571428573" Index="0" Removed="True" />
+                <LayoutItem Id="CreditLimit" RelativeSize="50" Index="1" Removed="True" />
+                <LayoutItem Id="Gender" ViewItem="Gender" Index="1" RelativeSize="37.5" IsNewNode="True" />
+                <LayoutItem Id="Status" RelativeSize="27.272727272727273" Index="1" Removed="True" />
+                <LayoutItem Id="Country" Index="2" RelativeSize="15" Removed="True" />
+                <LayoutItem Id="PostalCode" Index="2" RelativeSize="12.5" Removed="True" />
+                <LayoutItem Id="Province" Index="2" RelativeSize="21.428571428571427" Removed="True" />
+                <LayoutItem Id="Street" Index="2" RelativeSize="13.043478260869565" Removed="True" />
+                <LayoutItem Id="SubRegion" Index="2" RelativeSize="36.363636363636367" Removed="True" />
+                <LayoutItem Id="Region" Index="3" RelativeSize="17.647058823529413" Removed="True" />
+                <LayoutItem Id="Name" RelativeSize="17.391304347826086" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto349b5ee8-0821-4799-85dd-b1d73d10356c" ShowCaption="False" Caption="Auto349b5ee8-0821-4799-85dd-b1d73d10356c(47)" Index="1" RelativeSize="50.254323499491356" IsNewNode="True">
+                <LayoutItem Id="Birthday" ViewItem="Birthday" Index="0" RelativeSize="50" IsNewNode="True" />
+                <LayoutItem Id="Anniversary" ViewItem="Anniversary" Index="1" RelativeSize="50" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Customer_col2" RelativeSize="36.4476386036961" Caption="Customer_col2" Direction="Horizontal" Index="2" Removed="True">
+                <LayoutItem Id="Facebook" RelativeSize="36.363636363636367" Index="0" Removed="True" />
+                <LayoutItem Id="LinkedIn" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Twitter" RelativeSize="50" Index="0" Removed="True" />
+                <LayoutItem Id="Website" RelativeSize="28.571428571428573" Index="0" Removed="True" />
+                <LayoutItem Id="Fax" RelativeSize="23.529411764705884" Removed="True" />
+                <LayoutItem Id="OtherPhone" RelativeSize="15" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="17.380352644836272">
+            <LayoutGroup Id="Invoices" RelativeSize="100">
+              <LayoutItem Id="Invoices" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Quotes" RelativeSize="100">
+              <LayoutItem Id="Quotes" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Orders" RelativeSize="100">
+              <LayoutItem Id="Orders" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Notes" RelativeSize="100">
+              <LayoutItem Id="Notes" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Contact_ListView">
+      <Columns>
+        <ColumnInfo Id="Anniversary" Index="-1" />
+        <ColumnInfo Id="Birthday" Index="-1" />
+        <ColumnInfo Id="Gender" Index="-1" />
+        <ColumnInfo Id="MaritalStatus" Index="-1" />
+        <ColumnInfo Id="MobilePhone" Index="-1" />
+        <ColumnInfo Id="Name" Width="249" />
+        <ColumnInfo Id="Photo" Width="117" />
+        <ColumnInfo Id="Email" Index="2" />
+        <ColumnInfo Id="JobTitle" Index="3" />
+        <ColumnInfo Id="OfficePhone" Index="4" />
+        <ColumnInfo Id="Account" Index="5" />
+        <ColumnInfo Id="Owner" Index="6" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Invoice_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="64.9234693877551">
+            <LayoutGroup Id="Transaction" Index="0" RelativeSize="19.253438113948921" Caption="Summary" Direction="Vertical">
+              <LayoutGroup Id="Transaction_col1" RelativeSize="100" Caption="Transaction_col1" Direction="Horizontal">
+                <LayoutGroup Id="Autof006f6a0-aadc-44b9-a08d-f52a55134557" ShowCaption="False" Caption="Autof006f6a0-aadc-44b9-a08d-f52a55134557(5)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                  <LayoutItem Id="ReferenceNumber" ViewItem="ReferenceNumber" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="Owner" ViewItem="Owner" Index="1" RelativeSize="50" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto6e4836da-df11-4ae3-bea6-9316f3619665" ShowCaption="False" Caption="Auto6e4836da-df11-4ae3-bea6-9316f3619665(8)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                  <LayoutItem Id="TransactionTime" ViewItem="TransactionTime" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="Customer" ViewItem="Customer" Index="1" RelativeSize="50" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="Customer" RelativeSize="36.363636363636367" Index="1" Removed="True" />
+                <LayoutItem Id="Owner" RelativeSize="27.272727272727273" Index="1" Removed="True" />
+                <LayoutItem Id="DifferBillingAddress" Index="4" RelativeSize="71.891891891891888" Removed="True" />
+                <LayoutItem Id="BillStreet" Index="5" RelativeSize="63.005780346820806" Removed="True" />
+                <LayoutItem Id="DifferShippingAddress" Removed="True" />
+                <LayoutItem Id="ReferenceNumber" RelativeSize="28.571428571428573" Removed="True" />
+                <LayoutItem Id="ShipCountry" Removed="True" />
+                <LayoutItem Id="ShipPostalCode" Removed="True" />
+                <LayoutItem Id="ShipProvince" Removed="True" />
+                <LayoutItem Id="ShipRegion" Removed="True" />
+                <LayoutItem Id="ShipStreet" Removed="True" />
+                <LayoutItem Id="ShipSubRegion" Removed="True" />
+                <LayoutItem Id="TransactionTime" RelativeSize="21.428571428571427" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Transaction_col2" RelativeSize="50.05096839959225" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="SubTotal" RelativeSize="17.391304347826086" Index="0" Removed="True" />
+                <LayoutItem Id="TotalWeight" RelativeSize="13.043478260869565" Index="1" Removed="True" />
+                <LayoutItem Id="ShippingMethod" RelativeSize="13.043478260869565" Index="2" Removed="True" />
+                <LayoutItem Id="ShippingCost" RelativeSize="13.043478260869565" Index="3" Removed="True" />
+                <LayoutItem Id="DiscountAmount" RelativeSize="13.043478260869565" Index="4" Removed="True" />
+                <LayoutItem Id="DiscountPercent" RelativeSize="13.043478260869565" Index="5" Removed="True" />
+                <LayoutItem Id="Total" RelativeSize="17.391304347826086" Index="6" Removed="True" />
+                <LayoutItem Id="BillCountry" RelativeSize="10.526315789473685" Removed="True" />
+                <LayoutItem Id="BillPostalCode" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillProvince" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillRegion" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillSubRegion" RelativeSize="7.8947368421052628" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="22.396856581532415" Caption="Totals" Direction="Horizontal" IsNewNode="True">
+              <LayoutGroup Id="Auto559201ee-1a3a-487c-860b-0fb6d9ad0305" ShowCaption="False" Caption="Auto559201ee-1a3a-487c-860b-0fb6d9ad0305(12)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                <LayoutItem Id="SubTotal" ViewItem="SubTotal" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="DiscountAmount" ViewItem="DiscountAmount" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="DiscountPercent" ViewItem="DiscountPercent" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto0ead9dcb-c141-432e-9bbf-22082f64260a" ShowCaption="False" Caption="Auto0ead9dcb-c141-432e-9bbf-22082f64260a(16)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                <LayoutItem Id="TotalWeight" ViewItem="TotalWeight" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="ShippingCost" ViewItem="ShippingCost" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="Total" ViewItem="Total" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="28.290766208251473" Caption="Billing Address" IsNewNode="True">
+              <LayoutItem Id="DifferBillingAddress" ViewItem="DifferBillingAddress" Index="0" RelativeSize="27.118644067796609" IsNewNode="True" />
+              <LayoutGroup Id="Autoa7908f82-5f5c-4fb6-b2b9-9691c1fc2482" ShowCaption="False" Caption="Autoa7908f82-5f5c-4fb6-b2b9-9691c1fc2482(23)" Direction="Horizontal" Index="1" RelativeSize="72.881355932203391" IsNewNode="True">
+                <LayoutGroup Id="Auto86e06489-1586-4d2d-92fc-b745a8f2a27c" ShowCaption="False" Caption="Auto86e06489-1586-4d2d-92fc-b745a8f2a27c(24)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                  <LayoutItem Id="BillStreet" ViewItem="BillStreet" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="BillCountry" ViewItem="BillCountry" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="BillProvince" ViewItem="BillProvince" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto42763f47-18de-4759-8478-1baa8fdeeaa1" ShowCaption="False" Caption="Auto42763f47-18de-4759-8478-1baa8fdeeaa1(28)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                  <LayoutItem Id="BillRegion" ViewItem="BillRegion" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="BillSubRegion" ViewItem="BillSubRegion" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="BillPostalCode" ViewItem="BillPostalCode" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item1" ShowCaption="True" Caption="Shipping Address" CaptionLocation="Top" Index="3" RelativeSize="30.058939096267192" IsNewNode="True">
+              <LayoutGroup Id="Auto30de1037-9e99-48fc-bf3d-3686d70317e3" ShowCaption="False" Caption="Auto30de1037-9e99-48fc-bf3d-3686d70317e3(32)" Direction="Horizontal" Index="0" RelativeSize="28.925619834710744" IsNewNode="True">
+                <LayoutItem Id="ShippingMethod" ViewItem="ShippingMethod" Index="0" RelativeSize="50" IsNewNode="True" />
+                <LayoutItem Id="DifferShippingAddress" ViewItem="DifferShippingAddress" Index="1" RelativeSize="50" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto70f0c620-e200-4d5c-92aa-26ed024a9bb3" ShowCaption="False" Caption="Auto70f0c620-e200-4d5c-92aa-26ed024a9bb3(34)" Direction="Horizontal" Index="1" RelativeSize="71.074380165289256" IsNewNode="True">
+                <LayoutGroup Id="Auto092d0018-2b37-4052-b83f-f45813b230f7" ShowCaption="False" Caption="Auto092d0018-2b37-4052-b83f-f45813b230f7(35)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                  <LayoutItem Id="ShipStreet" ViewItem="ShipStreet" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="ShipCountry" ViewItem="ShipCountry" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="ShipProvince" ViewItem="ShipProvince" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto97ab69f3-4dbe-4466-a211-e1b910c64344" ShowCaption="False" Caption="Auto97ab69f3-4dbe-4466-a211-e1b910c64344(39)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                  <LayoutItem Id="ShipRegion" ViewItem="ShipRegion" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="ShipSubRegion" ViewItem="ShipSubRegion" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="ShipPostalCode" ViewItem="ShipPostalCode" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="35.076530612244895">
+            <LayoutGroup Id="Items" RelativeSize="100">
+              <LayoutItem Id="Items" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Notes" RelativeSize="100">
+              <LayoutItem Id="Notes" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Order_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="64.9234693877551">
+            <LayoutGroup Id="Transaction" Index="0" RelativeSize="19.253438113948921" Caption="Summary" Direction="Vertical">
+              <LayoutGroup Id="Transaction_col1" RelativeSize="100" Caption="Transaction_col1" Direction="Horizontal">
+                <LayoutGroup Id="Autof006f6a0-aadc-44b9-a08d-f52a55134557" ShowCaption="False" Caption="Autof006f6a0-aadc-44b9-a08d-f52a55134557(5)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                  <LayoutItem Id="ReferenceNumber" ViewItem="ReferenceNumber" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="Owner" ViewItem="Owner" Index="1" RelativeSize="50" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto6e4836da-df11-4ae3-bea6-9316f3619665" ShowCaption="False" Caption="Auto6e4836da-df11-4ae3-bea6-9316f3619665(8)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                  <LayoutItem Id="TransactionTime" ViewItem="TransactionTime" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="Customer" ViewItem="Customer" Index="1" RelativeSize="50" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="Customer" RelativeSize="36.363636363636367" Index="1" Removed="True" />
+                <LayoutItem Id="Owner" RelativeSize="27.272727272727273" Index="1" Removed="True" />
+                <LayoutItem Id="DifferBillingAddress" Index="4" RelativeSize="71.891891891891888" Removed="True" />
+                <LayoutItem Id="BillStreet" Index="5" RelativeSize="63.005780346820806" Removed="True" />
+                <LayoutItem Id="DifferShippingAddress" Removed="True" />
+                <LayoutItem Id="ReferenceNumber" RelativeSize="28.571428571428573" Removed="True" />
+                <LayoutItem Id="ShipCountry" Removed="True" />
+                <LayoutItem Id="ShipPostalCode" Removed="True" />
+                <LayoutItem Id="ShipProvince" Removed="True" />
+                <LayoutItem Id="ShipRegion" Removed="True" />
+                <LayoutItem Id="ShipStreet" Removed="True" />
+                <LayoutItem Id="ShipSubRegion" Removed="True" />
+                <LayoutItem Id="TransactionTime" RelativeSize="21.428571428571427" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Transaction_col2" RelativeSize="50.05096839959225" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="SubTotal" RelativeSize="17.391304347826086" Index="0" Removed="True" />
+                <LayoutItem Id="TotalWeight" RelativeSize="13.043478260869565" Index="1" Removed="True" />
+                <LayoutItem Id="ShippingMethod" RelativeSize="13.043478260869565" Index="2" Removed="True" />
+                <LayoutItem Id="ShippingCost" RelativeSize="13.043478260869565" Index="3" Removed="True" />
+                <LayoutItem Id="DiscountAmount" RelativeSize="13.043478260869565" Index="4" Removed="True" />
+                <LayoutItem Id="DiscountPercent" RelativeSize="13.043478260869565" Index="5" Removed="True" />
+                <LayoutItem Id="Total" RelativeSize="17.391304347826086" Index="6" Removed="True" />
+                <LayoutItem Id="BillCountry" RelativeSize="10.526315789473685" Removed="True" />
+                <LayoutItem Id="BillPostalCode" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillProvince" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillRegion" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillSubRegion" RelativeSize="7.8947368421052628" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="22.396856581532415" Caption="Totals" Direction="Horizontal" IsNewNode="True">
+              <LayoutGroup Id="Auto559201ee-1a3a-487c-860b-0fb6d9ad0305" ShowCaption="False" Caption="Auto559201ee-1a3a-487c-860b-0fb6d9ad0305(12)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                <LayoutItem Id="SubTotal" ViewItem="SubTotal" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="DiscountAmount" ViewItem="DiscountAmount" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="DiscountPercent" ViewItem="DiscountPercent" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto0ead9dcb-c141-432e-9bbf-22082f64260a" ShowCaption="False" Caption="Auto0ead9dcb-c141-432e-9bbf-22082f64260a(16)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                <LayoutItem Id="TotalWeight" ViewItem="TotalWeight" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="ShippingCost" ViewItem="ShippingCost" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="Total" ViewItem="Total" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="28.290766208251473" Caption="Billing Address" IsNewNode="True">
+              <LayoutItem Id="DifferBillingAddress" ViewItem="DifferBillingAddress" Index="0" RelativeSize="27.118644067796609" IsNewNode="True" />
+              <LayoutGroup Id="Autoa7908f82-5f5c-4fb6-b2b9-9691c1fc2482" ShowCaption="False" Caption="Autoa7908f82-5f5c-4fb6-b2b9-9691c1fc2482(23)" Direction="Horizontal" Index="1" RelativeSize="72.881355932203391" IsNewNode="True">
+                <LayoutGroup Id="Auto86e06489-1586-4d2d-92fc-b745a8f2a27c" ShowCaption="False" Caption="Auto86e06489-1586-4d2d-92fc-b745a8f2a27c(24)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                  <LayoutItem Id="BillStreet" ViewItem="BillStreet" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="BillCountry" ViewItem="BillCountry" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="BillProvince" ViewItem="BillProvince" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto42763f47-18de-4759-8478-1baa8fdeeaa1" ShowCaption="False" Caption="Auto42763f47-18de-4759-8478-1baa8fdeeaa1(28)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                  <LayoutItem Id="BillRegion" ViewItem="BillRegion" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="BillSubRegion" ViewItem="BillSubRegion" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="BillPostalCode" ViewItem="BillPostalCode" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item1" ShowCaption="True" Caption="Shipping Address" CaptionLocation="Top" Index="3" RelativeSize="30.058939096267192" IsNewNode="True">
+              <LayoutGroup Id="Auto30de1037-9e99-48fc-bf3d-3686d70317e3" ShowCaption="False" Caption="Auto30de1037-9e99-48fc-bf3d-3686d70317e3(32)" Direction="Horizontal" Index="0" RelativeSize="28.925619834710744" IsNewNode="True">
+                <LayoutItem Id="ShippingMethod" ViewItem="ShippingMethod" Index="0" RelativeSize="50" IsNewNode="True" />
+                <LayoutItem Id="DifferShippingAddress" ViewItem="DifferShippingAddress" Index="1" RelativeSize="50" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto70f0c620-e200-4d5c-92aa-26ed024a9bb3" ShowCaption="False" Caption="Auto70f0c620-e200-4d5c-92aa-26ed024a9bb3(34)" Direction="Horizontal" Index="1" RelativeSize="71.074380165289256" IsNewNode="True">
+                <LayoutGroup Id="Auto092d0018-2b37-4052-b83f-f45813b230f7" ShowCaption="False" Caption="Auto092d0018-2b37-4052-b83f-f45813b230f7(35)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                  <LayoutItem Id="ShipStreet" ViewItem="ShipStreet" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="ShipCountry" ViewItem="ShipCountry" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="ShipProvince" ViewItem="ShipProvince" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto97ab69f3-4dbe-4466-a211-e1b910c64344" ShowCaption="False" Caption="Auto97ab69f3-4dbe-4466-a211-e1b910c64344(39)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                  <LayoutItem Id="ShipRegion" ViewItem="ShipRegion" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="ShipSubRegion" ViewItem="ShipSubRegion" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="ShipPostalCode" ViewItem="ShipPostalCode" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="35.076530612244895">
+            <LayoutGroup Id="Items" RelativeSize="100">
+              <LayoutItem Id="Items" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Notes" RelativeSize="100">
+              <LayoutItem Id="Notes" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Quote_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="64.9234693877551">
+            <LayoutGroup Id="Transaction" Index="0" RelativeSize="19.253438113948921" Caption="Summary" Direction="Vertical">
+              <LayoutGroup Id="Transaction_col1" RelativeSize="100" Caption="Transaction_col1" Direction="Horizontal">
+                <LayoutGroup Id="Autof006f6a0-aadc-44b9-a08d-f52a55134557" ShowCaption="False" Caption="Autof006f6a0-aadc-44b9-a08d-f52a55134557(5)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                  <LayoutItem Id="ReferenceNumber" ViewItem="ReferenceNumber" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="Owner" ViewItem="Owner" Index="1" RelativeSize="50" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto6e4836da-df11-4ae3-bea6-9316f3619665" ShowCaption="False" Caption="Auto6e4836da-df11-4ae3-bea6-9316f3619665(8)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                  <LayoutItem Id="TransactionTime" ViewItem="TransactionTime" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="Customer" ViewItem="Customer" Index="1" RelativeSize="50" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="Customer" RelativeSize="36.363636363636367" Index="1" Removed="True" />
+                <LayoutItem Id="Owner" RelativeSize="27.272727272727273" Index="1" Removed="True" />
+                <LayoutItem Id="DifferBillingAddress" Index="4" RelativeSize="71.891891891891888" Removed="True" />
+                <LayoutItem Id="BillStreet" Index="5" RelativeSize="63.005780346820806" Removed="True" />
+                <LayoutItem Id="DifferShippingAddress" Removed="True" />
+                <LayoutItem Id="ReferenceNumber" RelativeSize="28.571428571428573" Removed="True" />
+                <LayoutItem Id="ShipCountry" Removed="True" />
+                <LayoutItem Id="ShipPostalCode" Removed="True" />
+                <LayoutItem Id="ShipProvince" Removed="True" />
+                <LayoutItem Id="ShipRegion" Removed="True" />
+                <LayoutItem Id="ShipStreet" Removed="True" />
+                <LayoutItem Id="ShipSubRegion" Removed="True" />
+                <LayoutItem Id="TransactionTime" RelativeSize="21.428571428571427" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Transaction_col2" RelativeSize="50.05096839959225" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="SubTotal" RelativeSize="17.391304347826086" Index="0" Removed="True" />
+                <LayoutItem Id="TotalWeight" RelativeSize="13.043478260869565" Index="1" Removed="True" />
+                <LayoutItem Id="ShippingMethod" RelativeSize="13.043478260869565" Index="2" Removed="True" />
+                <LayoutItem Id="ShippingCost" RelativeSize="13.043478260869565" Index="3" Removed="True" />
+                <LayoutItem Id="DiscountAmount" RelativeSize="13.043478260869565" Index="4" Removed="True" />
+                <LayoutItem Id="DiscountPercent" RelativeSize="13.043478260869565" Index="5" Removed="True" />
+                <LayoutItem Id="Total" RelativeSize="17.391304347826086" Index="6" Removed="True" />
+                <LayoutItem Id="BillCountry" RelativeSize="10.526315789473685" Removed="True" />
+                <LayoutItem Id="BillPostalCode" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillProvince" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillRegion" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillSubRegion" RelativeSize="7.8947368421052628" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="22.396856581532415" Caption="Totals" Direction="Horizontal" IsNewNode="True">
+              <LayoutGroup Id="Auto559201ee-1a3a-487c-860b-0fb6d9ad0305" ShowCaption="False" Caption="Auto559201ee-1a3a-487c-860b-0fb6d9ad0305(12)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                <LayoutItem Id="SubTotal" ViewItem="SubTotal" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="DiscountAmount" ViewItem="DiscountAmount" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="DiscountPercent" ViewItem="DiscountPercent" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto0ead9dcb-c141-432e-9bbf-22082f64260a" ShowCaption="False" Caption="Auto0ead9dcb-c141-432e-9bbf-22082f64260a(16)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                <LayoutItem Id="TotalWeight" ViewItem="TotalWeight" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="ShippingCost" ViewItem="ShippingCost" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="Total" ViewItem="Total" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="28.290766208251473" Caption="Billing Address" IsNewNode="True">
+              <LayoutItem Id="DifferBillingAddress" ViewItem="DifferBillingAddress" Index="0" RelativeSize="27.118644067796609" IsNewNode="True" />
+              <LayoutGroup Id="Autoa7908f82-5f5c-4fb6-b2b9-9691c1fc2482" ShowCaption="False" Caption="Autoa7908f82-5f5c-4fb6-b2b9-9691c1fc2482(23)" Direction="Horizontal" Index="1" RelativeSize="72.881355932203391" IsNewNode="True">
+                <LayoutGroup Id="Auto86e06489-1586-4d2d-92fc-b745a8f2a27c" ShowCaption="False" Caption="Auto86e06489-1586-4d2d-92fc-b745a8f2a27c(24)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                  <LayoutItem Id="BillStreet" ViewItem="BillStreet" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="BillCountry" ViewItem="BillCountry" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="BillProvince" ViewItem="BillProvince" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto42763f47-18de-4759-8478-1baa8fdeeaa1" ShowCaption="False" Caption="Auto42763f47-18de-4759-8478-1baa8fdeeaa1(28)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                  <LayoutItem Id="BillRegion" ViewItem="BillRegion" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="BillSubRegion" ViewItem="BillSubRegion" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="BillPostalCode" ViewItem="BillPostalCode" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item1" ShowCaption="True" Caption="Shipping Address" CaptionLocation="Top" Index="3" RelativeSize="30.058939096267192" IsNewNode="True">
+              <LayoutGroup Id="Auto30de1037-9e99-48fc-bf3d-3686d70317e3" ShowCaption="False" Caption="Auto30de1037-9e99-48fc-bf3d-3686d70317e3(32)" Direction="Horizontal" Index="0" RelativeSize="28.925619834710744" IsNewNode="True">
+                <LayoutItem Id="ShippingMethod" ViewItem="ShippingMethod" Index="0" RelativeSize="50" IsNewNode="True" />
+                <LayoutItem Id="DifferShippingAddress" ViewItem="DifferShippingAddress" Index="1" RelativeSize="50" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto70f0c620-e200-4d5c-92aa-26ed024a9bb3" ShowCaption="False" Caption="Auto70f0c620-e200-4d5c-92aa-26ed024a9bb3(34)" Direction="Horizontal" Index="1" RelativeSize="71.074380165289256" IsNewNode="True">
+                <LayoutGroup Id="Auto092d0018-2b37-4052-b83f-f45813b230f7" ShowCaption="False" Caption="Auto092d0018-2b37-4052-b83f-f45813b230f7(35)" Index="0" RelativeSize="49.898580121703851" IsNewNode="True">
+                  <LayoutItem Id="ShipStreet" ViewItem="ShipStreet" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="ShipCountry" ViewItem="ShipCountry" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="ShipProvince" ViewItem="ShipProvince" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto97ab69f3-4dbe-4466-a211-e1b910c64344" ShowCaption="False" Caption="Auto97ab69f3-4dbe-4466-a211-e1b910c64344(39)" Index="1" RelativeSize="50.101419878296149" IsNewNode="True">
+                  <LayoutItem Id="ShipRegion" ViewItem="ShipRegion" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                  <LayoutItem Id="ShipSubRegion" ViewItem="ShipSubRegion" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                  <LayoutItem Id="ShipPostalCode" ViewItem="ShipPostalCode" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="35.076530612244895">
+            <LayoutGroup Id="Items" RelativeSize="100">
+              <LayoutItem Id="Items" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Notes" RelativeSize="100">
+              <LayoutItem Id="Notes" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Transaction_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="28.571428571428573">
+            <LayoutGroup Id="Transaction" RelativeSize="100" Caption="Summary">
+              <LayoutGroup Id="Transaction_col1" RelativeSize="50.051072522982636">
+                <LayoutItem Id="TransactionTime" RelativeSize="17.391304347826086" />
+                <LayoutItem Id="Owner" RelativeSize="13.043478260869565" />
+                <LayoutItem Id="Customer" RelativeSize="69.565217391304344" />
+                <LayoutItem Id="DifferBillingAddress" Index="3" RelativeSize="56.521739130434781" Removed="True" />
+                <LayoutItem Id="BillStreet" Index="4" RelativeSize="43.478260869565219" Removed="True" />
+                <LayoutItem Id="DifferShippingAddress" Removed="True" />
+                <LayoutItem Id="ShipCountry" Removed="True" />
+                <LayoutItem Id="ShipPostalCode" Removed="True" />
+                <LayoutItem Id="ShipProvince" Removed="True" />
+                <LayoutItem Id="ShipRegion" Removed="True" />
+                <LayoutItem Id="ShipStreet" Removed="True" />
+                <LayoutItem Id="ShipSubRegion" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Transaction_col2" RelativeSize="49.948927477017364">
+                <LayoutItem Id="SubTotal" RelativeSize="17.391304347826086" Index="0" />
+                <LayoutItem Id="TotalWeight" RelativeSize="13.043478260869565" Index="1" />
+                <LayoutItem Id="ShippingMethod" RelativeSize="13.043478260869565" Index="2" />
+                <LayoutItem Id="ShippingCost" RelativeSize="13.043478260869565" Index="3" />
+                <LayoutItem Id="DiscountAmount" RelativeSize="13.043478260869565" Index="4" />
+                <LayoutItem Id="DiscountPercent" RelativeSize="13.043478260869565" Index="5" />
+                <LayoutItem Id="Total" RelativeSize="17.391304347826086" Index="6" />
+                <LayoutItem Id="BillCountry" RelativeSize="10.526315789473685" Removed="True" />
+                <LayoutItem Id="BillPostalCode" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillProvince" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillRegion" RelativeSize="7.8947368421052628" Removed="True" />
+                <LayoutItem Id="BillSubRegion" RelativeSize="7.8947368421052628" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="18.367346938775512" Caption="Billing Address" Direction="Vertical" IsNewNode="True">
+            <LayoutItem Id="DifferBillingAddress" ViewItem="DifferBillingAddress" Index="0" RelativeSize="27.118644067796609" IsNewNode="True" />
+            <LayoutGroup Id="Autoc6af7bc2-8ba5-411f-83b7-7588bcf5d321" ShowCaption="False" Caption="Autoc6af7bc2-8ba5-411f-83b7-7588bcf5d321(18)" Direction="Horizontal" Index="1" RelativeSize="72.881355932203391" IsNewNode="True">
+              <LayoutGroup Id="Auto61c895c0-9458-4216-8a75-137dbfae12d1" ShowCaption="False" Caption="Auto61c895c0-9458-4216-8a75-137dbfae12d1(19)" Index="0" RelativeSize="49.846782431052091" IsNewNode="True">
+                <LayoutItem Id="BillStreet" ViewItem="BillStreet" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                <LayoutItem Id="BillCountry" ViewItem="BillCountry" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                <LayoutItem Id="BillProvince" ViewItem="BillProvince" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Autoa0770d90-d672-4ac2-81f5-3062538a4ede" ShowCaption="False" Caption="Autoa0770d90-d672-4ac2-81f5-3062538a4ede(23)" Index="1" RelativeSize="50.153217568947909" IsNewNode="True">
+                <LayoutItem Id="BillSubRegion" ViewItem="BillSubRegion" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                <LayoutItem Id="BillRegion" ViewItem="BillRegion" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                <LayoutItem Id="BillPostalCode" ViewItem="BillPostalCode" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Item1" ShowCaption="True" Caption="Shipping Address" CaptionLocation="Top" Index="2" RelativeSize="18.367346938775512" IsNewNode="True">
+            <LayoutItem Id="DifferShippingAddress" ViewItem="DifferShippingAddress" Index="0" RelativeSize="27.118644067796609" IsNewNode="True" />
+            <LayoutGroup Id="Auto25500698-f0d1-47de-a81e-6f399b2503a7" ShowCaption="False" Caption="Auto25500698-f0d1-47de-a81e-6f399b2503a7(29)" Direction="Horizontal" Index="1" RelativeSize="72.881355932203391" IsNewNode="True">
+              <LayoutGroup Id="Auto51460582-11a9-4b45-b037-d10354b97a36" ShowCaption="False" Caption="" Index="0" RelativeSize="49.948927477017364" IsNewNode="True">
+                <LayoutItem Id="ShipStreet" ViewItem="ShipStreet" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                <LayoutItem Id="ShipProvince" ViewItem="ShipProvince" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                <LayoutItem Id="ShipCountry" ViewItem="ShipCountry" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto9d94f573-f2b0-4c5b-97c1-afc3ab22f44f" ShowCaption="False" Caption="" Index="1" RelativeSize="50.051072522982636" IsNewNode="True">
+                <LayoutItem Id="ShipSubRegion" ViewItem="ShipSubRegion" Index="0" RelativeSize="34.883720930232556" IsNewNode="True" />
+                <LayoutItem Id="ShipRegion" ViewItem="ShipRegion" Index="1" RelativeSize="27.906976744186046" IsNewNode="True" />
+                <LayoutItem Id="ShipPostalCode" ViewItem="ShipPostalCode" Index="2" RelativeSize="37.2093023255814" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="34.693877551020407" Index="3">
+            <LayoutGroup Id="Items" RelativeSize="100">
+              <LayoutItem Id="Items" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Notes" RelativeSize="100">
+              <LayoutItem Id="Notes" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Transaction_Items_ListView" AllowEdit="True" NewItemRowPosition="Top" />
+  </Views>
 </Application>

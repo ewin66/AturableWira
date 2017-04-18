@@ -4,27 +4,30 @@ using System.Text;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp;
 using System.ComponentModel;
+using DevExpress.ExpressApp.DC;
 using DevExpress.Data.Filtering;
 using DevExpress.Persistent.Base;
 using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
+using DevExpress.ExpressApp.Editors;
+using AturableWira.Module.BusinessObjects.HRM;
+using DevExpress.ExpressApp.SystemModule;
 
 namespace AturableWira.Module.BusinessObjects.SYS
 {
    [DefaultClassOptions]
-   [NavigationItem(false)]
-   //[ImageName("BO_Contact")]
-   //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
+   [ImageName("BO_Note")]
+   [DefaultProperty("Title")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
    //[Persistent("DatabaseTableName")]
    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-   [RuleObjectExists("AnotherSettingExists", DefaultContexts.Save, "True", InvertResult = true, CustomMessageTemplate = "Another setting object already exists.")]
-   [RuleCriteria("CannotDeleteSetting", DefaultContexts.Delete, "False", CustomMessageTemplate = "Cannot delete Setting.")]
-   public class SystemSetting : BaseObject
+   [ListViewFilter("NoteFilterCriteriaAll", "[IsPrivate] = False or ([IsPrivate] = True and [Owner.Oid] = CurrentUserId())", "All Notes", true, Index = 0)]
+   [ListViewFilter("NoteFilterCriteriaOnlyMyNotes", "[Owner.Oid] = CurrentUserId()", "Only My Notes", Index = 1)]
+   public class Note : BaseObject
    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-      public SystemSetting(Session session)
+      public Note(Session session)
           : base(session)
       {
       }
@@ -32,6 +35,7 @@ namespace AturableWira.Module.BusinessObjects.SYS
       {
          base.AfterConstruction();
          // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+         Owner = Session.GetObjectByKey<Employee>(SecuritySystem.CurrentUserId);
       }
       //private string _PersistentProperty;
       //[XafDisplayName("My display name"), ToolTip("My hint message")]
@@ -47,66 +51,71 @@ namespace AturableWira.Module.BusinessObjects.SYS
       //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
       //    this.PersistentProperty = "Paid";
       //}
-      string companyName;
-      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-      public string CompanyName
+      string title;
+      [Size(SizeAttribute.Unlimited)]
+      [EditorAlias(EditorAliases.StringPropertyEditor)]
+      [ModelDefault("RowCount","1")]
+      [RuleRequiredField]
+      public string Title
       {
          get
          {
-            return companyName;
+            return title;
          }
          set
          {
-            SetPropertyValue("CompanyName", ref companyName, value);
+            SetPropertyValue("Title", ref title, value);
          }
       }
-      AddressDetail address;
-      [Aggregated, ExpandObjectMembers(ExpandObjectMembers.Never)]
-      public AddressDetail Address
+      FileData attachment;
+      public FileData Attachment
       {
          get
          {
-            return address;
+            return attachment;
          }
          set
          {
-            SetPropertyValue("Address", ref address, value);
+            SetPropertyValue("Attachment", ref attachment, value);
          }
       }
-      decimal creditLimit;
-      public decimal CreditLimit
+      Employee owner;
+      public Employee Owner
       {
          get
          {
-            return creditLimit;
+            return owner;
          }
          set
          {
-            SetPropertyValue("CreditLimit", ref creditLimit, value);
+            SetPropertyValue("Owner", ref owner, value);
          }
       }
-      int codeDigits;
-      public int CodeDigits
+      bool isPrivate;
+      public bool IsPrivate
       {
          get
          {
-            return codeDigits;
+            return isPrivate;
          }
          set
          {
-            SetPropertyValue("CodeDigits", ref codeDigits, value);
+            SetPropertyValue("IsPrivate", ref isPrivate, value);
          }
       }
-      MediaDataObject companyLogo;
-      public MediaDataObject CompanyLogo
+      string description;
+      [Size(SizeAttribute.Unlimited)]
+      [EditorAlias(EditorAliases.HtmlPropertyEditor)]
+      [RuleRequiredField]
+      public string Description
       {
          get
          {
-            return companyLogo;
+            return description;
          }
          set
          {
-            SetPropertyValue("CompanyLogo", ref companyLogo, value);
+            SetPropertyValue("Description", ref description, value);
          }
       }
    }

@@ -11,20 +11,19 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 
-namespace AturableWira.Module.BusinessObjects.SYS
+namespace AturableWira.Module.BusinessObjects.ERP.Sales
 {
    [DefaultClassOptions]
    [NavigationItem(false)]
-   //[ImageName("BO_Contact")]
+   [CreatableItem(false)]
+   [ImageName("BO_Product")]
    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
    //[Persistent("DatabaseTableName")]
    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-   [RuleObjectExists("AnotherSettingExists", DefaultContexts.Save, "True", InvertResult = true, CustomMessageTemplate = "Another setting object already exists.")]
-   [RuleCriteria("CannotDeleteSetting", DefaultContexts.Delete, "False", CustomMessageTemplate = "Cannot delete Setting.")]
-   public class SystemSetting : BaseObject
+   public class TransactionItem : BaseObject
    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-      public SystemSetting(Session session)
+      public TransactionItem(Session session)
           : base(session)
       {
       }
@@ -47,66 +46,84 @@ namespace AturableWira.Module.BusinessObjects.SYS
       //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
       //    this.PersistentProperty = "Paid";
       //}
-      string companyName;
-      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-      public string CompanyName
+      Product product;
+      [RuleRequiredField]
+      [ImmediatePostData]
+      [DataSourceCriteria("[Discontinued]=false")]
+      public Product Product
       {
          get
          {
-            return companyName;
+            return product;
          }
          set
          {
-            SetPropertyValue("CompanyName", ref companyName, value);
+            SetPropertyValue("Product", ref product, value);
          }
       }
-      AddressDetail address;
-      [Aggregated, ExpandObjectMembers(ExpandObjectMembers.Never)]
-      public AddressDetail Address
+      int quantity;
+      [ImmediatePostData]
+      [RuleValueComparison(ValueComparisonType.GreaterThan, 0)]
+      public int Quantity
       {
          get
          {
-            return address;
+            return quantity;
          }
          set
          {
-            SetPropertyValue("Address", ref address, value);
+            SetPropertyValue("Quantity", ref quantity, value);
          }
       }
-      decimal creditLimit;
-      public decimal CreditLimit
+      decimal discountAmount;
+      [ImmediatePostData]
+      public decimal DiscountAmount
       {
          get
          {
-            return creditLimit;
+            return discountAmount;
          }
          set
          {
-            SetPropertyValue("CreditLimit", ref creditLimit, value);
+            SetPropertyValue("Discount", ref discountAmount, value);
          }
       }
-      int codeDigits;
-      public int CodeDigits
+      decimal discountPercent;
+      [ModelDefault("DisplayFormat", "{0:N2}%")]
+      [ModelDefault("EditMask", "N2")]
+      public decimal DiscountPercent
       {
          get
          {
-            return codeDigits;
+            return discountPercent;
          }
          set
          {
-            SetPropertyValue("CodeDigits", ref codeDigits, value);
+            SetPropertyValue("DiscountPercent", ref discountPercent, value);
          }
       }
-      MediaDataObject companyLogo;
-      public MediaDataObject CompanyLogo
+      [PersistentAlias("(Quantity * Product.Price) - DiscountAmount - ((Quantity * Product.Price) * (DiscountPercent/100))")]
+      public decimal Amount
       {
          get
          {
-            return companyLogo;
+            if (Product != null)
+               return (decimal)EvaluateAlias("Amount");
+            else
+               return 0;
+         }
+      }
+      Transaction transaction;
+      [Association("Transaction-Items")]
+      public Transaction Transaction
+      {
+         get
+         {
+            return transaction;
          }
          set
          {
-            SetPropertyValue("CompanyLogo", ref companyLogo, value);
+            SetPropertyValue("Transaction", ref transaction, value);
          }
       }
    }

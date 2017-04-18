@@ -170,22 +170,28 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessObjects\CRM\Company.cs" />
+    <Compile Include="BusinessObjects\ACC\Bank.cs" />
+    <Compile Include="BusinessObjects\ACC\BankAccount.cs" />
+    <Compile Include="BusinessObjects\CRM\Account.cs" />
     <Compile Include="BusinessObjects\CRM\Contact.cs" />
     <Compile Include="BusinessObjects\CRM\Customer.cs" />
-    <Compile Include="BusinessObjects\CRM\Quote.cs" />
-    <Compile Include="BusinessObjects\ERP\Invoice.cs" />
+    <Compile Include="BusinessObjects\CRM\CustomerNote.cs" />
     <Compile Include="BusinessObjects\ERP\Product.cs" />
-    <Compile Include="BusinessObjects\ERP\PurchaseOrder.cs" />
-    <Compile Include="BusinessObjects\ERP\Quotation.cs" />
+    <Compile Include="BusinessObjects\ERP\ProductCategory.cs" />
+    <Compile Include="BusinessObjects\ERP\Sales\Invoice.cs" />
+    <Compile Include="BusinessObjects\ERP\Sales\Order.cs" />
+    <Compile Include="BusinessObjects\ERP\Sales\Quote.cs" />
     <Compile Include="BusinessObjects\ERP\Service.cs" />
-    <Compile Include="BusinessObjects\ERP\Transaction.cs" />
-    <Compile Include="BusinessObjects\ERP\TransactionItem.cs" />
+    <Compile Include="BusinessObjects\ERP\ShippingMethod.cs" />
+    <Compile Include="BusinessObjects\ERP\Sales\Transaction.cs" />
+    <Compile Include="BusinessObjects\ERP\Sales\TransactionItem.cs" />
+    <Compile Include="BusinessObjects\ERP\Sales\TransactionNote.cs" />
     <Compile Include="BusinessObjects\ETC\Enums.cs" />
     <Compile Include="BusinessObjects\HRM\Employee.cs" />
     <Compile Include="BusinessObjects\HRM\EmployeeRole.cs" />
     <Compile Include="BusinessObjects\SYS\AddressDetail.cs" />
     <Compile Include="BusinessObjects\SYS\Country.cs" />
+    <Compile Include="BusinessObjects\SYS\Note.cs" />
     <Compile Include="BusinessObjects\SYS\People.cs" />
     <Compile Include="BusinessObjects\SYS\Province.cs" />
     <Compile Include="BusinessObjects\SYS\Region.cs" />
@@ -201,7 +207,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Module.cs</DependentUpon>
@@ -238,9 +246,15 @@
     <EmbeddedResource Include="Images\BO_Quote_32x32.png" />
     <EmbeddedResource Include="Images\BO_Order.png" />
     <EmbeddedResource Include="Images\BO_Order_32x32.png" />
+    <None Include="UnusableNodes.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BusinessObjects\ACC\AP\" />
+    <Folder Include="BusinessObjects\ACC\AR\" />
     <Folder Include="BusinessObjects\PM\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

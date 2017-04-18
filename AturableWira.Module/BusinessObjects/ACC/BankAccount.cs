@@ -4,6 +4,7 @@ using System.Text;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp;
 using System.ComponentModel;
+using DevExpress.ExpressApp.DC;
 using DevExpress.Data.Filtering;
 using DevExpress.Persistent.Base;
 using System.Collections.Generic;
@@ -11,20 +12,17 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 
-namespace AturableWira.Module.BusinessObjects.SYS
+namespace AturableWira.Module.BusinessObjects.ACC
 {
    [DefaultClassOptions]
-   [NavigationItem(false)]
    //[ImageName("BO_Contact")]
    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
    //[Persistent("DatabaseTableName")]
    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-   [RuleObjectExists("AnotherSettingExists", DefaultContexts.Save, "True", InvertResult = true, CustomMessageTemplate = "Another setting object already exists.")]
-   [RuleCriteria("CannotDeleteSetting", DefaultContexts.Delete, "False", CustomMessageTemplate = "Cannot delete Setting.")]
-   public class SystemSetting : BaseObject
+   public class BankAccount : BaseObject
    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-      public SystemSetting(Session session)
+      public BankAccount(Session session)
           : base(session)
       {
       }
@@ -47,66 +45,47 @@ namespace AturableWira.Module.BusinessObjects.SYS
       //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
       //    this.PersistentProperty = "Paid";
       //}
-      string companyName;
+      Bank bank;
+      [Association("Bank-Accounts")]
+      [RuleRequiredField]
+      public Bank Bank
+      {
+         get
+         {
+            return bank;
+         }
+         set
+         {
+            SetPropertyValue("Bank", ref bank, value);
+         }
+      }
+
+      string branchName;
       [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-      public string CompanyName
+      public string BranchName
       {
          get
          {
-            return companyName;
+            return branchName;
          }
          set
          {
-            SetPropertyValue("CompanyName", ref companyName, value);
+            SetPropertyValue("BranchName", ref branchName, value);
          }
       }
-      AddressDetail address;
-      [Aggregated, ExpandObjectMembers(ExpandObjectMembers.Never)]
-      public AddressDetail Address
+
+      string accountNumber;
+      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+      [RuleRequiredField]
+      public string AccountNumber
       {
          get
          {
-            return address;
+            return accountNumber;
          }
          set
          {
-            SetPropertyValue("Address", ref address, value);
-         }
-      }
-      decimal creditLimit;
-      public decimal CreditLimit
-      {
-         get
-         {
-            return creditLimit;
-         }
-         set
-         {
-            SetPropertyValue("CreditLimit", ref creditLimit, value);
-         }
-      }
-      int codeDigits;
-      public int CodeDigits
-      {
-         get
-         {
-            return codeDigits;
-         }
-         set
-         {
-            SetPropertyValue("CodeDigits", ref codeDigits, value);
-         }
-      }
-      MediaDataObject companyLogo;
-      public MediaDataObject CompanyLogo
-      {
-         get
-         {
-            return companyLogo;
-         }
-         set
-         {
-            SetPropertyValue("CompanyLogo", ref companyLogo, value);
+            SetPropertyValue("AccountNumber", ref accountNumber, value);
          }
       }
    }
