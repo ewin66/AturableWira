@@ -172,6 +172,10 @@
   <ItemGroup>
     <Compile Include="BusinessObjects\ACC\Bank.cs" />
     <Compile Include="BusinessObjects\ACC\BankAccount.cs" />
+    <Compile Include="BusinessObjects\ACC\Currency.cs" />
+    <Compile Include="BusinessObjects\ACC\GL\GLAccount.cs" />
+    <Compile Include="BusinessObjects\ACC\GL\JournalEntry.cs" />
+    <Compile Include="BusinessObjects\ACC\GL\JournalVoucher.cs" />
     <Compile Include="BusinessObjects\CRM\Account.cs" />
     <Compile Include="BusinessObjects\CRM\Contact.cs" />
     <Compile Include="BusinessObjects\CRM\Customer.cs" />
@@ -250,6 +254,7 @@
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
       <SubType>Designer</SubType>
     </None>
+    <EmbeddedResource Include="DatabaseUpdate\InitialData\GLAccount.xml" />
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>

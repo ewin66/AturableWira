@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<record>
+		<Account>1005</Account>
+		<Name>Bank - IDR</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1006</Account>
+		<Name>Bank - USD</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1007</Account>
+		<Name>Bank - SGD</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1110</Account>
+		<Name>Accounts Receivable - IDR</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1111</Account>
+		<Name>Accounts Receivable Journal - IDR</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1120</Account>
+		<Name>Accounts Receivable - USD</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1121</Account>
+		<Name>Accounts Receivable Journal - SGD</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1122</Account>
+		<Name>Exchange on Foreign Receivables -USD</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1130</Account>
+		<Name>Accounts Receivable - SGD</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1131</Account>
+		<Name>Accounts Receivable Journal - USD</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1132</Account>
+		<Name>Exchange on Foreign Receivables - SGD</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1195</Account>
+		<Name>Tax1 (GST) Receivable</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1200</Account>
+		<Name>Inventory</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1721</Account>
+		<Name>Computer Equipment</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1722</Account>
+		<Name>Furniture and Fixtures</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1821</Account>
+		<Name>Accum Depreciation Computer Equipment</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>1822</Account>
+		<Name>Accum Depreciation Furniture and Fixtures</Name>
+		<Type>0</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2001</Account>
+		<Name>Revenue Collected in Advance</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2040</Account>
+		<Name>Tax1 Payable</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2041</Account>
+		<Name>Tax2 Payable</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2042</Account>
+		<Name>Tax3 Payable</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2050</Account>
+		<Name>Accrued Income Tax Payable</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2110</Account>
+		<Name>Accounts Payable - Domestic</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2111</Account>
+		<Name>Accounts Payable Journal - Domestic</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2120</Account>
+		<Name>Accounts Payable - USD</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2121</Account>
+		<Name>Accounts Payable Journal - SGD</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2122</Account>
+		<Name>Exchange on Foreign Payables - USD</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2130</Account>
+		<Name>Accounts Payable - SGD</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2131</Account>
+		<Name>Accounts Payable Journal - USD</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>2132</Account>
+		<Name>Exchange on Foreign Payables - SGD</Name>
+		<Type>1</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>3110</Account>
+		<Name>Retained Earnings</Name>
+		<Type>4</Type>
+		<RetainedEarnings>true</RetainedEarnings>
+	</record>
+	<record>
+		<Account>3111</Account>
+		<Name>Salary</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>4000</Account>
+		<Name>Sales</Name>
+		<Type>2</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>4910</Account>
+		<Name>Cash Discounts - IDR</Name>
+		<Type>2</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>4920</Account>
+		<Name>Cash Discounts - USD</Name>
+		<Type>2</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>4930</Account>
+		<Name>Cash Discounts - SGD</Name>
+		<Type>2</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5000</Account>
+		<Name>Cost of Goods Sold</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5110</Account>
+		<Name>Auto Supplies</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5111</Account>
+		<Name>Office Supplies</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5112</Account>
+		<Name>Courier</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5113</Account>
+		<Name>Telephone - Line Charge</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5114</Account>
+		<Name>Postage</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5115</Account>
+		<Name>Banking Charges</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5116</Account>
+		<Name>Meals and Entertainment</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5117</Account>
+		<Name>Travelling</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5118</Account>
+		<Name>Professional Fees</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5119</Account>
+		<Name>Business Taxes and Licenses</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5120</Account>
+		<Name>Charitable Donations</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5121</Account>
+		<Name>Courses and Training</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5122</Account>
+		<Name>Dues and Memberships</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5123</Account>
+		<Name>Magazines and Books</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5124</Account>
+		<Name>Promo and Gifts</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5125</Account>
+		<Name>Telephone - Long Distance Charges</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5126</Account>
+		<Name>Advertising - Yellow Pages</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5127</Account>
+		<Name>Small Tools</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>5128</Account>
+		<Name>Freight</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>6000</Account>
+		<Name>Rent on Building</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>6002</Account>
+		<Name>Electricity</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>6003</Account>
+		<Name>Insurance</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>6004</Account>
+		<Name>Water</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>6005</Account>
+		<Name>Property Taxes</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>7121</Account>
+		<Name>Depreciation Computer Equipment</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>7122</Account>
+		<Name>Depreciation Furniture and Fixtures</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>7820</Account>
+		<Name>Misc Income and Expense</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>8000</Account>
+		<Name>Management Compensation</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>9020</Account>
+		<Name>Gain/Loss Foreign Exchange - USD</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>9021</Account>
+		<Name>Gain/Loss Foreign Exchange - SGD</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>9025</Account>
+		<Name>Bad Debts</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>9030</Account>
+		<Name>Purchase Discounts - IDR</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>9031</Account>
+		<Name>Purchase Discounts - USD</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>9032</Account>
+		<Name>Purchase Discounts - SGD</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+	<record>
+		<Account>9075</Account>
+		<Name>Income Tax</Name>
+		<Type>3</Type>
+		<RetainedEarnings>false</RetainedEarnings>
+	</record>
+</data-set>

@@ -14,58 +14,87 @@ using DevExpress.Persistent.Validation;
 
 namespace AturableWira.Module.BusinessObjects.SYS
 {
-  [DefaultClassOptions]
-  //[ImageName("BO_Contact")]
-  [DefaultProperty("Name")]
-  //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
-  //[Persistent("DatabaseTableName")]
-  // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-  public class Country : BaseObject
-  { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-    public Country(Session session)
-        : base(session)
-    {
-    }
-    public override void AfterConstruction()
-    {
-      base.AfterConstruction();
-      // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
-    }
-    //private string _PersistentProperty;
-    //[XafDisplayName("My display name"), ToolTip("My hint message")]
-    //[ModelDefault("EditMask", "(000)-00"), Index(0), VisibleInListView(false)]
-    //[Persistent("DatabaseColumnName"), RuleRequiredField(DefaultContexts.Save)]
-    //public string PersistentProperty {
-    //    get { return _PersistentProperty; }
-    //    set { SetPropertyValue("PersistentProperty", ref _PersistentProperty, value); }
-    //}
+    [DefaultClassOptions]
+    //[ImageName("BO_Contact")]
+    [DefaultProperty("Name")]
+    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
+    //[Persistent("DatabaseTableName")]
+    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
+    public class Country : XPLiteObject
+    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
+        public Country(Session session)
+            : base(session)
+        {
+        }
+        public override void AfterConstruction()
+        {
+            base.AfterConstruction();
+            // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+        }
+        //private string _PersistentProperty;
+        //[XafDisplayName("My display name"), ToolTip("My hint message")]
+        //[ModelDefault("EditMask", "(000)-00"), Index(0), VisibleInListView(false)]
+        //[Persistent("DatabaseColumnName"), RuleRequiredField(DefaultContexts.Save)]
+        //public string PersistentProperty {
+        //    get { return _PersistentProperty; }
+        //    set { SetPropertyValue("PersistentProperty", ref _PersistentProperty, value); }
+        //}
 
-    //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
-    //public void ActionMethod() {
-    //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
-    //    this.PersistentProperty = "Paid";
-    //}
-    string name;
-    [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-    [RuleRequiredField]
-    public string Name
-    {
-      get
-      {
-        return name;
-      }
-      set
-      {
-        SetPropertyValue("Country", ref name, value);
-      }
+        //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
+        //public void ActionMethod() {
+        //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
+        //    this.PersistentProperty = "Paid";
+        //}
+        string iSOCode;
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleRequiredField,RuleUniqueValue,Key]
+        [ModelDefault("Caption", "ISO Code")]
+        public string ISOCode
+        {
+            get
+            {
+                return iSOCode;
+            }
+            set
+            {
+                SetPropertyValue("ISOCode", ref iSOCode, value);
+            }
+        }
+        string bPSCode;
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [ModelDefault("Caption","BPS Code")]
+        public string BPSCode
+        {
+            get
+            {
+                return bPSCode;
+            }
+            set
+            {
+                SetPropertyValue("BPSCode", ref bPSCode, value);
+            }
+        }
+        string name;
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleRequiredField]
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                SetPropertyValue("Country", ref name, value);
+            }
+        }
+        [Association("Country-Provinces")]
+        public XPCollection<Province> Provinces
+        {
+            get
+            {
+                return GetCollection<Province>("Provinces");
+            }
+        }
     }
-    [Association("Country-Provinces")]
-    public XPCollection<Province> Provinces
-    {
-      get
-      {
-        return GetCollection<Province>("Provinces");
-      }
-    }
-  }
 }

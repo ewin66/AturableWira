@@ -4,7 +4,6 @@ using System.Text;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp;
 using System.ComponentModel;
-using DevExpress.ExpressApp.DC;
 using DevExpress.Data.Filtering;
 using DevExpress.Persistent.Base;
 using System.Collections.Generic;
@@ -12,21 +11,18 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.ExpressApp.Editors;
-using static AturableWira.Module.BusinessObjects.ETC.Enums;
-using DevExpress.ExpressApp.ConditionalAppearance;
 
-namespace AturableWira.Module.BusinessObjects.ERP
+namespace AturableWira.Module.BusinessObjects.ACC.GL
 {
     [DefaultClassOptions]
-    [ImageName("BO_Category")]
+    //[ImageName("BO_Contact")]
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    [Appearance("ProductCategoryAppearance", "[Inventory]=false", TargetItems = "CostingMethod", Enabled = false)]
-    public class ProductCategory : BaseObject
+    public class JournalVoucher : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public ProductCategory(Session session)
+        public JournalVoucher(Session session)
             : base(session)
         {
         }
@@ -49,48 +45,59 @@ namespace AturableWira.Module.BusinessObjects.ERP
         //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
         //    this.PersistentProperty = "Paid";
         //}
-        string name;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        [RuleRequiredField]
-        public string Name
+        int periodMonth;
+        public int PeriodMonth
         {
             get
             {
-                return name;
+                return periodMonth;
             }
             set
             {
-                SetPropertyValue("Name", ref name, value);
+                SetPropertyValue("PeriodMonth", ref periodMonth, value);
             }
         }
-        bool inventory;
-        [ImmediatePostData]
-        public bool Inventory
+        int periodYear;
+        public int PeriodYear
         {
             get
             {
-                return inventory;
+                return periodYear;
             }
             set
             {
-                SetPropertyValue("Inventory", ref inventory, value);
+                SetPropertyValue("PeriodYear", ref periodYear, value);
             }
         }
-        CostingMethod costingMethod;
-        public CostingMethod CostingMethod
+        DateTime voucherDate;
+        public DateTime VoucherDate
         {
             get
             {
-                return costingMethod;
+                return voucherDate;
             }
             set
             {
-                SetPropertyValue("CostingMethod", ref costingMethod, value);
+                SetPropertyValue("VoucherDate", ref voucherDate, value);
+            }
+        }
+        bool autoReverse;
+        [ModelDefault("Caption", "Auto-Reverse")]
+        public bool AutoReverse
+        {
+            get
+            {
+                return autoReverse;
+            }
+            set
+            {
+                SetPropertyValue("AutoReverse", ref autoReverse, value);
             }
         }
         string description;
         [Size(SizeAttribute.Unlimited)]
-        [EditorAlias(EditorAliases.HtmlPropertyEditor)]
+        [ModelDefault("RowCount", "1")]
+        [EditorAlias(EditorAliases.StringPropertyEditor)]
         public string Description
         {
             get
@@ -100,6 +107,46 @@ namespace AturableWira.Module.BusinessObjects.ERP
             set
             {
                 SetPropertyValue("Description", ref description, value);
+            }
+        }
+        bool posted;
+        [CaptionsForBoolValues("Posted", "Not Posted")]
+        public bool Posted
+        {
+            get
+            {
+                return posted;
+            }
+            set
+            {
+                SetPropertyValue("Posted", ref posted, value);
+            }
+        }
+        [PersistentAlias("Entries.Sum(IIF(Amount>0,Amount,0))")]
+        public decimal Debit
+        {
+            get
+            {
+                    return (decimal)EvaluateAlias("Debit");
+            }
+        }
+
+        [PersistentAlias("Entries.Sum(IIF(Amount<0,Amount,0))")]
+        public decimal Credit
+        {
+            get
+            {
+                    return (decimal)EvaluateAlias("Credit");
+            }
+        }
+
+
+        [Association("JournalVoucher-Entries"), Aggregated]
+        public XPCollection<JournalEntry> Entries
+        {
+            get
+            {
+                return GetCollection<JournalEntry>("Entries");
             }
         }
     }

@@ -11,22 +11,19 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using DevExpress.ExpressApp.Editors;
-using static AturableWira.Module.BusinessObjects.ETC.Enums;
-using DevExpress.ExpressApp.ConditionalAppearance;
+using AturableWira.Module.BusinessObjects.ACC.GL;
 
-namespace AturableWira.Module.BusinessObjects.ERP
+namespace AturableWira.Module.BusinessObjects.ACC
 {
     [DefaultClassOptions]
-    [ImageName("BO_Category")]
+    //[ImageName("BO_Contact")]
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    [Appearance("ProductCategoryAppearance", "[Inventory]=false", TargetItems = "CostingMethod", Enabled = false)]
-    public class ProductCategory : BaseObject
+    public class Currency : XPLiteObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public ProductCategory(Session session)
+        public Currency(Session session)
             : base(session)
         {
         }
@@ -49,6 +46,23 @@ namespace AturableWira.Module.BusinessObjects.ERP
         //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
         //    this.PersistentProperty = "Paid";
         //}
+        string currencyCode;
+        [Size(3)]
+        [RuleRequiredField]
+        [RuleUniqueValue]
+        [Key]
+        public string CurrencyCode
+        {
+            get
+            {
+                return currencyCode;
+            }
+            set
+            {
+                SetPropertyValue("CurrencyCode", ref currencyCode, value);
+            }
+        }
+
         string name;
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         [RuleRequiredField]
@@ -63,43 +77,84 @@ namespace AturableWira.Module.BusinessObjects.ERP
                 SetPropertyValue("Name", ref name, value);
             }
         }
-        bool inventory;
-        [ImmediatePostData]
-        public bool Inventory
+        decimal exchangeRate;
+        public decimal ExchangeRate
         {
             get
             {
-                return inventory;
+                return exchangeRate;
             }
             set
             {
-                SetPropertyValue("Inventory", ref inventory, value);
+                SetPropertyValue("ExchangeRate", ref exchangeRate, value);
             }
         }
-        CostingMethod costingMethod;
-        public CostingMethod CostingMethod
+
+        GLAccount accountsPayable;
+        public GLAccount AccountsPayable
         {
             get
             {
-                return costingMethod;
+                return accountsPayable;
             }
             set
             {
-                SetPropertyValue("CostingMethod", ref costingMethod, value);
+                SetPropertyValue("AccountsPayable", ref accountsPayable, value);
             }
         }
-        string description;
-        [Size(SizeAttribute.Unlimited)]
-        [EditorAlias(EditorAliases.HtmlPropertyEditor)]
-        public string Description
+
+        GLAccount aPDiscounts;
+        [ModelDefault("Caption","AP Discounts")]
+        public GLAccount APDiscounts
         {
             get
             {
-                return description;
+                return aPDiscounts;
             }
             set
             {
-                SetPropertyValue("Description", ref description, value);
+                SetPropertyValue("APDiscounts", ref aPDiscounts, value);
+            }
+        }
+
+        GLAccount accountsReceivable;
+        public GLAccount AccountsReceivable
+        {
+            get
+            {
+                return accountsReceivable;
+            }
+            set
+            {
+                SetPropertyValue("AccountsReceivable", ref accountsReceivable, value);
+            }
+        }
+
+        GLAccount defaultARWriteOffs;
+        [ModelDefault("Caption","Default AR Write-offs")]
+        public GLAccount DefaultARWriteOffs
+        {
+            get
+            {
+                return defaultARWriteOffs;
+            }
+            set
+            {
+                SetPropertyValue("DefaultARWriteOffs", ref defaultARWriteOffs, value);
+            }
+        }
+
+        GLAccount gainLossOnExchange;
+        [ModelDefault("Caption", "Gain/Loss on Exchange")]
+        public GLAccount GainLossOnExchange
+        {
+            get
+            {
+                return gainLossOnExchange;
+            }
+            set
+            {
+                SetPropertyValue("GainLossOnExchange", ref gainLossOnExchange, value);
             }
         }
     }

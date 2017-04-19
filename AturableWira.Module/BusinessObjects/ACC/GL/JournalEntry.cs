@@ -11,22 +11,20 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using DevExpress.ExpressApp.Editors;
-using static AturableWira.Module.BusinessObjects.ETC.Enums;
-using DevExpress.ExpressApp.ConditionalAppearance;
 
-namespace AturableWira.Module.BusinessObjects.ERP
+namespace AturableWira.Module.BusinessObjects.ACC.GL
 {
     [DefaultClassOptions]
-    [ImageName("BO_Category")]
+    //[ImageName("BO_Contact")]
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    [Appearance("ProductCategoryAppearance", "[Inventory]=false", TargetItems = "CostingMethod", Enabled = false)]
-    public class ProductCategory : BaseObject
+    [NavigationItem(false)]
+    [CreatableItem(false)]
+    public class JournalEntry : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public ProductCategory(Session session)
+        public JournalEntry(Session session)
             : base(session)
         {
         }
@@ -49,57 +47,42 @@ namespace AturableWira.Module.BusinessObjects.ERP
         //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
         //    this.PersistentProperty = "Paid";
         //}
-        string name;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        [RuleRequiredField]
-        public string Name
+        decimal amount;
+        [ModelDefault("DisplayFormat", "{0:#,##.00DB;#,##.00CR;0}")]
+        public decimal Amount
         {
             get
             {
-                return name;
+                return amount;
             }
             set
             {
-                SetPropertyValue("Name", ref name, value);
+                SetPropertyValue("Amount", ref amount, value);
             }
         }
-        bool inventory;
-        [ImmediatePostData]
-        public bool Inventory
+        GLAccount account;
+        public GLAccount Account
         {
             get
             {
-                return inventory;
+                return account;
             }
             set
             {
-                SetPropertyValue("Inventory", ref inventory, value);
+                SetPropertyValue("Account", ref account, value);
             }
         }
-        CostingMethod costingMethod;
-        public CostingMethod CostingMethod
+        JournalVoucher voucher;
+        [Association("JournalVoucher-Entries")]
+        public JournalVoucher Voucher
         {
             get
             {
-                return costingMethod;
+                return voucher;
             }
             set
             {
-                SetPropertyValue("CostingMethod", ref costingMethod, value);
-            }
-        }
-        string description;
-        [Size(SizeAttribute.Unlimited)]
-        [EditorAlias(EditorAliases.HtmlPropertyEditor)]
-        public string Description
-        {
-            get
-            {
-                return description;
-            }
-            set
-            {
-                SetPropertyValue("Description", ref description, value);
+                SetPropertyValue("Voucher", ref voucher, value);
             }
         }
     }

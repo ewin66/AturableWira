@@ -14,19 +14,34 @@ namespace AturableWira.Module.BusinessObjects.ETC
             Male,
             Female
         }
-    public enum MaritalStatus
-    {
-      None,
-      Single,
-      Married,
-      Divorced,
-      Widowed
-    }
+        public enum MaritalStatus
+        {
+            None,
+            Single,
+            Married,
+            Divorced,
+            Widowed
+        }
 
-    public enum CustomerStatus
-    {
-      Active = 1,
-      Inactive = 0
+        public enum CustomerStatus
+        {
+            Active = 1,
+            Inactive = 0
+        }
+
+        public enum GLACcountType
+        {
+            Asset,
+            Liability,
+            Revenue,
+            Expense,
+            Equity
+        }
+
+        public enum CostingMethod
+        {
+            WeightedAvarage,
+            Standard
+        }
     }
-  }
 }

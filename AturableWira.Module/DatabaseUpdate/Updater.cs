@@ -13,6 +13,10 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using AturableWira.Module.BusinessObjects.HRM;
 using AturableWira.Module.BusinessObjects.SYS;
+using System.IO;
+using System.Xml;
+using AturableWira.Module.BusinessObjects.ACC.GL;
+using static AturableWira.Module.BusinessObjects.ETC.Enums;
 
 namespace AturableWira.Module.DatabaseUpdate
 {
@@ -65,9 +69,33 @@ namespace AturableWira.Module.DatabaseUpdate
             userAdmin.EmployeeRoles.Add(adminRole);
             ObjectSpace.CommitChanges(); //This line persists created object(s).
 
+
+            XmlDocument glDocument = new XmlDocument();
+            glDocument.LoadXml(GetInitialData("GLAccount.xml"));
+            XmlElement xelRoot = glDocument.DocumentElement;
+            XmlNodeList xnlNodes = xelRoot.SelectNodes("/data-set/record");
+
+            foreach (XmlNode xndNode in xnlNodes)
+            {
+                GLAccount glAccount = ObjectSpace.FindObject<GLAccount>(new BinaryOperator("AccountNumber", xndNode["Account"].InnerText));
+                if (glAccount == null)
+                {
+                    glAccount = ObjectSpace.CreateObject<GLAccount>();
+                    glAccount.AccountNumber = xndNode["Account"].InnerText;
+                    glAccount.AccountName = xndNode["Name"].InnerText;
+                    glAccount.AccountType = (GLACcountType)Convert.ToInt16(xndNode["Type"].InnerText);
+                    glAccount.RetainedEarnings = Convert.ToBoolean(xndNode["RetainedEarnings"].InnerText);
+
+                    glAccount.Save();
+                }
+            }
+
+
+
             if (ObjectSpace.GetObjectsCount(typeof(SystemSetting), null) == 0)
             {
-                ObjectSpace.CreateObject<SystemSetting>();
+                SystemSetting systemSetting = ObjectSpace.CreateObject<SystemSetting>();
+                systemSetting.CompanyName = "Aturable Solution";
             }
             ObjectSpace.CommitChanges();
         }
@@ -97,6 +125,21 @@ namespace AturableWira.Module.DatabaseUpdate
                 defaultRole.AddTypePermissionsRecursively<ModelDifferenceAspect>(SecurityOperations.Create, SecurityPermissionState.Allow);
             }
             return defaultRole;
+        }
+
+        public string GetInitialData(string filename)
+        {
+            string result = string.Empty;
+
+            using (Stream stream = this.GetType().Assembly.
+                       GetManifestResourceStream("AturableWira.Module.DatabaseUpdate.InitialData." + filename))
+            {
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    result = sr.ReadToEnd();
+                }
+            }
+            return result;
         }
 
     }

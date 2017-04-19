@@ -11,22 +11,22 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using DevExpress.ExpressApp.Editors;
 using static AturableWira.Module.BusinessObjects.ETC.Enums;
+using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.ConditionalAppearance;
 
-namespace AturableWira.Module.BusinessObjects.ERP
+namespace AturableWira.Module.BusinessObjects.ACC.GL
 {
     [DefaultClassOptions]
-    [ImageName("BO_Category")]
+    //[ImageName("BO_Contact")]
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    [Appearance("ProductCategoryAppearance", "[Inventory]=false", TargetItems = "CostingMethod", Enabled = false)]
-    public class ProductCategory : BaseObject
+    [Appearance("GLAccountAppearance", "[AccountType] <> 'Equity'", TargetItems = "RetainedEarnings", Enabled = false)]
+    public class GLAccount : XPLiteObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public ProductCategory(Session session)
+        public GLAccount(Session session)
             : base(session)
         {
         }
@@ -49,57 +49,90 @@ namespace AturableWira.Module.BusinessObjects.ERP
         //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
         //    this.PersistentProperty = "Paid";
         //}
-        string name;
+        string accountNumber;
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         [RuleRequiredField]
-        public string Name
+        [RuleUniqueValue]
+        [Key]
+        public string AccountNumber
         {
             get
             {
-                return name;
+                return accountNumber;
             }
             set
             {
-                SetPropertyValue("Name", ref name, value);
+                SetPropertyValue("AccountNumber", ref accountNumber, value);
             }
         }
-        bool inventory;
+        string accountName;
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleRequiredField]
+        public string AccountName
+        {
+            get
+            {
+                return accountName;
+            }
+            set
+            {
+                SetPropertyValue("AccountName", ref accountName, value);
+            }
+        }
+        bool suspended;
+        [VisibleInLookupListView(false)]
+        public bool Suspended
+        {
+            get
+            {
+                return suspended;
+            }
+            set
+            {
+                SetPropertyValue("Suspended", ref suspended, value);
+            }
+        }
+        GLACcountType accountType;
         [ImmediatePostData]
-        public bool Inventory
+        public GLACcountType AccountType
         {
             get
             {
-                return inventory;
+                return accountType;
             }
             set
             {
-                SetPropertyValue("Inventory", ref inventory, value);
+                if (SetPropertyValue("AccountType", ref accountType, value))
+                    if (!IsLoading)
+                        if (AccountType != GLACcountType.Equity)
+                            RetainedEarnings = false;
             }
         }
-        CostingMethod costingMethod;
-        public CostingMethod CostingMethod
+        bool retainedEarnings;
+        [VisibleInLookupListView(false)]
+        public bool RetainedEarnings
         {
             get
             {
-                return costingMethod;
+                return retainedEarnings;
             }
             set
             {
-                SetPropertyValue("CostingMethod", ref costingMethod, value);
+                SetPropertyValue("RetainedEarnings", ref retainedEarnings, value);
             }
         }
-        string description;
+        string notes;
         [Size(SizeAttribute.Unlimited)]
         [EditorAlias(EditorAliases.HtmlPropertyEditor)]
-        public string Description
+        public string Notes
         {
             get
             {
-                return description;
+                return notes;
             }
             set
             {
-                SetPropertyValue("Description", ref description, value);
+                SetPropertyValue("Notes", ref notes, value);
             }
         }
     }

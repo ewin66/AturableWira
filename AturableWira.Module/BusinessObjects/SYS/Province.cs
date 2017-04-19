@@ -20,7 +20,7 @@ namespace AturableWira.Module.BusinessObjects.SYS
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class Province : BaseObject
+    public class Province : XPLiteObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public Province(Session session)
             : base(session)
@@ -45,6 +45,35 @@ namespace AturableWira.Module.BusinessObjects.SYS
         //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
         //    this.PersistentProperty = "Paid";
         //}
+        string iSOCode;
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleRequiredField, RuleUniqueValue, Key]
+        [ModelDefault("Caption", "ISO Code")]
+        public string ISOCode
+        {
+            get
+            {
+                return iSOCode;
+            }
+            set
+            {
+                SetPropertyValue("ISOCode", ref iSOCode, value);
+            }
+        }
+        string bPSCode;
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [ModelDefault("Caption", "BPS Code")]
+        public string BPSCode
+        {
+            get
+            {
+                return bPSCode;
+            }
+            set
+            {
+                SetPropertyValue("BPSCode", ref bPSCode, value);
+            }
+        }
         string name;
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         [RuleRequiredField]
