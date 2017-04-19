@@ -11,6 +11,7 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.ExpressApp.Editors;
+using DevExpress.ExpressApp.ConditionalAppearance;
 
 namespace AturableWira.Module.BusinessObjects.ACC.GL
 {
@@ -20,6 +21,8 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
+    [Appearance("JournalVoucherPostedDisabled",TargetItems ="Posted", Enabled = false)]
+    
     public class JournalVoucher : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public JournalVoucher(Session session)
@@ -30,6 +33,9 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         {
             base.AfterConstruction();
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+            PeriodMonth = DateTime.Now.Month;
+            PeriodYear = DateTime.Now.Year;
+            VoucherDate = DateTime.Now;
         }
         //private string _PersistentProperty;
         //[XafDisplayName("My display name"), ToolTip("My hint message")]
@@ -46,6 +52,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         //    this.PersistentProperty = "Paid";
         //}
         int periodMonth;
+        [RuleRange(1,12)]
         public int PeriodMonth
         {
             get
@@ -58,6 +65,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
             }
         }
         int periodYear;
+        [ModelDefault("DisplayFormat", "{0:d0}")]
         public int PeriodYear
         {
             get
@@ -98,6 +106,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         [Size(SizeAttribute.Unlimited)]
         [ModelDefault("RowCount", "1")]
         [EditorAlias(EditorAliases.StringPropertyEditor)]
+        [RuleRequiredField]
         public string Description
         {
             get
@@ -123,23 +132,34 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
             }
         }
         [PersistentAlias("Entries.Sum(IIF(Amount>0,Amount,0))")]
+        [ModelDefault("DisplayFormat", "{0:n2}")]
         public decimal Debit
         {
             get
             {
-                    return (decimal)EvaluateAlias("Debit");
+                object result;
+                result = EvaluateAlias("Debit");
+                if (result == null)
+                    return 0;
+                else
+                    return Convert.ToDecimal(result);
             }
         }
 
         [PersistentAlias("Entries.Sum(IIF(Amount<0,Amount,0))")]
+        [ModelDefault("DisplayFormat", "{0:n2}")]
         public decimal Credit
         {
             get
             {
-                    return (decimal)EvaluateAlias("Credit");
+                object result;
+                result = EvaluateAlias("Credit");
+                if (result == null)
+                    return 0;
+                else
+                    return Convert.ToDecimal(result) * -1;
             }
         }
-
 
         [Association("JournalVoucher-Entries"), Aggregated]
         public XPCollection<JournalEntry> Entries
@@ -147,6 +167,19 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
             get
             {
                 return GetCollection<JournalEntry>("Entries");
+            }
+        }
+
+        [Browsable(false)]
+        [RuleFromBoolProperty("JVMustBalance", DefaultContexts.Save,CustomMessageTemplate = "Debit and Credit value must be the same(balanced)")]
+        public bool IsBalance
+        {
+            get
+            {
+                if (Debit - Credit != 0)
+                    return false;
+                else
+                    return true;
             }
         }
     }
