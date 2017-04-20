@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <Name>Bank - Domestic</Name>
+    <GLAccount>1005</GLAccount>
+    <CurrencyCode>IDR</CurrencyCode>
+  </record>
+  <record>
+    <Name>Bank - USD</Name>
+    <GLAccount>1006</GLAccount>
+    <CurrencyCode>USD</CurrencyCode>
+  </record>
+  <record>
+    <Name>Bank - SGD</Name>
+    <GLAccount>1007</GLAccount>
+    <CurrencyCode>SGD</CurrencyCode>
+  </record>
+</data-set>

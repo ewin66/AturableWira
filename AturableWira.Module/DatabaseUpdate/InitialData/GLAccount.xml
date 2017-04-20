@@ -134,13 +134,13 @@
 	</record>
 	<record>
 		<Account>2110</Account>
-		<Name>Accounts Payable - Domestic</Name>
+		<Name>Accounts Payable - IDR</Name>
 		<Type>1</Type>
 		<RetainedEarnings>false</RetainedEarnings>
 	</record>
 	<record>
 		<Account>2111</Account>
-		<Name>Accounts Payable Journal - Domestic</Name>
+		<Name>Accounts Payable Journal - IDR</Name>
 		<Type>1</Type>
 		<RetainedEarnings>false</RetainedEarnings>
 	</record>

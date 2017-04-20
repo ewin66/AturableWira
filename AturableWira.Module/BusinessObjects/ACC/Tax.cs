@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
+using AturableWira.Module.BusinessObjects.ACC.GL;
+using AturableWira.Module.BusinessObjects.ERP;
 
 namespace AturableWira.Module.BusinessObjects.ACC
 {
@@ -20,9 +22,9 @@ namespace AturableWira.Module.BusinessObjects.ACC
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
    //[Persistent("DatabaseTableName")]
    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-   public class BankAccount : BaseObject
+   public class Tax : XPLiteObject
    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-      public BankAccount(Session session)
+      public Tax(Session session)
           : base(session)
       {
       }
@@ -45,47 +47,69 @@ namespace AturableWira.Module.BusinessObjects.ACC
       //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
       //    this.PersistentProperty = "Paid";
       //}
-      Bank bank;
-      [Association("Bank-Accounts")]
-      [RuleRequiredField]
-      public Bank Bank
+      string code;
+      [Size(5)]
+      [RuleUniqueValue,RuleRequiredField]
+      [Key]
+      public string Code
       {
          get
          {
-            return bank;
+            return code;
          }
          set
          {
-            SetPropertyValue("Bank", ref bank, value);
+            SetPropertyValue("Code", ref code, value);
+         }
+      }
+      string description;
+      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+      public string Description
+      {
+         get
+         {
+            return description;
+         }
+         set
+         {
+            SetPropertyValue("Description", ref description, value);
+         }
+      }
+      decimal rate;
+      [ModelDefault("DisplayFormat","{0:N2}%")]
+      [ModelDefault("EditMask", "N2")]
+      public decimal Rate
+      {
+         get
+         {
+            return rate;
+         }
+         set
+         {
+            SetPropertyValue("Rate", ref rate, value);
+         }
+      }
+      GLAccount gLAccount;
+      [ModelDefault("Caption", "GL Account")]
+      public GLAccount GLAccount
+      {
+         get
+         {
+            return gLAccount;
+         }
+         set
+         {
+            SetPropertyValue("GLAccount", ref gLAccount, value);
          }
       }
 
-      string branchName;
-      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-      public string BranchName
+      [VisibleInDetailView(false)]
+      [Association("Product-ApplicableTax")]
+      public XPCollection<Product> Products
       {
          get
          {
-            return branchName;
-         }
-         set
-         {
-            SetPropertyValue("BranchName", ref branchName, value);
-         }
-      }
-
-      string accountNumber;
-      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-      [RuleRequiredField]
-      public string AccountNumber
-      {
-         get
-         {
-            return accountNumber;
-         }
-         set
-         {
-            SetPropertyValue("AccountNumber", ref accountNumber, value);
+            return GetCollection<Product>("Products");
          }
       }
    }

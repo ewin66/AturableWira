@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
+using AturableWira.Module.BusinessObjects.ACC.GL;
 
 namespace AturableWira.Module.BusinessObjects.ACC
 {
@@ -58,13 +59,31 @@ namespace AturableWira.Module.BusinessObjects.ACC
             SetPropertyValue("Name", ref name, value);
          }
       }
-
-      [Association("Bank-Accounts")]
-      public XPCollection<BankAccount> Accounts
+      GLAccount gLAccount;
+      [ModelDefault("Caption", "GL Account")]
+      [RuleRequiredField]
+      public GLAccount GLAccount
       {
          get
          {
-            return GetCollection<BankAccount>("Accounts");
+            return gLAccount;
+         }
+         set
+         {
+            SetPropertyValue("GLAccount", ref gLAccount, value);
+         }
+      }
+      Currency currency;
+      [RuleRequiredField]
+      public Currency Currency
+      {
+         get
+         {
+            return currency;
+         }
+         set
+         {
+            SetPropertyValue("Currency", ref currency, value);
          }
       }
    }

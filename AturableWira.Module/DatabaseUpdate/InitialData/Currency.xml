@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <CurrencyCode>IDR</CurrencyCode>
+    <Name>Indonesian Rupiah</Name>
+    <ExchangeRate>0</ExchangeRate>
+    <AccountsPayable>2110</AccountsPayable>
+    <APDiscounts>9030</APDiscounts>
+    <AccountsReceivable>1110</AccountsReceivable>
+    <ARDiscounts>4910</ARDiscounts>
+    <DefaultARWriteOffs>4910</DefaultARWriteOffs>
+    <GainLossOnExchange></GainLossOnExchange>
+  </record>
+  <record>
+    <CurrencyCode>USD</CurrencyCode>
+    <Name>United States Dollar</Name>
+    <ExchangeRate>13500</ExchangeRate>
+    <AccountsPayable>2120</AccountsPayable>
+    <APDiscounts>9031</APDiscounts>
+    <AccountsReceivable>1120</AccountsReceivable>
+    <ARDiscounts>4920</ARDiscounts>
+    <DefaultARWriteOffs>4920</DefaultARWriteOffs>
+    <GainLossOnExchange>9020</GainLossOnExchange>
+  </record>
+  <record>
+    <CurrencyCode>SGD</CurrencyCode>
+    <Name>Singapore Dollar</Name>
+    <ExchangeRate>9500</ExchangeRate>
+    <AccountsPayable>2130</AccountsPayable>
+    <APDiscounts>9032</APDiscounts>
+    <AccountsReceivable>1130</AccountsReceivable>
+    <ARDiscounts>4930</ARDiscounts>
+    <DefaultARWriteOffs>4930</DefaultARWriteOffs>
+    <GainLossOnExchange>9030</GainLossOnExchange>
+  </record>  
+</data-set>
