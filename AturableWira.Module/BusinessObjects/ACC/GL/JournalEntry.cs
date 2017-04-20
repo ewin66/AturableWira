@@ -48,7 +48,8 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         //    this.PersistentProperty = "Paid";
         //}
         decimal amount;
-        [ModelDefault("DisplayFormat", "{0:#,##.00DB;#,##.00CR;0}")]
+        [ModelDefault("DisplayFormat", "{0:#,##.00 DB;#,##.00 CR;0}")]
+        [ModelDefault("EditMask", "n4")]
         public decimal Amount
         {
             get

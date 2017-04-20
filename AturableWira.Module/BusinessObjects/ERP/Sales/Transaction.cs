@@ -386,7 +386,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Sales
          }
       }
 
-      [PersistentAlias("Items.Sum(Item.Weight)")]
+      [PersistentAlias("Items.Sum(Item.ItemWeight)")]
       public double TotalWeight
       {
          get

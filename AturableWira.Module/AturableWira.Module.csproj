@@ -256,6 +256,7 @@
     <EmbeddedResource Include="DatabaseUpdate\InitialData\GLAccount.xml" />
     <EmbeddedResource Include="DatabaseUpdate\InitialData\Currency.xml" />
     <EmbeddedResource Include="DatabaseUpdate\InitialData\Bank.xml" />
+    <EmbeddedResource Include="DatabaseUpdate\InitialData\Items.xml" />
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>

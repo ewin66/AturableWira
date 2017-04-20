@@ -12,6 +12,7 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.ConditionalAppearance;
+using static AturableWira.Module.BusinessObjects.ETC.Enums;
 
 namespace AturableWira.Module.BusinessObjects.ACC.GL
 {
@@ -21,8 +22,9 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    [Appearance("JournalVoucherPostedDisabled",TargetItems ="Posted", Enabled = false)]
-    
+    [Appearance("JournalVoucherPostedDisabled",TargetItems ="Posted,JournalVoucherSource", Enabled = false)]
+    [Appearance("DisableDeleteWhenPosted", Criteria = "Posted", AppearanceItemType = "Action", TargetItems = "Delete", Enabled = false)]
+    [Appearance("DisableEditWhenPosted", Criteria = "Posted", AppearanceItemType = "ViewItem", TargetItems = "*", Enabled = false)]
     public class JournalVoucher : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public JournalVoucher(Session session)
@@ -36,6 +38,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
             PeriodMonth = DateTime.Now.Month;
             PeriodYear = DateTime.Now.Year;
             VoucherDate = DateTime.Now;
+            Source = JournalVoucherSource.GL;
         }
         //private string _PersistentProperty;
         //[XafDisplayName("My display name"), ToolTip("My hint message")]
@@ -146,6 +149,19 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
             }
         }
 
+        JournalVoucherSource source;
+        JournalVoucherSource Source
+        {
+            get
+            {
+                return source;
+            }
+            set
+            {
+                SetPropertyValue("Source", ref source, value);
+            }
+        }
+
         [PersistentAlias("Entries.Sum(IIF(Amount<0,Amount,0))")]
         [ModelDefault("DisplayFormat", "{0:n2}")]
         public decimal Credit
@@ -181,6 +197,18 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
                 else
                     return true;
             }
+        }
+
+        [Action(Caption = "Post", SelectionDependencyType = MethodActionSelectionDependencyType.RequireMultipleObjects, ConfirmationMessage = "Are you sure want to post selected JV?", TargetObjectsCriteria = "!Posted", TargetObjectsCriteriaMode = DevExpress.ExpressApp.Actions.TargetObjectsCriteriaMode.TrueForAll, AutoCommit = true)]
+        public void Post()
+        {
+            Posted = true;
+        }
+
+        [Action(Caption = "Unpost", SelectionDependencyType = MethodActionSelectionDependencyType.RequireMultipleObjects, ConfirmationMessage = "Are you sure want to unpost selected JV?", TargetObjectsCriteria = "Posted", TargetObjectsCriteriaMode = DevExpress.ExpressApp.Actions.TargetObjectsCriteriaMode.TrueForAll, AutoCommit = true)]
+        public void Unpost()
+        {
+            Posted = false;
         }
     }
 }

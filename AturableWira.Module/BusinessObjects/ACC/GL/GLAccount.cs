@@ -52,8 +52,8 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         //}
         string accountNumber;
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        [RuleRequiredField]
-        [RuleUniqueValue]
+        [RuleRequiredField, RuleUniqueValue]
+        [VisibleInLookupListView(true), VisibleInListView(true)]
         [Key]
         public string AccountNumber
         {

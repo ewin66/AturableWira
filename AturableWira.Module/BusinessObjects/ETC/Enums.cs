@@ -43,5 +43,12 @@ namespace AturableWira.Module.BusinessObjects.ETC
             WeightedAvarage,
             Standard
         }
+
+        public enum JournalVoucherSource
+        {
+            GL,
+            ARInvoce,
+            APInvoice
+        }
     }
 }

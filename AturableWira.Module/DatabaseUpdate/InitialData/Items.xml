@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <ItemNumber>1001</ItemNumber>
+    <Name>Freight</Name>
+    <Sales>5128</Sales>
+    <CostofGoodsSold></CostofGoodsSold>
+    <Inventory></Inventory>
+  </record>
+  <record>
+    <ItemNumber>1002</ItemNumber>
+    <Name>Labour</Name>
+    <Sales>4000</Sales>
+    <CostofGoodsSold></CostofGoodsSold>
+    <Inventory></Inventory>
+  </record>
+</data-set>
