@@ -62,19 +62,116 @@ namespace AturableWira.Module.BusinessObjects.SYS
             SetPropertyValue("CompanyName", ref companyName, value);
          }
       }
-      AddressDetail address;
-      [Aggregated, ExpandObjectMembers(ExpandObjectMembers.Never)]
-      public AddressDetail Address
+
+      string street;
+      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+      [ImmediatePostData]
+      public string Street
       {
          get
          {
-            return address;
+            return street;
          }
          set
          {
-            SetPropertyValue("Address", ref address, value);
+            SetPropertyValue("Street", ref street, value);
          }
       }
+
+      SYS.Country country;
+      [ImmediatePostData]
+      public SYS.Country Country
+      {
+         get
+         {
+            return country;
+         }
+         set
+         {
+            SetPropertyValue("Country", ref country, value);
+         }
+      }
+      Province province;
+      [ImmediatePostData]
+      [DataSourceProperty("Country.Provinces")]
+      public Province Province
+      {
+         get
+         {
+            return province;
+         }
+         set
+         {
+            SetPropertyValue("Province", ref province, value);
+         }
+      }
+      Region region;
+      [ImmediatePostData]
+      [DataSourceProperty("Province.Regions")]
+      public Region Region
+      {
+         get
+         {
+            return region;
+         }
+         set
+         {
+            SetPropertyValue("Region", ref region, value);
+         }
+      }
+      SubRegion subRegion;
+      [DataSourceProperty("Region.SubRegions")]
+      [ImmediatePostData]
+      public SubRegion SubRegion
+      {
+         get
+         {
+            return subRegion;
+         }
+         set
+         {
+            SetPropertyValue("SubRegion", ref subRegion, value);
+         }
+      }
+      string postalCode;
+      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+      [ImmediatePostData]
+      public string PostalCode
+      {
+         get
+         {
+            return postalCode;
+         }
+         set
+         {
+            SetPropertyValue("PostalCode", ref postalCode, value);
+         }
+      }
+      private const string defaultFullAddressFormat = "{Street}, {SubRegion}, {Region}, {Province}, {Country}, {PostalCode}";
+      private static string fullAddressFormat = defaultFullAddressFormat;
+      [VisibleInDetailView(false)]
+      public static string FullAddressFormat
+      {
+         get { return fullAddressFormat; }
+         set
+         {
+            fullAddressFormat = value;
+            if (string.IsNullOrEmpty(fullAddressFormat))
+            {
+               fullAddressFormat = defaultFullAddressFormat;
+            }
+         }
+      }
+      [VisibleInDetailView(false)]
+      public string FullAddress
+      {
+         get
+         {
+            return ObjectFormatter.Format(fullAddressFormat, this,
+               EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
+         }
+      }
+
       decimal creditLimit;
       public decimal CreditLimit
       {

@@ -180,12 +180,11 @@
     <Compile Include="BusinessObjects\CRM\Contact.cs" />
     <Compile Include="BusinessObjects\CRM\Customer.cs" />
     <Compile Include="BusinessObjects\CRM\CustomerNote.cs" />
-    <Compile Include="BusinessObjects\ERP\Product.cs" />
-    <Compile Include="BusinessObjects\ERP\ProductCategory.cs" />
+    <Compile Include="BusinessObjects\ERP\Item.cs" />
+    <Compile Include="BusinessObjects\ERP\ItemType.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Invoice.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Order.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Quote.cs" />
-    <Compile Include="BusinessObjects\ERP\Service.cs" />
     <Compile Include="BusinessObjects\ERP\ShippingMethod.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Transaction.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\TransactionItem.cs" />

@@ -46,11 +46,11 @@ namespace AturableWira.Module.BusinessObjects.ERP.Sales
       //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
       //    this.PersistentProperty = "Paid";
       //}
-      Product product;
+      Item product;
       [RuleRequiredField]
       [ImmediatePostData]
       [DataSourceCriteria("[Discontinued]=false")]
-      public Product Product
+      public Item Product
       {
          get
          {
@@ -58,7 +58,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Sales
          }
          set
          {
-            SetPropertyValue("Product", ref product, value);
+            SetPropertyValue("Item", ref product, value);
          }
       }
       int quantity;
@@ -102,7 +102,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Sales
             SetPropertyValue("DiscountPercent", ref discountPercent, value);
          }
       }
-      [PersistentAlias("(Quantity * Product.Price) - DiscountAmount - ((Quantity * Product.Price) * (DiscountPercent/100))")]
+      [PersistentAlias("(Quantity * Item.Price) - DiscountAmount - ((Quantity * Item.Price) * (DiscountPercent/100))")]
       public decimal Amount
       {
          get

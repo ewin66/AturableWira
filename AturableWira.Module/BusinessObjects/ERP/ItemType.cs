@@ -24,9 +24,9 @@ namespace AturableWira.Module.BusinessObjects.ERP
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
     [Appearance("ProductCategoryAppearance", "[Inventory]=false", TargetItems = "CostingMethod", Enabled = false)]
-    public class ProductCategory : BaseObject
+    public class ItemType : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public ProductCategory(Session session)
+        public ItemType(Session session)
             : base(session)
         {
         }

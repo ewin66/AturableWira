@@ -24,9 +24,9 @@ namespace AturableWira.Module.BusinessObjects.ERP
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
    //[Persistent("DatabaseTableName")]
    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-   public class Product : XPLiteObject
+   public class Item : XPLiteObject
    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-      public Product(Session session)
+      public Item(Session session)
           : base(session)
       {
       }
@@ -38,6 +38,9 @@ namespace AturableWira.Module.BusinessObjects.ERP
          Sales = settings.Sales;
          Inventory = settings.Inventory;
          CostofGoodsSold = settings.CostofGoodsSold;
+         Backorderable = true;
+         Purchased = true;
+         Sold = true;
       }
       //private string _PersistentProperty;
       //[XafDisplayName("My display name"), ToolTip("My hint message")]
@@ -56,6 +59,8 @@ namespace AturableWira.Module.BusinessObjects.ERP
 
       decimal productNumber;
       [RuleRequiredField, RuleUniqueValue, Key]
+      [ModelDefault("DisplayFormat", "{0:d0}")]
+      [ModelDefault("EditMask", "d0")]
       public decimal ProductNumber
       {
          get
@@ -234,7 +239,7 @@ namespace AturableWira.Module.BusinessObjects.ERP
          }
       }
 
-      [Association("Product-ApplicableTax")]
+      [Association("Item-ApplicableTax")]
       public XPCollection<Tax> ApplicableTax
       {
          get

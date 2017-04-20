@@ -104,12 +104,12 @@ namespace AturableWira.Module.BusinessObjects.ACC
       }
 
       [VisibleInDetailView(false)]
-      [Association("Product-ApplicableTax")]
-      public XPCollection<Product> Products
+      [Association("Item-ApplicableTax")]
+      public XPCollection<Item> Products
       {
          get
          {
-            return GetCollection<Product>("Products");
+            return GetCollection<Item>("Products");
          }
       }
    }

@@ -18,6 +18,7 @@ using DevExpress.ExpressApp.ConditionalAppearance;
 namespace AturableWira.Module.BusinessObjects.ACC.GL
 {
     [DefaultClassOptions]
+    [ModelDefault("Caption", "GL Account")]
     //[ImageName("BO_Contact")]
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
@@ -81,6 +82,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         }
         bool suspended;
         [VisibleInLookupListView(false)]
+        [ModelDefault("ToolTip", "Suspended account will not be selectable on new transactions")]
         public bool Suspended
         {
             get
