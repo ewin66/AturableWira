@@ -376,6 +376,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Sales
       }
 
       [PersistentAlias("Items.Sum(Amount)")]
+      [ModelDefault("DisplayFormat", "{0:n2}")]
       public decimal SubTotal
       {
          get
@@ -413,6 +414,8 @@ namespace AturableWira.Module.BusinessObjects.ERP.Sales
       }
 
       decimal shippingCost;
+      [ModelDefault("DisplayFormat", "{0:n2}")]
+      [ModelDefault("EditMask", "N2")]
       public decimal ShippingCost
       {
          get
@@ -426,6 +429,8 @@ namespace AturableWira.Module.BusinessObjects.ERP.Sales
       }
 
       decimal discountAmount;
+      [ModelDefault("DisplayFormat", "{0:n2}")]
+      [ModelDefault("EditMask", "N2")]
       public decimal DiscountAmount
       {
          get
@@ -454,6 +459,8 @@ namespace AturableWira.Module.BusinessObjects.ERP.Sales
       }
 
       [PersistentAlias("SubTotal - DiscountAmount - (SubTotal * (DiscountPercent/100))")]
+      [ModelDefault("DisplayFormat", "{0:n2}")]
+      [ModelDefault("EditMask", "n2")]
       public decimal Total
       {
          get
