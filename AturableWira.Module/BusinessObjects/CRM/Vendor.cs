@@ -11,9 +11,9 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using AturableWira.Module.BusinessObjects.ACC.GL;
+using AturableWira.Module.BusinessObjects.ERP.Purchase;
 
-namespace AturableWira.Module.BusinessObjects.ACC
+namespace AturableWira.Module.BusinessObjects.CRM
 {
    [DefaultClassOptions]
    //[ImageName("BO_Contact")]
@@ -21,9 +21,9 @@ namespace AturableWira.Module.BusinessObjects.ACC
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
    //[Persistent("DatabaseTableName")]
    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-   public class Bank : BaseObject
+   public class Vendor : Account
    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-      public Bank(Session session)
+      public Vendor(Session session)
           : base(session)
       {
       }
@@ -46,44 +46,12 @@ namespace AturableWira.Module.BusinessObjects.ACC
       //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
       //    this.PersistentProperty = "Paid";
       //}
-      string name;
-      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-      public string Name
+      [Association("Vendor-Items")]
+      public XPCollection<VendorItem> Items
       {
          get
          {
-            return name;
-         }
-         set
-         {
-            SetPropertyValue("Name", ref name, value);
-         }
-      }
-      GLAccount gLAccount;
-      [ModelDefault("Caption", "GL Customer")]
-      [RuleRequiredField]
-      public GLAccount GLAccount
-      {
-         get
-         {
-            return gLAccount;
-         }
-         set
-         {
-            SetPropertyValue("GLAccount", ref gLAccount, value);
-         }
-      }
-      Currency currency;
-      [RuleRequiredField]
-      public Currency Currency
-      {
-         get
-         {
-            return currency;
-         }
-         set
-         {
-            SetPropertyValue("Currency", ref currency, value);
+            return GetCollection<VendorItem>("Items");
          }
       }
    }

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <Name>Labor</Name>
+    <Inventory>FALSE</Inventory>
+    <CostingMethod>0</CostingMethod>
+  </record>
+  <record>
+    <Name>Sundry Items</Name>
+    <Inventory>FALSE</Inventory>
+    <CostingMethod>0</CostingMethod>
+  </record>
+  <record>
+    <Name>Inventory Items</Name>
+    <Inventory>TRUE</Inventory>
+    <CostingMethod>0</CostingMethod>
+  </record>
+</data-set>

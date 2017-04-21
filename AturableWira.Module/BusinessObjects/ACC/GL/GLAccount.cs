@@ -18,7 +18,7 @@ using DevExpress.ExpressApp.ConditionalAppearance;
 namespace AturableWira.Module.BusinessObjects.ACC.GL
 {
     [DefaultClassOptions]
-    [ModelDefault("Caption", "GL Account")]
+    [ModelDefault("Caption", "GL Customer")]
     //[ImageName("BO_Contact")]
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]

@@ -176,12 +176,15 @@
     <Compile Include="BusinessObjects\ACC\GL\JournalEntry.cs" />
     <Compile Include="BusinessObjects\ACC\GL\JournalVoucher.cs" />
     <Compile Include="BusinessObjects\ACC\Tax.cs" />
-    <Compile Include="BusinessObjects\CRM\Account.cs" />
-    <Compile Include="BusinessObjects\CRM\Contact.cs" />
     <Compile Include="BusinessObjects\CRM\Customer.cs" />
-    <Compile Include="BusinessObjects\CRM\CustomerNote.cs" />
+    <Compile Include="BusinessObjects\CRM\Contact.cs" />
+    <Compile Include="BusinessObjects\CRM\Account.cs" />
+    <Compile Include="BusinessObjects\CRM\AccountNote.cs" />
+    <Compile Include="BusinessObjects\CRM\Vendor.cs" />
+    <Compile Include="BusinessObjects\ERP\Inventory\Warehouse.cs" />
     <Compile Include="BusinessObjects\ERP\Item.cs" />
     <Compile Include="BusinessObjects\ERP\ItemType.cs" />
+    <Compile Include="BusinessObjects\ERP\Purchase\VendorItem.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Invoice.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Order.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Quote.cs" />
@@ -257,6 +260,7 @@
     <EmbeddedResource Include="DatabaseUpdate\InitialData\Currency.xml" />
     <EmbeddedResource Include="DatabaseUpdate\InitialData\Bank.xml" />
     <EmbeddedResource Include="DatabaseUpdate\InitialData\Items.xml" />
+    <EmbeddedResource Include="DatabaseUpdate\InitialData\ItemType.xml" />
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>

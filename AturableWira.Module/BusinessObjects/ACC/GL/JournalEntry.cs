@@ -14,77 +14,90 @@ using DevExpress.Persistent.Validation;
 
 namespace AturableWira.Module.BusinessObjects.ACC.GL
 {
-    [DefaultClassOptions]
-    //[ImageName("BO_Contact")]
-    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
-    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
-    //[Persistent("DatabaseTableName")]
-    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    [NavigationItem(false)]
-    [CreatableItem(false)]
-    public class JournalEntry : BaseObject
-    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public JournalEntry(Session session)
-            : base(session)
-        {
-        }
-        public override void AfterConstruction()
-        {
-            base.AfterConstruction();
-            // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
-        }
-        //private string _PersistentProperty;
-        //[XafDisplayName("My display name"), ToolTip("My hint message")]
-        //[ModelDefault("EditMask", "(000)-00"), Index(0), VisibleInListView(false)]
-        //[Persistent("DatabaseColumnName"), RuleRequiredField(DefaultContexts.Save)]
-        //public string PersistentProperty {
-        //    get { return _PersistentProperty; }
-        //    set { SetPropertyValue("PersistentProperty", ref _PersistentProperty, value); }
-        //}
+   [DefaultClassOptions]
+   //[ImageName("BO_Contact")]
+   //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
+   //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
+   //[Persistent("DatabaseTableName")]
+   // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
+   [NavigationItem(false)]
+   [CreatableItem(false)]
+   public class JournalEntry : BaseObject
+   { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
+      public JournalEntry(Session session)
+          : base(session)
+      {
+      }
+      public override void AfterConstruction()
+      {
+         base.AfterConstruction();
+         // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+      }
+      //private string _PersistentProperty;
+      //[XafDisplayName("My display name"), ToolTip("My hint message")]
+      //[ModelDefault("EditMask", "(000)-00"), Index(0), VisibleInListView(false)]
+      //[Persistent("DatabaseColumnName"), RuleRequiredField(DefaultContexts.Save)]
+      //public string PersistentProperty {
+      //    get { return _PersistentProperty; }
+      //    set { SetPropertyValue("PersistentProperty", ref _PersistentProperty, value); }
+      //}
 
-        //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
-        //public void ActionMethod() {
-        //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
-        //    this.PersistentProperty = "Paid";
-        //}
-        decimal amount;
-        [ModelDefault("DisplayFormat", "{0:#,##.00 DB;#,##.00 CR;0}")]
-        [ModelDefault("EditMask", "n4")]
-        public decimal Amount
-        {
-            get
-            {
-                return amount;
-            }
-            set
-            {
-                SetPropertyValue("Amount", ref amount, value);
-            }
-        }
-        GLAccount account;
-        public GLAccount Account
-        {
-            get
-            {
-                return account;
-            }
-            set
-            {
-                SetPropertyValue("Account", ref account, value);
-            }
-        }
-        JournalVoucher voucher;
-        [Association("JournalVoucher-Entries")]
-        public JournalVoucher Voucher
-        {
-            get
-            {
-                return voucher;
-            }
-            set
-            {
-                SetPropertyValue("Voucher", ref voucher, value);
-            }
-        }
-    }
+      //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
+      //public void ActionMethod() {
+      //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
+      //    this.PersistentProperty = "Paid";
+      //}
+      decimal amount;
+      [ModelDefault("DisplayFormat", "{0:#,##.00 DB;#,##.00 CR;0}")]
+      [ModelDefault("EditMask", "n4")]
+      public decimal Amount
+      {
+         get
+         {
+            return amount;
+         }
+         set
+         {
+            SetPropertyValue("Amount", ref amount, value);
+         }
+      }
+      GLAccount account;
+      public GLAccount Account
+      {
+         get
+         {
+            return account;
+         }
+         set
+         {
+            SetPropertyValue("Customer", ref account, value);
+         }
+      }
+      JournalVoucher voucher;
+      [Association("JournalVoucher-Entries")]
+      public JournalVoucher Voucher
+      {
+         get
+         {
+            return voucher;
+         }
+         set
+         {
+            SetPropertyValue("Voucher", ref voucher, value);
+         }
+      }
+      string notes;
+      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+      public string Notes
+      {
+         get
+         {
+            return notes;
+         }
+         set
+         {
+            SetPropertyValue("Notes", ref notes, value);
+         }
+      }
+   }
 }

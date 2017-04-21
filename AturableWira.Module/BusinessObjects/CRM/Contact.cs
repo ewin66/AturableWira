@@ -22,7 +22,7 @@ namespace AturableWira.Module.BusinessObjects.CRM
   //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
   //[Persistent("DatabaseTableName")]
   // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-  public class Contact : Customer
+  public class Contact : Account
   { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
     public Contact(Session session)
         : base(session)
@@ -189,9 +189,9 @@ namespace AturableWira.Module.BusinessObjects.CRM
         SetPropertyValue("MobilePhone", ref mobilePhone, value);
       }
     }
-    Account account;
-    [Association("Account-Contacts")]
-    public Account Account
+    Customer account;
+    [Association("Customer-Contacts")]
+    public Customer Account
     {
       get
       {
@@ -199,7 +199,7 @@ namespace AturableWira.Module.BusinessObjects.CRM
       }
       set
       {
-        SetPropertyValue("Account", ref account, value);
+        SetPropertyValue("Customer", ref account, value);
       }
     }
   }

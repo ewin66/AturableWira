@@ -6,12 +6,28 @@
     <Sales>5128</Sales>
     <CostofGoodsSold></CostofGoodsSold>
     <Inventory></Inventory>
+    <Purchased>FALSE</Purchased>
+    <Sold>TRUE</Sold>
+    <Type>Sundry Items</Type>
   </record>
   <record>
     <ItemNumber>1002</ItemNumber>
-    <Name>Labour</Name>
+    <Name>Labor</Name>
     <Sales>4000</Sales>
     <CostofGoodsSold></CostofGoodsSold>
     <Inventory></Inventory>
+    <Purchased>FALSE</Purchased>
+    <Sold>TRUE</Sold>
+    <Type>Labor</Type>
   </record>
+  <record>
+    <ItemNumber>1003</ItemNumber>
+    <Name>Deposit</Name>
+    <Sales>2001</Sales>
+    <CostofGoodsSold></CostofGoodsSold>
+    <Inventory></Inventory>
+    <Purchased>FALSE</Purchased>
+    <Sold>TRUE</Sold>
+    <Type>Sundry Items</Type>
+  </record>  
 </data-set>

@@ -93,11 +93,11 @@ namespace AturableWira.Module.BusinessObjects.ERP.Sales
             SetPropertyValue("Owner", ref owner, value);
          }
       }
-      Customer customer;
+      Account customer;
       [ImmediatePostData(true)]
       [DataSourceCriteria("[Status]=1")]
       [RuleRequiredField]
-      public Customer Customer
+      public Account Customer
       {
          get
          {
@@ -105,7 +105,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Sales
          }
          set
          {
-            SetPropertyValue("Customer", ref customer, value);
+            SetPropertyValue("Account", ref customer, value);
          }
       }
 
