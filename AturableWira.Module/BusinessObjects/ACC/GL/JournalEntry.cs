@@ -47,6 +47,8 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
       //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
       //    this.PersistentProperty = "Paid";
       //}
+
+
       decimal amount;
       [ModelDefault("DisplayFormat", "{0:#,##.00 DB;#,##.00 CR;0}")]
       [ModelDefault("EditMask", "n4")]

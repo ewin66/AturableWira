@@ -170,6 +170,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\ACC\AP\APInvoice.cs" />
+    <Compile Include="BusinessObjects\ACC\AP\APInvoiceItem.cs" />
+    <Compile Include="BusinessObjects\ACC\AP\APPayment.cs" />
+    <Compile Include="BusinessObjects\ACC\AP\APPaymentItem.cs" />
     <Compile Include="BusinessObjects\ACC\Bank.cs" />
     <Compile Include="BusinessObjects\ACC\Currency.cs" />
     <Compile Include="BusinessObjects\ACC\GL\GLAccount.cs" />
@@ -181,9 +185,14 @@
     <Compile Include="BusinessObjects\CRM\Account.cs" />
     <Compile Include="BusinessObjects\CRM\AccountNote.cs" />
     <Compile Include="BusinessObjects\CRM\Vendor.cs" />
+    <Compile Include="BusinessObjects\ERP\Inventory\Carrier.cs" />
+    <Compile Include="BusinessObjects\ERP\Inventory\Inventory.cs" />
+    <Compile Include="BusinessObjects\ERP\Inventory\InventoryReceipt.cs" />
     <Compile Include="BusinessObjects\ERP\Inventory\Warehouse.cs" />
     <Compile Include="BusinessObjects\ERP\Item.cs" />
     <Compile Include="BusinessObjects\ERP\ItemType.cs" />
+    <Compile Include="BusinessObjects\ERP\Purchase\OrderItem.cs" />
+    <Compile Include="BusinessObjects\ERP\Purchase\PurchaseOrder.cs" />
     <Compile Include="BusinessObjects\ERP\Purchase\VendorItem.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Invoice.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Order.cs" />
@@ -203,6 +212,12 @@
     <Compile Include="BusinessObjects\SYS\Region.cs" />
     <Compile Include="BusinessObjects\SYS\SubRegion.cs" />
     <Compile Include="BusinessObjects\SYS\SystemSetting.cs" />
+    <Compile Include="Controllers\APViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\APViewController.Designer.cs">
+      <DependentUpon>APViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
@@ -213,6 +228,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controllers\APViewController.resx">
+      <DependentUpon>APViewController.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -257,14 +275,30 @@
       <SubType>Designer</SubType>
     </None>
     <EmbeddedResource Include="DatabaseUpdate\InitialData\GLAccount.xml" />
-    <EmbeddedResource Include="DatabaseUpdate\InitialData\Currency.xml" />
+    <EmbeddedResource Include="DatabaseUpdate\InitialData\Currency.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="DatabaseUpdate\InitialData\Bank.xml" />
     <EmbeddedResource Include="DatabaseUpdate\InitialData\Items.xml" />
-    <EmbeddedResource Include="DatabaseUpdate\InitialData\ItemType.xml" />
+    <EmbeddedResource Include="DatabaseUpdate\InitialData\ItemType.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseUpdate\InitialData\Vendor.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseUpdate\InitialData\Warehouse.xml" />
+    <EmbeddedResource Include="DatabaseUpdate\InitialData\VendorItem.xml" />
+    <None Include="UnusableNodes1.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UnusableNodes2.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BusinessObjects\ACC\AP\" />
     <Folder Include="BusinessObjects\ACC\AR\" />
     <Folder Include="BusinessObjects\PM\" />
   </ItemGroup>

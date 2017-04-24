@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <Name>Baby Gadget Importer</Name>
+    <DiscountPercent>2</DiscountPercent>
+    <DiscountDays>7</DiscountDays>
+    <Currency>USD</Currency>
+    <DefaultDueDays>21</DefaultDueDays>
+    <DefaultDescription>Inventory</DefaultDescription>
+  </record>
+  <record>
+    <Name>Baby Supplies Distributor</Name>
+    <DiscountPercent>5</DiscountPercent>
+    <DiscountDays>3</DiscountDays>
+    <Currency>IDR</Currency>
+    <DefaultDueDays>21</DefaultDueDays>
+    <DefaultDescription>Inventory</DefaultDescription>
+  </record>
+  <record>
+    <Name>Telephone Company</Name>
+    <DiscountPercent>0</DiscountPercent>
+    <DiscountDays>0</DiscountDays>
+    <Currency>IDR</Currency>
+    <DefaultDueDays>21</DefaultDueDays>
+    <DefaultDescription>Telephone</DefaultDescription>
+  </record>
+  <record>
+    <Name>Electric Company</Name>
+    <DiscountPercent>0</DiscountPercent>
+    <DiscountDays>0</DiscountDays>
+    <Currency>IDR</Currency>
+    <DefaultDueDays>21</DefaultDueDays>
+    <DefaultDescription>Electricity</DefaultDescription>
+  </record>
+  <record>
+    <Name>Rent-O-Building</Name>
+    <DiscountPercent>0</DiscountPercent>
+    <DiscountDays>0</DiscountDays>
+    <Currency>SGD</Currency>
+    <DefaultDueDays>21</DefaultDueDays>
+    <DefaultDescription>Rent</DefaultDescription>
+  </record>
+</data-set>

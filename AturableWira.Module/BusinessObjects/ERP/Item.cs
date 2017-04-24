@@ -57,12 +57,10 @@ namespace AturableWira.Module.BusinessObjects.ERP
       //    this.PersistentProperty = "Paid";
       //}
 
-      decimal itemNumber;
+      string itemNumber;
       [RuleRequiredField, RuleUniqueValue, Key]
-      [ModelDefault("DisplayFormat", "{0:d0}")]
-      [ModelDefault("EditMask", "d0")]
       [VisibleInListView(true)]
-      public decimal ItemNumber
+      public string ItemNumber
       {
          get
          {

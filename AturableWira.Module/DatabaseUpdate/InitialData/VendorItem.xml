@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <ItemNumber>1021</ItemNumber>
+    <Vendor>Baby Gadget Importer</Vendor>
+    <VendorItemNumber>YH2017.V001-A10</VendorItemNumber>
+    <VendorItemQuantity>10</VendorItemQuantity>
+    <Description>Smart Crib 10 Pcs</Description>
+    <Cost>1299.99</Cost>
+  </record>
+  <record>
+    <ItemNumber>1021</ItemNumber>
+    <Vendor>Baby Gadget Importer</Vendor>
+    <VendorItemNumber>YH2017.V001-A1</VendorItemNumber>
+    <VendorItemQuantity>10</VendorItemQuantity>
+    <Description>Smart Crib 1 Pcs</Description>
+    <Cost>139.99</Cost>
+  </record>
+  <record>
+    <ItemNumber>1023</ItemNumber>
+    <Vendor>Baby Supplies Distributor</Vendor>
+    <VendorItemNumber>QI230-100</VendorItemNumber>
+    <VendorItemQuantity>10</VendorItemQuantity>
+    <Description>Funky Tether 100 Pcs</Description>
+    <Cost>2600000</Cost>
+  </record>
+</data-set>

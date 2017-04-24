@@ -11,24 +11,20 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using static AturableWira.Module.BusinessObjects.ETC.Enums;
+using AturableWira.Module.BusinessObjects.ERP.Purchase;
 using DevExpress.ExpressApp.Editors;
-using DevExpress.ExpressApp.ConditionalAppearance;
 
-namespace AturableWira.Module.BusinessObjects.ACC.GL
+namespace AturableWira.Module.BusinessObjects.ERP.Inventory
 {
     [DefaultClassOptions]
-    [ModelDefault("Caption", "GL Account")]
-    [NavigationItem("General Ledger")]
     //[ImageName("BO_Contact")]
-    [DefaultProperty("DisplayFormat")]
+    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    [Appearance("GLAccountAppearance", "[AccountType] <> 'Equity'", TargetItems = "RetainedEarnings", Enabled = false)]
-    public class GLAccount : XPLiteObject
+    public class Inventory : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public GLAccount(Session session)
+        public Inventory(Session session)
             : base(session)
         {
         }
@@ -51,95 +47,129 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
         //    this.PersistentProperty = "Paid";
         //}
+        InventoryReceipt inventoryReceipt;
+        [Association("InventoryReceipt-Items")]
+        public InventoryReceipt InventoryReceipt
+        {
+            get
+            {
+                return inventoryReceipt;
+            }
+            set
+            {
+                SetPropertyValue("InventoryReceipt", ref inventoryReceipt, value);
+            }
+        }
 
-        private const string displayFormat = "{AccountNumber} - {AccountName}";
-        [VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
-        public string DisplayName
+        OrderItem orderItem;
+        public OrderItem OrderItem
         {
             get
             {
-                return ObjectFormatter.Format(displayFormat, this, EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
+                return orderItem;
+            }
+            set
+            {
+                SetPropertyValue("OrderItem", ref orderItem, value);
             }
         }
 
-        decimal accountNumber;
-        [RuleRequiredField, RuleUniqueValue]
-        [VisibleInLookupListView(true), VisibleInListView(true)]
-        [ModelDefault("EditMask", "d0")]
-        [ModelDefault("DisplayFormat", "{0:d0}")]
-        [Key]
-        public decimal AccountNumber
-        {
-            get
-            {
-                return accountNumber;
-            }
-            set
-            {
-                SetPropertyValue("AccountNumber", ref accountNumber, value);
-            }
-        }
-        string accountName;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        [RuleRequiredField]
-        [ModelDefault("Caption", "Name")]
-        public string AccountName
-        {
-            get
-            {
-                return accountName;
-            }
-            set
-            {
-                SetPropertyValue("AccountName", ref accountName, value);
-            }
-        }
-        bool suspended;
-        [VisibleInLookupListView(false)]
-        [ModelDefault("ToolTip", "Suspended account will not be selectable on new transactions")]
-        public bool Suspended
-        {
-            get
-            {
-                return suspended;
-            }
-            set
-            {
-                SetPropertyValue("Suspended", ref suspended, value);
-            }
-        }
-        GLACcountType accountType;
+        int quantityReceived;
         [ImmediatePostData]
-        public GLACcountType AccountType
+        public int QuantityReceived
         {
             get
             {
-                return accountType;
+                return quantityReceived;
             }
             set
             {
-                if (SetPropertyValue("AccountType", ref accountType, value))
-                    if (!IsLoading)
-                        if (AccountType != GLACcountType.Equity)
-                            RetainedEarnings = false;
+                SetPropertyValue("QuantityReceived", ref quantityReceived, value);
             }
         }
-        bool retainedEarnings;
-        [VisibleInLookupListView(false)]
-        public bool RetainedEarnings
+        int temporaryQuantity;
+        [Browsable(false), VisibleInListView(false), VisibleInLookupListView(false), VisibleInDetailView(false)]
+        public int TemporaryQuantity
         {
             get
             {
-                return retainedEarnings;
+                return temporaryQuantity;
             }
             set
             {
-                SetPropertyValue("RetainedEarnings", ref retainedEarnings, value);
+                SetPropertyValue("TemporaryQuantity", ref temporaryQuantity, value);
             }
         }
+
+        [PersistentAlias("TemporaryQuantity - QuantityReceived")]
+        public int QuantityOnOrder
+        {
+            get
+            {
+                int qty = (int)EvaluateAlias("QuantityOnOrder");
+                if (qty < 0)
+                    return 0;
+                else
+                    return qty;
+            }
+        }
+
+
+        VendorItem vendorItem;
+        public VendorItem VendorItem
+        {
+            get
+            {
+                return vendorItem;
+            }
+            set
+            {
+                SetPropertyValue("VendorItem", ref vendorItem, value);
+            }
+        }
+
+        string lotNumber;
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string LotNumber
+        {
+            get
+            {
+                return lotNumber;
+            }
+            set
+            {
+                SetPropertyValue("LotNumber", ref lotNumber, value);
+            }
+        }
+        DateTime expiryDate;
+        public DateTime ExpiryDate
+        {
+            get
+            {
+                return expiryDate;
+            }
+            set
+            {
+                SetPropertyValue("ExpiryDate", ref expiryDate, value);
+            }
+        }
+        decimal unitCost;
+        public decimal UnitCost
+        {
+            get
+            {
+                return unitCost;
+            }
+            set
+            {
+                SetPropertyValue("UnitCost", ref unitCost, value);
+            }
+        }
+
         string notes;
         [Size(SizeAttribute.Unlimited)]
-        [EditorAlias(EditorAliases.HtmlPropertyEditor)]
+        [ModelDefault("RowCount", "1")]
+        [EditorAlias(EditorAliases.StringPropertyEditor)]
         public string Notes
         {
             get

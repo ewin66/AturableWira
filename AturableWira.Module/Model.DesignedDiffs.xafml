@@ -2,11 +2,29 @@
 <Application Company="Aturable.com" Copyright="Copyright (c) 2017 Aturable.com, All Rights Reserved" Description="Aturable business application for everyone">
   <NavigationItems>
     <Items>
+      <Item Id="Account Payable" Removed="True" />
+      <Item Id="Accounting" Caption="Accounting" ChildItemsDisplayStyle="List" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Account Payable" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="APInvoice_ListView" ViewId="APInvoice_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="APPayment_ListView" ViewId="APPayment_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="General Ledger" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="GLAccount_ListView" ViewId="GLAccount_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="JournalVoucher_ListView" ViewId="JournalVoucher_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+        </Items>
+      </Item>
       <Item Id="Default">
         <Items>
           <Item Id="SystemSetting_DetailView" ViewId="SystemSetting_DetailView" IsNewNode="True" />
         </Items>
       </Item>
+      <Item Id="General Ledger" Removed="True" />
     </Items>
   </NavigationItems>
   <SchemaModules>
@@ -47,7 +65,6 @@
                   <LayoutItem Id="PostalCode" ViewItem="PostalCode" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
                 </LayoutGroup>
               </LayoutGroup>
-              <LayoutItem Id="PrimaryContact" Index="1" RelativeSize="48.387096774193552" Removed="True" />
             </LayoutGroup>
             <LayoutGroup Id="Item3" ShowCaption="True" Caption="Social Media" CaptionLocation="Top" Index="1" RelativeSize="19.911504424778762" Direction="Horizontal" IsNewNode="True">
               <LayoutGroup Id="Auto53913c47-ca3e-4c6c-a4d0-8b807a507f6a" ShowCaption="False" Caption="" Index="0" RelativeSize="49.913644214162346" IsNewNode="True">
@@ -55,35 +72,6 @@
                 <LayoutItem Id="LinkedIn" ViewItem="LinkedIn" Index="1" RelativeSize="50" IsNewNode="True" />
               </LayoutGroup>
               <LayoutItem Id="Twitter" ViewItem="Twitter" Index="1" RelativeSize="50.086355785837654" IsNewNode="True" />
-            </LayoutGroup>
-            <LayoutGroup Id="Customer" RelativeSize="21.238938053097346" Caption="Administration" Index="2" Direction="Vertical">
-              <LayoutGroup Id="Customer_col1" RelativeSize="100" Caption="Customer_col1">
-                <LayoutGroup Id="Auto98e7de0e-fd23-4f40-8b1a-824cbafa5853" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="50" IsNewNode="True">
-                  <LayoutItem Id="CreditLimit" ViewItem="CreditLimit" Index="0" RelativeSize="49.913644214162346" IsNewNode="True" />
-                  <LayoutItem Id="Status" ViewItem="Status" Index="1" RelativeSize="50.086355785837654" IsNewNode="True" />
-                </LayoutGroup>
-                <LayoutItem Id="Status" Index="0" RelativeSize="36.363636363636367" Removed="True" />
-                <LayoutItem Id="CreditLimit" Index="1" RelativeSize="27.272727272727273" Removed="True" />
-                <LayoutItem Id="Owner" Index="1" RelativeSize="50" />
-                <LayoutItem Id="Street" Index="3" RelativeSize="10.344827586206897" Removed="True" />
-                <LayoutItem Id="Country" Index="4" RelativeSize="10.344827586206897" Removed="True" />
-                <LayoutItem Id="Province" Index="5" RelativeSize="10.344827586206897" Removed="True" />
-                <LayoutItem Id="Region" Index="6" RelativeSize="10.344827586206897" Removed="True" />
-                <LayoutItem Id="SubRegion" Index="7" RelativeSize="10.344827586206897" Removed="True" />
-                <LayoutItem Id="PostalCode" Index="8" RelativeSize="13.793103448275861" Removed="True" />
-                <LayoutItem Id="Name" Removed="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="Customer_col2" RelativeSize="49.913644214162346" Direction="Horizontal" Removed="True">
-                <LayoutItem Id="Facebook" RelativeSize="36.363636363636367" Index="0" Removed="True" />
-                <LayoutItem Id="HomePhone" RelativeSize="28.571428571428573" Index="0" Removed="True" />
-                <LayoutItem Id="Twitter" RelativeSize="27.272727272727273" Index="1" Removed="True" />
-                <LayoutItem Id="Fax" RelativeSize="10.344827586206897" Index="2" Removed="True" />
-                <LayoutItem Id="LinkedIn" RelativeSize="36.363636363636367" Index="2" Removed="True" />
-                <LayoutItem Id="OtherPhone" RelativeSize="10.344827586206897" Index="2" Removed="True" />
-                <LayoutItem Id="Website" RelativeSize="10.344827586206897" Index="2" Removed="True" />
-                <LayoutItem Id="Email" RelativeSize="13.793103448275861" Removed="True" />
-                <LayoutItem Id="OfficePhone" RelativeSize="10.344827586206897" Removed="True" />
-              </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>
           <TabbedGroup Id="Tabs" RelativeSize="33.529411764705884">
@@ -95,9 +83,6 @@
             </LayoutGroup>
             <LayoutGroup Id="Orders" RelativeSize="100" Index="2">
               <LayoutItem Id="Orders" RelativeSize="100" />
-            </LayoutGroup>
-            <LayoutGroup Id="Contacts" RelativeSize="100" Index="3">
-              <LayoutItem Id="Contacts" RelativeSize="100" />
             </LayoutGroup>
             <LayoutGroup Id="Notes" RelativeSize="100">
               <LayoutItem Id="Notes" RelativeSize="100" />
@@ -165,34 +150,6 @@
                 <LayoutItem Id="CreditLimit" ViewItem="CreditLimit" Index="1" RelativeSize="50.254323499491356" IsNewNode="True" />
               </LayoutGroup>
               <LayoutItem Id="Status" ViewItem="Status" Index="1" RelativeSize="45.714285714285715" IsNewNode="True" />
-            </LayoutGroup>
-            <LayoutGroup Id="Customer" RelativeSize="14.634146341463415" Index="5" Caption="Personal Information">
-              <LayoutGroup Id="Customer_col1" RelativeSize="49.745676500508644" Caption="Customer_col1">
-                <LayoutItem Id="MaritalStatus" ViewItem="MaritalStatus" Index="0" RelativeSize="50" IsNewNode="True" />
-                <LayoutItem Id="Owner" RelativeSize="28.571428571428573" Index="0" Removed="True" />
-                <LayoutItem Id="CreditLimit" RelativeSize="50" Index="1" Removed="True" />
-                <LayoutItem Id="Gender" ViewItem="Gender" Index="1" RelativeSize="37.5" IsNewNode="True" />
-                <LayoutItem Id="Status" RelativeSize="27.272727272727273" Index="1" Removed="True" />
-                <LayoutItem Id="Country" Index="2" RelativeSize="15" Removed="True" />
-                <LayoutItem Id="PostalCode" Index="2" RelativeSize="12.5" Removed="True" />
-                <LayoutItem Id="Province" Index="2" RelativeSize="21.428571428571427" Removed="True" />
-                <LayoutItem Id="Street" Index="2" RelativeSize="13.043478260869565" Removed="True" />
-                <LayoutItem Id="SubRegion" Index="2" RelativeSize="36.363636363636367" Removed="True" />
-                <LayoutItem Id="Region" Index="3" RelativeSize="17.647058823529413" Removed="True" />
-                <LayoutItem Id="Name" RelativeSize="17.391304347826086" Removed="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="Auto349b5ee8-0821-4799-85dd-b1d73d10356c" ShowCaption="False" Caption="Auto349b5ee8-0821-4799-85dd-b1d73d10356c(47)" Index="1" RelativeSize="50.254323499491356" IsNewNode="True">
-                <LayoutItem Id="Birthday" ViewItem="Birthday" Index="0" RelativeSize="50" IsNewNode="True" />
-                <LayoutItem Id="Anniversary" ViewItem="Anniversary" Index="1" RelativeSize="50" IsNewNode="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="Customer_col2" RelativeSize="36.4476386036961" Caption="Customer_col2" Direction="Horizontal" Index="2" Removed="True">
-                <LayoutItem Id="Facebook" RelativeSize="36.363636363636367" Index="0" Removed="True" />
-                <LayoutItem Id="LinkedIn" RelativeSize="100" Index="0" Removed="True" />
-                <LayoutItem Id="Twitter" RelativeSize="50" Index="0" Removed="True" />
-                <LayoutItem Id="Website" RelativeSize="28.571428571428573" Index="0" Removed="True" />
-                <LayoutItem Id="Fax" RelativeSize="23.529411764705884" Removed="True" />
-                <LayoutItem Id="OtherPhone" RelativeSize="15" Removed="True" />
-              </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>
           <TabbedGroup Id="Tabs" RelativeSize="17.380352644836272">

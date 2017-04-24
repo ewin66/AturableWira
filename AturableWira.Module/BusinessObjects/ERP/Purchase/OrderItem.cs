@@ -4,31 +4,29 @@ using System.Text;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp;
 using System.ComponentModel;
-using DevExpress.ExpressApp.DC;
 using DevExpress.Data.Filtering;
 using DevExpress.Persistent.Base;
 using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using static AturableWira.Module.BusinessObjects.ETC.Enums;
 using DevExpress.ExpressApp.Editors;
-using DevExpress.ExpressApp.ConditionalAppearance;
+using System.Collections;
+using AturableWira.Module.BusinessObjects.ERP.Inventory;
 
-namespace AturableWira.Module.BusinessObjects.ACC.GL
+namespace AturableWira.Module.BusinessObjects.ERP.Purchase
 {
     [DefaultClassOptions]
-    [ModelDefault("Caption", "GL Account")]
-    [NavigationItem("General Ledger")]
-    //[ImageName("BO_Contact")]
-    [DefaultProperty("DisplayFormat")]
+    [NavigationItem(false)]
+    [CreatableItem(false)]
+    [ImageName("BO_Product")]
+    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    [Appearance("GLAccountAppearance", "[AccountType] <> 'Equity'", TargetItems = "RetainedEarnings", Enabled = false)]
-    public class GLAccount : XPLiteObject
+    public class OrderItem : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public GLAccount(Session session)
+        public OrderItem(Session session)
             : base(session)
         {
         }
@@ -52,94 +50,81 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         //    this.PersistentProperty = "Paid";
         //}
 
-        private const string displayFormat = "{AccountNumber} - {AccountName}";
-        [VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
-        public string DisplayName
+        PurchaseOrder purchaseOrder;
+        [Association("PurchaseOrder-Items"), Aggregated]
+        public PurchaseOrder PurchaseOrder
         {
             get
             {
-                return ObjectFormatter.Format(displayFormat, this, EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
+                return purchaseOrder;
+            }
+            set
+            {
+                SetPropertyValue("PurchaseOrder", ref purchaseOrder, value);
+            }
+        }
+        int quantity;
+        [RuleValueComparison(ValueComparisonType.GreaterThanOrEqual, 1)]
+        public int Quantity
+        {
+            get
+            {
+                return quantity;
+            }
+            set
+            {
+                SetPropertyValue("Quantity", ref quantity, value);
+            }
+        }
+        VendorItem vendorItem;
+        [ImmediatePostData]
+        [RuleRequiredField]
+        [DataSourceProperty("PurchaseOrder.Vendor.Items")]
+        public VendorItem VendorItem
+        {
+            get
+            {
+                return vendorItem;
+            }
+            set
+            {
+                if (SetPropertyValue("VendorItem", ref vendorItem, value))
+                    if (!IsLoading && VendorItem != null)
+                        UnitCost = VendorItem.Cost;
             }
         }
 
-        decimal accountNumber;
-        [RuleRequiredField, RuleUniqueValue]
-        [VisibleInLookupListView(true), VisibleInListView(true)]
-        [ModelDefault("EditMask", "d0")]
-        [ModelDefault("DisplayFormat", "{0:d0}")]
-        [Key]
-        public decimal AccountNumber
-        {
-            get
-            {
-                return accountNumber;
-            }
-            set
-            {
-                SetPropertyValue("AccountNumber", ref accountNumber, value);
-            }
-        }
-        string accountName;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        [RuleRequiredField]
-        [ModelDefault("Caption", "Name")]
-        public string AccountName
-        {
-            get
-            {
-                return accountName;
-            }
-            set
-            {
-                SetPropertyValue("AccountName", ref accountName, value);
-            }
-        }
-        bool suspended;
-        [VisibleInLookupListView(false)]
-        [ModelDefault("ToolTip", "Suspended account will not be selectable on new transactions")]
-        public bool Suspended
-        {
-            get
-            {
-                return suspended;
-            }
-            set
-            {
-                SetPropertyValue("Suspended", ref suspended, value);
-            }
-        }
-        GLACcountType accountType;
+        decimal unitCost;
+        [ModelDefault("DisplayFormat", "{0:n2}")]
+        [ModelDefault("EditMask", "n2")]
         [ImmediatePostData]
-        public GLACcountType AccountType
+        public decimal UnitCost
         {
             get
             {
-                return accountType;
+                return unitCost;
             }
             set
             {
-                if (SetPropertyValue("AccountType", ref accountType, value))
-                    if (!IsLoading)
-                        if (AccountType != GLACcountType.Equity)
-                            RetainedEarnings = false;
+                SetPropertyValue("UnitCost", ref unitCost, value);
             }
         }
-        bool retainedEarnings;
-        [VisibleInLookupListView(false)]
-        public bool RetainedEarnings
+
+        [PersistentAlias("UnitCost * Quantity")]
+        [ModelDefault("DisplayFormat", "{0:n2}")]
+        [ModelDefault("EditMask",  "n2")]
+        public decimal Amount
         {
             get
             {
-                return retainedEarnings;
-            }
-            set
-            {
-                SetPropertyValue("RetainedEarnings", ref retainedEarnings, value);
+                return (decimal)EvaluateAlias("Amount");
             }
         }
+
         string notes;
         [Size(SizeAttribute.Unlimited)]
-        [EditorAlias(EditorAliases.HtmlPropertyEditor)]
+        [ModelDefault("RowCount", "1")]
+        [EditorAlias(EditorAliases.StringPropertyEditor)]
         public string Notes
         {
             get
@@ -149,6 +134,23 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
             set
             {
                 SetPropertyValue("Notes", ref notes, value);
+            }
+        }
+
+        public int Received
+        {
+            get
+            {
+                int received = 0;
+
+                ICollection inventory;
+                inventory = Session.GetObjects(Session.GetClassInfo(typeof(Inventory.Inventory)), CriteriaOperator.Parse("OrderItem.Oid=?", Oid), new SortingCollection(null), 0, false, true);
+
+                foreach(Inventory.Inventory item in inventory)
+                {
+                    received += item.QuantityReceived;
+                }
+                return received;
             }
         }
     }

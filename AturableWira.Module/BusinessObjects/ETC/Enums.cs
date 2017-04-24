@@ -50,5 +50,32 @@ namespace AturableWira.Module.BusinessObjects.ETC
             ARInvoce,
             APInvoice
         }
+
+        public enum Freight
+        {
+            Prepaid,
+            PrepaidAndCharge,
+            Pickup,
+            Collect
+        }
+
+        public enum OrderStatus
+        {
+            WorkSheet,
+            OnOrder,
+            Completed,
+            Canceled
+        }
+
+        public enum PaymentMethod
+        {
+            Cash,
+            Cheque,
+            BankTransfer,
+            Visa,
+            Mastercard,
+            AmericanExpress,
+            Others
+        }
     }
 }

@@ -4,31 +4,28 @@ using System.Text;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp;
 using System.ComponentModel;
-using DevExpress.ExpressApp.DC;
 using DevExpress.Data.Filtering;
 using DevExpress.Persistent.Base;
 using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
+using AturableWira.Module.BusinessObjects.CRM;
 using static AturableWira.Module.BusinessObjects.ETC.Enums;
-using DevExpress.ExpressApp.Editors;
-using DevExpress.ExpressApp.ConditionalAppearance;
 
-namespace AturableWira.Module.BusinessObjects.ACC.GL
+namespace AturableWira.Module.BusinessObjects.ACC.AP
 {
     [DefaultClassOptions]
-    [ModelDefault("Caption", "GL Account")]
-    [NavigationItem("General Ledger")]
+    [NavigationItem("Account Payable")]
+    [ModelDefault("Caption", "Payment")]
     //[ImageName("BO_Contact")]
-    [DefaultProperty("DisplayFormat")]
+    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    [Appearance("GLAccountAppearance", "[AccountType] <> 'Equity'", TargetItems = "RetainedEarnings", Enabled = false)]
-    public class GLAccount : XPLiteObject
+    public class APPayment : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public GLAccount(Session session)
+        public APPayment(Session session)
             : base(session)
         {
         }
@@ -36,6 +33,9 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         {
             base.AfterConstruction();
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+            Date = DateTime.Now;
+            PeriodMonth = DateTime.Now.Month;
+            PeriodYear = DateTime.Now.Year;
         }
         //private string _PersistentProperty;
         //[XafDisplayName("My display name"), ToolTip("My hint message")]
@@ -51,104 +51,139 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
         //    this.PersistentProperty = "Paid";
         //}
-
-        private const string displayFormat = "{AccountNumber} - {AccountName}";
-        [VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
-        public string DisplayName
-        {
-            get
-            {
-                return ObjectFormatter.Format(displayFormat, this, EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
-            }
-        }
-
-        decimal accountNumber;
-        [RuleRequiredField, RuleUniqueValue]
-        [VisibleInLookupListView(true), VisibleInListView(true)]
-        [ModelDefault("EditMask", "d0")]
-        [ModelDefault("DisplayFormat", "{0:d0}")]
-        [Key]
-        public decimal AccountNumber
-        {
-            get
-            {
-                return accountNumber;
-            }
-            set
-            {
-                SetPropertyValue("AccountNumber", ref accountNumber, value);
-            }
-        }
-        string accountName;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        Vendor vendor;
         [RuleRequiredField]
-        [ModelDefault("Caption", "Name")]
-        public string AccountName
-        {
-            get
-            {
-                return accountName;
-            }
-            set
-            {
-                SetPropertyValue("AccountName", ref accountName, value);
-            }
-        }
-        bool suspended;
-        [VisibleInLookupListView(false)]
-        [ModelDefault("ToolTip", "Suspended account will not be selectable on new transactions")]
-        public bool Suspended
-        {
-            get
-            {
-                return suspended;
-            }
-            set
-            {
-                SetPropertyValue("Suspended", ref suspended, value);
-            }
-        }
-        GLACcountType accountType;
         [ImmediatePostData]
-        public GLACcountType AccountType
+        public Vendor Vendor
         {
             get
             {
-                return accountType;
+                return vendor;
             }
             set
             {
-                if (SetPropertyValue("AccountType", ref accountType, value))
-                    if (!IsLoading)
-                        if (AccountType != GLACcountType.Equity)
-                            RetainedEarnings = false;
+                SetPropertyValue("Vendor", ref vendor, value);
             }
         }
-        bool retainedEarnings;
-        [VisibleInLookupListView(false)]
-        public bool RetainedEarnings
+
+        PaymentMethod paymentMethod;
+        public PaymentMethod PaymentMethod
         {
             get
             {
-                return retainedEarnings;
+                return paymentMethod;
             }
             set
             {
-                SetPropertyValue("RetainedEarnings", ref retainedEarnings, value);
+                SetPropertyValue("PaymentMethod", ref paymentMethod, value);
             }
         }
-        string notes;
-        [Size(SizeAttribute.Unlimited)]
-        [EditorAlias(EditorAliases.HtmlPropertyEditor)]
-        public string Notes
+
+        string reference;
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Reference
         {
             get
             {
-                return notes;
+                return reference;
             }
             set
             {
-                SetPropertyValue("Notes", ref notes, value);
+                SetPropertyValue("Reference", ref reference, value);
+            }
+        }
+
+        Bank bank;
+        [RuleRequiredField]
+        public Bank Bank
+        {
+            get
+            {
+                return bank;
+            }
+            set
+            {
+                SetPropertyValue("Bank", ref bank, value);
+            }
+        }
+
+        DateTime date;
+        [RuleRequiredField]
+        public DateTime Date
+        {
+            get
+            {
+                return date;
+            }
+            set
+            {
+                SetPropertyValue("Date", ref date, value);
+            }
+        }
+
+        int periodMonth;
+        [RuleRequiredField]
+        [ModelDefault("Caption", "Month")]
+        public int PeriodMonth
+        {
+            get
+            {
+                return periodMonth;
+            }
+            set
+            {
+                SetPropertyValue("PeriodMonth", ref periodMonth, value);
+            }
+        }
+
+        int periodYear;
+        [RuleRequiredField]
+        [ModelDefault("Caption", "Year")]
+        public int PeriodYear
+        {
+            get
+            {
+                return periodYear;
+            }
+            set
+            {
+                SetPropertyValue("PeriodYear", ref periodYear, value);
+            }
+        }
+
+        bool isVoid;
+        [ModelDefault("Caption", "Void")]
+        public bool IsVoid
+        {
+            get
+            {
+                return isVoid;
+            }
+            set
+            {
+                SetPropertyValue("IsVoid", ref isVoid, value);
+            }
+        }
+
+        bool posted;
+        public bool Posted
+        {
+            get
+            {
+                return posted;
+            }
+            set
+            {
+                SetPropertyValue("Posted", ref posted, value);
+            }
+        }
+
+        [Association("APPayment-Items"), Aggregated]
+        public XPCollection<APPaymentItem> Items
+        {
+            get
+            {
+                return GetCollection<APPaymentItem>("Items");
             }
         }
     }

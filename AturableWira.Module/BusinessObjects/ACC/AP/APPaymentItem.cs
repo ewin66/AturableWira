@@ -11,19 +11,21 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using AturableWira.Module.BusinessObjects.ERP.Purchase;
+using AturableWira.Module.BusinessObjects.ERP.Sales;
 
-namespace AturableWira.Module.BusinessObjects.CRM
+namespace AturableWira.Module.BusinessObjects.ACC.AP
 {
     [DefaultClassOptions]
+    [NavigationItem(false)]
     //[ImageName("BO_Contact")]
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class Vendor : Account
+    [RuleCombinationOfPropertiesIsUnique("CollectionMustUnique", DefaultContexts.Save, "APPayment, Invoice")]
+    public class APPaymentItem : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public Vendor(Session session)
+        public APPaymentItem(Session session)
             : base(session)
         {
         }
@@ -47,40 +49,47 @@ namespace AturableWira.Module.BusinessObjects.CRM
         //    this.PersistentProperty = "Paid";
         //}
 
-        int defaultDueDays;
-        public int DefaultDueDays
+        APPayment aPPayment;
+        [Association("APPayment-Items")]
+        [ModelDefault("Caption", "Payment")]
+        public APPayment APPayment
         {
             get
             {
-                return defaultDueDays;
+                return aPPayment;
             }
             set
             {
-                SetPropertyValue("DefaultDueDays", ref defaultDueDays, value);
+                SetPropertyValue("APPayment", ref aPPayment, value);
             }
         }
-
-        string defaultDescription;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string DefaultDescription
+        APInvoice invoice;
+        public APInvoice Invoice
         {
             get
             {
-                return defaultDescription;
+                return invoice;
             }
             set
             {
-                SetPropertyValue("DefaultDescription", ref defaultDescription, value);
+                SetPropertyValue("Invoice", ref invoice, value);
             }
         }
-
-        [Association("Vendor-Items")]
-        public XPCollection<VendorItem> Items
+        decimal payment;
+        [ModelDefault("DisplayFormat", "{0:n2}")]
+        [ModelDefault("EditMask", "n2")]
+        public decimal Payment
         {
             get
             {
-                return GetCollection<VendorItem>("Items");
+                return payment;
+            }
+            set
+            {
+                SetPropertyValue("Payment", ref payment, value);
             }
         }
+
+
     }
 }

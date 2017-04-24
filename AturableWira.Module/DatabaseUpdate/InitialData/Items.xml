@@ -29,5 +29,35 @@
     <Purchased>FALSE</Purchased>
     <Sold>TRUE</Sold>
     <Type>Sundry Items</Type>
-  </record>  
+  </record>
+  <record>
+    <ItemNumber>1021</ItemNumber>
+    <Name>Smart Crib GL2000</Name>
+    <Sales>4000</Sales>
+    <CostofGoodsSold>5000</CostofGoodsSold>
+    <Inventory>1200</Inventory>
+    <Purchased>TRUE</Purchased>
+    <Sold>TRUE</Sold>
+    <Type>Inventory</Type>
+  </record>
+  <record>
+    <ItemNumber>1022</ItemNumber>
+    <Name>Deluxe Crib Classic</Name>
+    <Sales>4000</Sales>
+    <CostofGoodsSold>5000</CostofGoodsSold>
+    <Inventory>1200</Inventory>
+    <Purchased>TRUE</Purchased>
+    <Sold>TRUE</Sold>
+    <Type>Inventory</Type>
+  </record>
+  <record>
+    <ItemNumber>1023</ItemNumber>
+    <Name>Funky Tether</Name>
+    <Sales>4000</Sales>
+    <CostofGoodsSold>5000</CostofGoodsSold>
+    <Inventory>1200</Inventory>
+    <Purchased>TRUE</Purchased>
+    <Sold>TRUE</Sold>
+    <Type>Inventory</Type>
+  </record>
 </data-set>

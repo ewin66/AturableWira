@@ -11,9 +11,8 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using AturableWira.Module.BusinessObjects.ERP.Purchase;
 
-namespace AturableWira.Module.BusinessObjects.CRM
+namespace AturableWira.Module.BusinessObjects.ERP.Inventory
 {
     [DefaultClassOptions]
     //[ImageName("BO_Contact")]
@@ -21,9 +20,9 @@ namespace AturableWira.Module.BusinessObjects.CRM
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class Vendor : Account
+    public class Carrier : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public Vendor(Session session)
+        public Carrier(Session session)
             : base(session)
         {
         }
@@ -46,40 +45,17 @@ namespace AturableWira.Module.BusinessObjects.CRM
         //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
         //    this.PersistentProperty = "Paid";
         //}
-
-        int defaultDueDays;
-        public int DefaultDueDays
-        {
-            get
-            {
-                return defaultDueDays;
-            }
-            set
-            {
-                SetPropertyValue("DefaultDueDays", ref defaultDueDays, value);
-            }
-        }
-
-        string defaultDescription;
+        string name;
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string DefaultDescription
+        public string Name
         {
             get
             {
-                return defaultDescription;
+                return name;
             }
             set
             {
-                SetPropertyValue("DefaultDescription", ref defaultDescription, value);
-            }
-        }
-
-        [Association("Vendor-Items")]
-        public XPCollection<VendorItem> Items
-        {
-            get
-            {
-                return GetCollection<VendorItem>("Items");
+                SetPropertyValue("Name", ref name, value);
             }
         }
     }

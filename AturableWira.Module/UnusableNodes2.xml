@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Account_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Account">
+              <LayoutGroup Id="Item1">
+                <LayoutGroup Id="Auto52cd67c2-ccde-4c24-bf5e-9fb6a7863fd1">
+                  <LayoutGroup Id="Auto9762bf98-b498-40cd-8930-009de11e0d16">
+                    <LayoutItem Id="PrimaryContact" ViewItem="PrimaryContact" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

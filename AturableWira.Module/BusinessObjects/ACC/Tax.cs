@@ -90,7 +90,7 @@ namespace AturableWira.Module.BusinessObjects.ACC
          }
       }
       GLAccount gLAccount;
-      [ModelDefault("Caption", "GL Customer")]
+      [ModelDefault("Caption", "GL Account")]
       public GLAccount GLAccount
       {
          get

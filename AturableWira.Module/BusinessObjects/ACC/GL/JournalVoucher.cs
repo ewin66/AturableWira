@@ -25,6 +25,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
     [Appearance("JournalVoucherPostedDisabled",TargetItems ="Posted,JournalVoucherSource", Enabled = false)]
     [Appearance("DisableDeleteWhenPosted", Criteria = "Posted", AppearanceItemType = "Action", TargetItems = "Delete", Enabled = false)]
     [Appearance("DisableEditWhenPosted", Criteria = "Posted", AppearanceItemType = "ViewItem", TargetItems = "*", Enabled = false)]
+    [NavigationItem("General Ledger")]
     public class JournalVoucher : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public JournalVoucher(Session session)
