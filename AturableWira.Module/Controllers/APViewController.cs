@@ -51,10 +51,10 @@ namespace AturableWira.Module.Controllers
         private void CreateInvoiceAction_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
             int invCount = 0;
-            foreach(InventoryReceipt receipt in View.SelectedObjects)
+            foreach (InventoryReceipt receipt in View.SelectedObjects)
             {
                 IObjectSpace os = Application.CreateObjectSpace();
-                
+
                 SystemSetting setting = os.FindObject<SystemSetting>(null);
                 Int16 invNumber = (Int16)setting.InvoiceNumber;
                 setting.InvoiceNumber += 1;
@@ -70,7 +70,7 @@ namespace AturableWira.Module.Controllers
                 invoice.Description = String.Format("Receipt: {0} Inventory", receipt.ReceiptNumber);
                 receipt.APInvoice = invoice;
 
-                foreach(Inventory inventory in receipt.Items)
+                foreach (Inventory inventory in receipt.Items)
                 {
                     APInvoiceItem item = ObjectSpace.CreateObject<APInvoiceItem>();
                     item.Amount = inventory.OrderItem.Amount;
@@ -125,21 +125,22 @@ namespace AturableWira.Module.Controllers
                 journalVoucher.Description = string.Format("AP Invoice No. {0}", invoice.InvoiceNumber);
 
                 JournalEntry entryAP = ObjectSpace.CreateObject<JournalEntry>();
-                entryAP.Account = ObjectSpace.GetObjectByKey<GLAccount>(invoice.PurchaseOrder.Vendor.Currency.AccountsPayable.AccountNumber);
-                entryAP.Amount = invoice.PurchaseOrder.Amount * -1;
+                entryAP.Account = ObjectSpace.GetObjectByKey<GLAccount>(invoice.Vendor.Currency.AccountsPayable.AccountNumber);
+                entryAP.Amount = invoice.Amount * -1;
                 journalVoucher.Entries.Add(entryAP);
-
                 decimal TotalAmount = 0;
                 foreach (APInvoiceItem item in invoice.Items)
                 {
                     JournalEntry entry = ObjectSpace.CreateObject<JournalEntry>();
                     entry.Account = ObjectSpace.GetObjectByKey<GLAccount>(item.GLAccount.AccountNumber);
-                    entry.Amount = item.Amount * invoice.Vendor.Currency.ExchangeRate;
+                    if (invoice.Vendor.Currency.ExchangeRate > 0)
+                        entry.Amount = item.Amount * invoice.Vendor.Currency.ExchangeRate;
+                    else
+                        entry.Amount = item.Amount;
                     TotalAmount += entry.Amount;
 
                     journalVoucher.Entries.Add(entry);
                 }
-
                 if (setting.DefaultCurrency != invoice.Vendor.Currency)
                 {
                     JournalEntry entry = ObjectSpace.CreateObject<JournalEntry>();
@@ -148,13 +149,9 @@ namespace AturableWira.Module.Controllers
 
                     journalVoucher.Entries.Add(entry);
                 }
-
                 invoice.Posted = true;
-
             }
-
             ObjectSpace.CommitChanges();
-
             Application.ShowViewStrategy.ShowMessage(string.Format("{0} invoice was created, please check AP Invoice to adjust the invoices and post the invoices to Journal Vouchers", invCount), InformationType.Success, 5000, InformationPosition.Bottom);
         }
     }

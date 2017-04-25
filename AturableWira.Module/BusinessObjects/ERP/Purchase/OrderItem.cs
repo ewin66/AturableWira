@@ -51,7 +51,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Purchase
         //}
 
         PurchaseOrder purchaseOrder;
-        [Association("PurchaseOrder-Items"), Aggregated]
+        [Association("PurchaseOrder-Items")]
         public PurchaseOrder PurchaseOrder
         {
             get

@@ -62,13 +62,11 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
             }
         }
 
-        decimal accountNumber;
+        string accountNumber;
         [RuleRequiredField, RuleUniqueValue]
         [VisibleInLookupListView(true), VisibleInListView(true)]
-        [ModelDefault("EditMask", "d0")]
-        [ModelDefault("DisplayFormat", "{0:d0}")]
         [Key]
-        public decimal AccountNumber
+        public string AccountNumber
         {
             get
             {
@@ -83,6 +81,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         [RuleRequiredField]
         [ModelDefault("Caption", "Name")]
+        [VisibleInLookupListView(true)]
         public string AccountName
         {
             get

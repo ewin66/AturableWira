@@ -4,31 +4,26 @@ using System.Text;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp;
 using System.ComponentModel;
+using DevExpress.ExpressApp.DC;
 using DevExpress.Data.Filtering;
 using DevExpress.Persistent.Base;
 using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using AturableWira.Module.BusinessObjects.CRM;
-using static AturableWira.Module.BusinessObjects.ETC.Enums;
-using DevExpress.ExpressApp.ConditionalAppearance;
 
-namespace AturableWira.Module.BusinessObjects.ACC.AP
+namespace AturableWira.Module.BusinessObjects.ACC.GL
 {
     [DefaultClassOptions]
-    [NavigationItem("Account Payable")]
-    [ModelDefault("Caption", "Payment")]
-    [Appearance("DisableDeleteWhenPosted", Criteria = "Posted", AppearanceItemType = "Action", TargetItems = "Delete", Enabled = false)]
-    [Appearance("DisableEditWhenPosted", Criteria = "Posted", AppearanceItemType = "ViewItem", TargetItems = "*", Enabled = false)]
     //[ImageName("BO_Contact")]
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class APPayment : BaseObject
+    [RuleCombinationOfPropertiesIsUnique("Account,PeriodYear")]
+    public class GLBudget : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public APPayment(Session session)
+        public GLBudget(Session session)
             : base(session)
         {
         }
@@ -36,9 +31,6 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
         {
             base.AfterConstruction();
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
-            Date = DateTime.Now;
-            PeriodMonth = DateTime.Now.Month;
-            PeriodYear = DateTime.Now.Year;
         }
         //private string _PersistentProperty;
         //[XafDisplayName("My display name"), ToolTip("My hint message")]
@@ -54,96 +46,21 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
         //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
         //    this.PersistentProperty = "Paid";
         //}
-        Vendor vendor;
-        [RuleRequiredField]
-        [ImmediatePostData]
-        public Vendor Vendor
+        GLAccount account;
+        public GLAccount Account
         {
             get
             {
-                return vendor;
+                return account;
             }
             set
             {
-                SetPropertyValue("Vendor", ref vendor, value);
-            }
-        }
-
-        PaymentMethod paymentMethod;
-        public PaymentMethod PaymentMethod
-        {
-            get
-            {
-                return paymentMethod;
-            }
-            set
-            {
-                SetPropertyValue("PaymentMethod", ref paymentMethod, value);
-            }
-        }
-
-        string reference;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string Reference
-        {
-            get
-            {
-                return reference;
-            }
-            set
-            {
-                SetPropertyValue("Reference", ref reference, value);
-            }
-        }
-
-        Bank bank;
-        [RuleRequiredField]
-        public Bank Bank
-        {
-            get
-            {
-                return bank;
-            }
-            set
-            {
-                SetPropertyValue("Bank", ref bank, value);
-            }
-        }
-
-        DateTime date;
-        [RuleRequiredField]
-        public DateTime Date
-        {
-            get
-            {
-                return date;
-            }
-            set
-            {
-                SetPropertyValue("Date", ref date, value);
-            }
-        }
-
-        int periodMonth;
-        [ModelDefault("Caption", "Month")]
-        [ModelDefault("DisplayFormat", "{0:d0}")]
-        [RuleRange(1,12)]
-        public int PeriodMonth
-        {
-            get
-            {
-                return periodMonth;
-            }
-            set
-            {
-                SetPropertyValue("PeriodMonth", ref periodMonth, value);
+                SetPropertyValue("Account", ref account, value);
             }
         }
 
         int periodYear;
-        [RuleRequiredField]
         [ModelDefault("Caption", "Year")]
-        [ModelDefault("DisplayFormat", "{0:d0}")]
         public int PeriodYear
         {
             get
@@ -156,39 +73,148 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
             }
         }
 
-        bool isVoid;
-        [ModelDefault("Caption", "Void")]
-        public bool IsVoid
+        decimal budget01;
+        public decimal Budget01
         {
             get
             {
-                return isVoid;
+                return budget01;
             }
             set
             {
-                SetPropertyValue("IsVoid", ref isVoid, value);
+                SetPropertyValue("Budget01", ref budget01, value);
             }
         }
-
-        bool posted;
-        public bool Posted
+        decimal budget02;
+        public decimal Budget02
         {
             get
             {
-                return posted;
+                return budget02;
             }
             set
             {
-                SetPropertyValue("Posted", ref posted, value);
+                SetPropertyValue("Budget02", ref budget02, value);
             }
         }
-
-        [Association("APPayment-Items"), Aggregated]
-        public XPCollection<APPaymentItem> Items
+        decimal budget03;
+        public decimal Budget03
         {
             get
             {
-                return GetCollection<APPaymentItem>("Items");
+                return budget03;
+            }
+            set
+            {
+                SetPropertyValue("Budget03", ref budget03, value);
+            }
+        }
+        decimal budget04;
+        public decimal Budget04
+        {
+            get
+            {
+                return budget04;
+            }
+            set
+            {
+                SetPropertyValue("Budget04", ref budget04, value);
+            }
+        }
+        decimal budget05;
+        public decimal Budget05
+        {
+            get
+            {
+                return budget05;
+            }
+            set
+            {
+                SetPropertyValue("Budget05", ref budget05, value);
+            }
+        }
+        decimal budget06;
+        public decimal Budget06
+        {
+            get
+            {
+                return budget06;
+            }
+            set
+            {
+                SetPropertyValue("Budget06", ref budget06, value);
+            }
+        }
+        decimal budget07;
+        public decimal Budget07
+        {
+            get
+            {
+                return budget07;
+            }
+            set
+            {
+                SetPropertyValue("Budget07", ref budget07, value);
+            }
+        }
+        decimal budget08;
+        public decimal Budget08
+        {
+            get
+            {
+                return budget08;
+            }
+            set
+            {
+                SetPropertyValue("Budget08", ref budget08, value);
+            }
+        }
+        decimal budget09;
+        public decimal Budget09
+        {
+            get
+            {
+                return budget09;
+            }
+            set
+            {
+                SetPropertyValue("Budget09", ref budget09, value);
+            }
+        }
+        decimal budget10;
+        public decimal Budget10
+        {
+            get
+            {
+                return budget10;
+            }
+            set
+            {
+                SetPropertyValue("Budget10", ref budget10, value);
+            }
+        }
+        decimal budget11;
+        public decimal Budget11
+        {
+            get
+            {
+                return budget11;
+            }
+            set
+            {
+                SetPropertyValue("Budget11", ref budget11, value);
+            }
+        }
+        decimal budget12;
+        public decimal Budget12
+        {
+            get
+            {
+                return budget12;
+            }
+            set
+            {
+                SetPropertyValue("Budget12", ref budget12, value);
             }
         }
     }

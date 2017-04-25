@@ -86,7 +86,7 @@ namespace AturableWira.Module.DatabaseUpdate
                 if (glAccount == null)
                 {
                     glAccount = ObjectSpace.CreateObject<GLAccount>();
-                    glAccount.AccountNumber = Convert.ToDecimal(xndNode["Account"].InnerText);
+                    glAccount.AccountNumber = xndNode["Account"].InnerText;
                     glAccount.AccountName = xndNode["Name"].InnerText;
                     glAccount.AccountType = (GLACcountType)Convert.ToInt16(xndNode["Type"].InnerText);
                     glAccount.RetainedEarnings = Convert.ToBoolean(xndNode["RetainedEarnings"].InnerText);

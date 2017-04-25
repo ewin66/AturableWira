@@ -12,6 +12,7 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using AturableWira.Module.BusinessObjects.CRM;
 using AturableWira.Module.BusinessObjects.ERP.Purchase;
+using DevExpress.ExpressApp.ConditionalAppearance;
 
 namespace AturableWira.Module.BusinessObjects.ACC.AP
 {
@@ -22,6 +23,8 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
     //[Persistent("DatabaseTableName")]
     [ModelDefault("Caption", "Invoice")]
     [NavigationItem("Account Payable")]
+    [Appearance("PostedInvoiceDisableAll", Criteria = "Posted = True", Enabled = false, TargetItems = "*")]
+    [Appearance("DisableDeleteWhenPosted", Criteria = "Posted", AppearanceItemType = "Action", TargetItems = "Delete", Enabled = false)]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
     public class APInvoice : XPLiteObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
@@ -34,6 +37,8 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
             base.AfterConstruction();
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
             InvoiceDate = DateTime.Now;
+            PeriodMonth = DateTime.Now.Month;
+            PeriodYear = DateTime.Now.Year;
         }
         //private string _PersistentProperty;
         //[XafDisplayName("My display name"), ToolTip("My hint message")]
@@ -61,9 +66,15 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
             {
                 if (SetPropertyValue("Vendor", ref vendor, value))
                 {
-                    if (Vendor.DefaultDueDays > 0)
+                    if (!IsLoading)
                     {
-                        DueDate = InvoiceDate.AddDays(Vendor.DefaultDueDays);
+                        if (Vendor.DefaultDueDays > 0)
+                            DueDate = InvoiceDate.AddDays(Vendor.DefaultDueDays);
+
+                        if (Vendor.DefaultDescription != null)
+                            Description = Vendor.DefaultDescription;
+                        else
+                            Description = null;
                     }
                 }
             }
@@ -83,7 +94,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
             {
                 SetPropertyValue("InvoiceNumber", ref invoiceNumber, value);
             }
-            
+
         }
 
         PurchaseOrder purchaseOrder;
@@ -101,6 +112,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
 
         string description;
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleRequiredField]
         public string Description
         {
             get
@@ -157,11 +169,22 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
             }
             set
             {
-                SetPropertyValue("InvoiceDate", ref invoiceDate, value);
+                if (SetPropertyValue("InvoiceDate", ref invoiceDate, value))
+                {
+                    if (!IsLoading)
+                        if (Vendor != null)
+                        {
+                            if (Vendor.DefaultDueDays > 0)
+                            {
+                                DueDate = InvoiceDate.AddDays(Vendor.DefaultDueDays);
+                            }
+                        }
+                }
             }
         }
 
         DateTime dueDate;
+        [RuleRequiredField]
         public DateTime DueDate
         {
             get
@@ -179,14 +202,19 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
             get
             {
                 if (Vendor != null)
-                    return InvoiceDate.AddDays(Vendor.DiscountDays);
+                {
+                    if (Vendor.DiscountDays > 0)
+                        return InvoiceDate.AddDays(Vendor.DiscountDays);
+                    else
+                        return DateTime.MinValue;
+                }
                 else
                     return DateTime.MinValue;
             }
         }
 
         int periodMonth;
-        [RuleRange(1,12)]
+        [RuleRange(1, 12)]
         public int PeriodMonth
         {
             get
@@ -200,7 +228,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
         }
 
         int periodYear;
-        [ModelDefault("DisplayFormat","{0:d0}")]
+        [ModelDefault("DisplayFormat", "{0:d0}")]
         [ModelDefault("EditMask", "d0")]
         public int PeriodYear
         {
