@@ -14,6 +14,8 @@
           <Item Id="General Ledger" IsNewNode="True">
             <Items IsNewNode="True">
               <Item Id="GLAccount_ListView" ViewId="GLAccount_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="GLBudget_ListView" ViewId="GLBudget_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="GLTotal_ListView" ViewId="GLTotal_ListView" ObjectKey="" IsNewNode="True" />
               <Item Id="JournalVoucher_ListView" ViewId="JournalVoucher_ListView" ObjectKey="" IsNewNode="True" />
             </Items>
           </Item>
@@ -21,6 +23,8 @@
       </Item>
       <Item Id="Default">
         <Items>
+          <Item Id="GLBudget_ListView" Removed="True" />
+          <Item Id="GLTotal_ListView" Removed="True" />
           <Item Id="SystemSetting_DetailView" ViewId="SystemSetting_DetailView" IsNewNode="True" />
         </Items>
       </Item>
