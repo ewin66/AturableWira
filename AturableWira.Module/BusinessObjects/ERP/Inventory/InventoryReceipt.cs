@@ -97,12 +97,12 @@ namespace AturableWira.Module.BusinessObjects.ERP.Inventory
                 if (SetPropertyValue("PurchaseOrder", ref purchaseOrder, value))
                     if (!IsLoading)
                     {
-                        //foreach (Inventory item in Items)
+                        //foreach (InventoryReceiptItem item in Items)
                         //{
                         //    item.Delete();
                         //}
                         ArrayList objectsToDelete = new ArrayList();
-                        foreach (Inventory item in Items)
+                        foreach (InventoryReceiptItem item in Items)
                         {
                             objectsToDelete.Add(item);
                         }
@@ -110,7 +110,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Inventory
                         if (PurchaseOrder != null)
                             foreach (OrderItem item in purchaseOrder.Items)
                             {
-                                Inventory inventory = new Inventory(Session);
+                                InventoryReceiptItem inventory = new InventoryReceiptItem(Session);
                                 inventory.OrderItem = item;
                                 inventory.VendorItem = Session.GetObjectByKey<VendorItem>(item.VendorItem.Oid);
                                 inventory.UnitCost = item.VendorItem.OurItemCost;
@@ -172,11 +172,11 @@ namespace AturableWira.Module.BusinessObjects.ERP.Inventory
         }
 
         [Association("InventoryReceipt-Items"), Aggregated]
-        public XPCollection<Inventory> Items
+        public XPCollection<InventoryReceiptItem> Items
         {
             get
             {
-                return GetCollection<Inventory>("Items");
+                return GetCollection<InventoryReceiptItem>("Items");
             }
         }
     }

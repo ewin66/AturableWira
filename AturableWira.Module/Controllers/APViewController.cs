@@ -67,10 +67,10 @@ namespace AturableWira.Module.Controllers
             invoice.PeriodYear = DateTime.Now.Year;
             invoice.Vendor = ObjectSpace.GetObjectByKey<Vendor>(receipt.PurchaseOrder.Vendor.Oid);
             invoice.InvoiceDate = DateTime.Now;
-            invoice.Description = String.Format("Receipt: {0} Inventory", receipt.ReceiptNumber);
+            invoice.Description = String.Format("Receipt: {0} InventoryReceiptItem", receipt.ReceiptNumber);
             receipt.APInvoice = invoice;
 
-            foreach (Inventory inventory in receipt.Items)
+            foreach (InventoryReceiptItem inventory in receipt.Items)
             {
                APInvoiceItem item = ObjectSpace.CreateObject<APInvoiceItem>();
                item.Amount = inventory.OrderItem.Amount;

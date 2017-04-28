@@ -144,9 +144,9 @@ namespace AturableWira.Module.BusinessObjects.ERP.Purchase
                 int received = 0;
 
                 ICollection inventory;
-                inventory = Session.GetObjects(Session.GetClassInfo(typeof(Inventory.Inventory)), CriteriaOperator.Parse("OrderItem.Oid=?", Oid), new SortingCollection(null), 0, false, true);
+                inventory = Session.GetObjects(Session.GetClassInfo(typeof(Inventory.InventoryReceiptItem)), CriteriaOperator.Parse("OrderItem.Oid=?", Oid), new SortingCollection(null), 0, false, true);
 
-                foreach(Inventory.Inventory item in inventory)
+                foreach(Inventory.InventoryReceiptItem item in inventory)
                 {
                     received += item.QuantityReceived;
                 }
