@@ -18,6 +18,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
 {
    [DefaultClassOptions]
    [NavigationItem(false)]
+   [CreatableItem(false)]
    //[ImageName("BO_Contact")]
    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]

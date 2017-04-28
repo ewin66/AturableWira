@@ -15,6 +15,8 @@ using DevExpress.Persistent.Validation;
 namespace AturableWira.Module.BusinessObjects.ACC.AR
 {
    [DefaultClassOptions]
+   [CreatableItem(false)]
+   [NavigationItem(false)]
    //[ImageName("BO_Contact")]
    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]

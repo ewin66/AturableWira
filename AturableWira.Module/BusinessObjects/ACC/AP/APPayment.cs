@@ -18,7 +18,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
 {
    [DefaultClassOptions]
    [NavigationItem("Account Payable")]
-   [ModelDefault("Caption", "Payment")]
+   [ModelDefault("Caption", "AP Payment")]
    [Appearance("DisableDeleteWhenPosted", Criteria = "Posted", AppearanceItemType = "Action", TargetItems = "Delete", Enabled = false)]
    [Appearance("DisableEditWhenPosted", Criteria = "Posted", AppearanceItemType = "ViewItem", TargetItems = "*", Enabled = false)]
    //[ImageName("BO_Contact")]

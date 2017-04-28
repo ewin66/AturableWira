@@ -21,7 +21,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
    [DefaultProperty("InvoiceNumber")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
    //[Persistent("DatabaseTableName")]
-   [ModelDefault("Caption", "Invoice")]
+   [ModelDefault("Caption", "AP Invoice")]
    [NavigationItem("Account Payable")]
    [Appearance("PostedInvoiceDisableAll", Criteria = "Posted = True", Enabled = false, TargetItems = "*")]
    [Appearance("DisableDeleteWhenPosted", Criteria = "Posted", AppearanceItemType = "Action", TargetItems = "Delete", Enabled = false)]

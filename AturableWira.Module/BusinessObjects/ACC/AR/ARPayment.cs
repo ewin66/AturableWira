@@ -18,7 +18,7 @@ namespace AturableWira.Module.BusinessObjects.ACC.AR
 {
    [DefaultClassOptions]
    [NavigationItem("Account Receivable")]
-   [ModelDefault("Caption", "Payment")]
+   [ModelDefault("Caption", "AR Payment")]
    //[ImageName("BO_Contact")]
    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]

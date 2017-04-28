@@ -16,7 +16,7 @@ using DevExpress.ExpressApp.Editors;
 namespace AturableWira.Module.BusinessObjects.ACC.AR
 {
    [DefaultClassOptions]
-   [ModelDefault("Caption", "Invoice")]
+   [ModelDefault("Caption", "AR Invoice")]
    [NavigationItem("Account Receivable")]
    //[ImageName("BO_Contact")]
    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
