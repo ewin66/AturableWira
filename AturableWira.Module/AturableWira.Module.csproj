@@ -174,6 +174,10 @@
     <Compile Include="BusinessObjects\ACC\AP\APInvoiceItem.cs" />
     <Compile Include="BusinessObjects\ACC\AP\APPayment.cs" />
     <Compile Include="BusinessObjects\ACC\AP\APPaymentItem.cs" />
+    <Compile Include="BusinessObjects\ACC\AR\ARInvoice.cs" />
+    <Compile Include="BusinessObjects\ACC\AR\ARInvoiceItem.cs" />
+    <Compile Include="BusinessObjects\ACC\AR\ARPayment.cs" />
+    <Compile Include="BusinessObjects\ACC\AR\ARPaymentItem.cs" />
     <Compile Include="BusinessObjects\ACC\Bank.cs" />
     <Compile Include="BusinessObjects\ACC\Currency.cs" />
     <Compile Include="BusinessObjects\ACC\GL\GLBudget.cs" />
@@ -198,12 +202,17 @@
     <Compile Include="BusinessObjects\ERP\Purchase\VendorItem.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Invoice.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Order.cs" />
+    <Compile Include="BusinessObjects\ERP\Sales\Price.cs" />
+    <Compile Include="BusinessObjects\ERP\Sales\PriceList.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Quote.cs" />
+    <Compile Include="BusinessObjects\ERP\Sales\SalesOrder.cs" />
+    <Compile Include="BusinessObjects\ERP\Sales\SalesOrderItem.cs" />
     <Compile Include="BusinessObjects\ERP\ShippingMethod.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\Transaction.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\TransactionItem.cs" />
     <Compile Include="BusinessObjects\ERP\Sales\TransactionNote.cs" />
     <Compile Include="BusinessObjects\ETC\Enums.cs" />
+    <Compile Include="BusinessObjects\ETC\Parameters.cs" />
     <Compile Include="BusinessObjects\HRM\Employee.cs" />
     <Compile Include="BusinessObjects\HRM\EmployeeRole.cs" />
     <Compile Include="BusinessObjects\SYS\AddressDetail.cs" />
@@ -219,6 +228,12 @@
     </Compile>
     <Compile Include="Controllers\APViewController.Designer.cs">
       <DependentUpon>APViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ARViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ARViewController.Designer.cs">
+      <DependentUpon>ARViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\JVViewController.cs">
       <SubType>Component</SubType>
@@ -238,6 +253,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Controllers\APViewController.resx">
       <DependentUpon>APViewController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ARViewController.resx">
+      <DependentUpon>ARViewController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controllers\JVViewController.resx">
       <DependentUpon>JVViewController.cs</DependentUpon>
@@ -310,7 +328,6 @@
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BusinessObjects\ACC\AR\" />
     <Folder Include="BusinessObjects\PM\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

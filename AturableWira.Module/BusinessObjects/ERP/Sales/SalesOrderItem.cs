@@ -11,23 +11,21 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using AturableWira.Module.BusinessObjects.ERP.Sales;
-using DevExpress.ExpressApp.ConditionalAppearance;
+using DevExpress.ExpressApp.Editors;
 
-namespace AturableWira.Module.BusinessObjects.ACC.AP
+namespace AturableWira.Module.BusinessObjects.ERP.Sales
 {
    [DefaultClassOptions]
+   [CreatableItem(false)]
    [NavigationItem(false)]
    //[ImageName("BO_Contact")]
    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
    //[Persistent("DatabaseTableName")]
    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-   [RuleCombinationOfPropertiesIsUnique("CollectionMustUnique", DefaultContexts.Save, "APPayment, Invoice")]
-   [Appearance("APPaymentItemDisabled", TargetItems = "Amount", Enabled = false)]
-   public class APPaymentItem : BaseObject
+   public class SalesOrderItem : BaseObject
    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-      public APPaymentItem(Session session)
+      public SalesOrderItem(Session session)
           : base(session)
       {
       }
@@ -51,73 +49,88 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
       //    this.PersistentProperty = "Paid";
       //}
 
-      APPayment aPPayment;
-      [Association("APPayment-Items")]
-      [ModelDefault("Caption", "Payment")]
-      public APPayment APPayment
+      SalesOrder salesOrder;
+      [Association("SalesOrder-Items")]
+      public SalesOrder SalesOrder
       {
          get
          {
-            return aPPayment;
+            return salesOrder;
          }
          set
          {
-            SetPropertyValue("APPayment", ref aPPayment, value);
+            SetPropertyValue("SalesOrder", ref salesOrder, value);
          }
       }
-      APInvoice invoice;
+
+      Item item;
       [RuleRequiredField]
-      public APInvoice Invoice
+      public Item Item
       {
          get
          {
-            return invoice;
+            return item;
          }
          set
          {
-            SetPropertyValue("Invoice", ref invoice, value);
+            SetPropertyValue("Item", ref item, value);
          }
       }
-      //[PersistentAlias("Invoice.Owing")]
-      decimal amount;
-      [ModelDefault("DisplayFormat", "{0:n2}")]
+
+      int quantity;
+      [RuleValueComparison(ValueComparisonType.GreaterThanOrEqual, 1)]
+      public int Quantity
+      {
+         get
+         {
+            return quantity;
+         }
+         set
+         {
+            SetPropertyValue("Quantity", ref quantity, value);
+         }
+      }
+
+      decimal unitPrice;
       [ModelDefault("EditMask", "n2")]
+      [ModelDefault("DisplayFormat", "{0:n2}")]
+      public decimal UnitPrice
+      {
+         get
+         {
+            return unitPrice;
+         }
+         set
+         {
+            SetPropertyValue("UnitPrice", ref unitPrice, value);
+         }
+      }
+
+      [ModelDefault("EditMask", "n2")]
+      [ModelDefault("DisplayFormat", "{0:n2}")]
+      [PersistentAlias("Quantity * UnitPrice")]
       public decimal Amount
       {
          get
          {
-            return amount;
-         }
-         set
-         {
-            SetPropertyValue("Amount", ref amount, value);
-         }
-      }
-      [PersistentAlias("Amount-Payment")]
-      [ModelDefault("DisplayFormat", "{0:n2}")]
-      [ModelDefault("EditMask", "n2")]
-      public decimal Owing
-      {
-         get
-         {
-            return Convert.ToDecimal(EvaluateAlias("Owing"));
-         }
-      }
-      decimal payment;
-      [ModelDefault("DisplayFormat", "{0:n2}")]
-      [ModelDefault("EditMask", "n2")]
-      public decimal Payment
-      {
-         get
-         {
-            return payment;
-         }
-         set
-         {
-            SetPropertyValue("Payment", ref payment, value);
+            return Convert.ToDecimal(EvaluateAlias("Amount"));
          }
       }
 
-
+      string notes;
+      [Size(SizeAttribute.Unlimited)]
+      [ModelDefault("RowCount", "1")]
+      [EditorAlias(EditorAliases.StringPropertyEditor)]
+      public string Notes
+      {
+         get
+         {
+            return notes;
+         }
+         set
+         {
+            SetPropertyValue("Notes", ref notes, value);
+         }
+      }
    }
 }

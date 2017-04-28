@@ -4,30 +4,26 @@ using System.Text;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp;
 using System.ComponentModel;
-using DevExpress.ExpressApp.DC;
 using DevExpress.Data.Filtering;
 using DevExpress.Persistent.Base;
 using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using AturableWira.Module.BusinessObjects.ERP.Sales;
-using DevExpress.ExpressApp.ConditionalAppearance;
+using DevExpress.ExpressApp.Editors;
 
-namespace AturableWira.Module.BusinessObjects.ACC.AP
+namespace AturableWira.Module.BusinessObjects.ERP.Sales
 {
    [DefaultClassOptions]
-   [NavigationItem(false)]
+   [NavigationItem("Sales")]
    //[ImageName("BO_Contact")]
    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
    //[Persistent("DatabaseTableName")]
    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-   [RuleCombinationOfPropertiesIsUnique("CollectionMustUnique", DefaultContexts.Save, "APPayment, Invoice")]
-   [Appearance("APPaymentItemDisabled", TargetItems = "Amount", Enabled = false)]
-   public class APPaymentItem : BaseObject
+   public class PriceList : BaseObject
    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-      public APPaymentItem(Session session)
+      public PriceList(Session session)
           : base(session)
       {
       }
@@ -50,74 +46,43 @@ namespace AturableWira.Module.BusinessObjects.ACC.AP
       //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
       //    this.PersistentProperty = "Paid";
       //}
-
-      APPayment aPPayment;
-      [Association("APPayment-Items")]
-      [ModelDefault("Caption", "Payment")]
-      public APPayment APPayment
-      {
-         get
-         {
-            return aPPayment;
-         }
-         set
-         {
-            SetPropertyValue("APPayment", ref aPPayment, value);
-         }
-      }
-      APInvoice invoice;
+      string name;
+      [Size(SizeAttribute.DefaultStringMappingFieldSize)]
       [RuleRequiredField]
-      public APInvoice Invoice
+      public string Name
       {
          get
          {
-            return invoice;
+            return name;
          }
          set
          {
-            SetPropertyValue("Invoice", ref invoice, value);
-         }
-      }
-      //[PersistentAlias("Invoice.Owing")]
-      decimal amount;
-      [ModelDefault("DisplayFormat", "{0:n2}")]
-      [ModelDefault("EditMask", "n2")]
-      public decimal Amount
-      {
-         get
-         {
-            return amount;
-         }
-         set
-         {
-            SetPropertyValue("Amount", ref amount, value);
-         }
-      }
-      [PersistentAlias("Amount-Payment")]
-      [ModelDefault("DisplayFormat", "{0:n2}")]
-      [ModelDefault("EditMask", "n2")]
-      public decimal Owing
-      {
-         get
-         {
-            return Convert.ToDecimal(EvaluateAlias("Owing"));
-         }
-      }
-      decimal payment;
-      [ModelDefault("DisplayFormat", "{0:n2}")]
-      [ModelDefault("EditMask", "n2")]
-      public decimal Payment
-      {
-         get
-         {
-            return payment;
-         }
-         set
-         {
-            SetPropertyValue("Payment", ref payment, value);
+            SetPropertyValue("Name", ref name, value);
          }
       }
 
+      string notes;
+      [Size(SizeAttribute.Unlimited)]
+      [EditorAlias(EditorAliases.HtmlPropertyEditor)]
+      public string Notes
+      {
+         get
+         {
+            return notes;
+         }
+         set
+         {
+            SetPropertyValue("Notes", ref notes, value);
+         }
+      }
 
+      [Association("PriceList-Prices"), Aggregated]
+      public XPCollection<Price> Prices
+      {
+         get
+         {
+            return GetCollection<Price>("Prices");
+         }
+      }
    }
 }

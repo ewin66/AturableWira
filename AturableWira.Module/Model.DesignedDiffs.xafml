@@ -3,12 +3,19 @@
   <NavigationItems>
     <Items>
       <Item Id="Account Payable" Removed="True" />
+      <Item Id="Account Receivable" Removed="True" />
       <Item Id="Accounting" Caption="Accounting" ChildItemsDisplayStyle="List" IsNewNode="True">
         <Items IsNewNode="True">
           <Item Id="Account Payable" IsNewNode="True">
             <Items IsNewNode="True">
               <Item Id="APInvoice_ListView" ViewId="APInvoice_ListView" ObjectKey="" IsNewNode="True" />
               <Item Id="APPayment_ListView" ViewId="APPayment_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="Account Receivable" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="ARInvoice_ListView" ViewId="ARInvoice_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="ARPayment_ListView" ViewId="ARPayment_ListView" ObjectKey="" IsNewNode="True" />
             </Items>
           </Item>
           <Item Id="General Ledger" IsNewNode="True">

@@ -70,6 +70,13 @@ namespace AturableWira.Module.BusinessObjects.ETC
          Completed,
          Canceled
       }
+      public enum SalesOrderStatus
+      {
+         Quote,
+         OnOrder,
+         Completed,
+         Canceled
+      }
 
       public enum PaymentMethod
       {
