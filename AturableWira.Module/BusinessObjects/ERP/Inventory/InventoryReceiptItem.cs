@@ -17,6 +17,8 @@ using DevExpress.ExpressApp.Editors;
 namespace AturableWira.Module.BusinessObjects.ERP.Inventory
 {
    [DefaultClassOptions]
+   [NavigationItem(false)]
+   [CreatableItem(false)]
    //[ImageName("BO_Contact")]
    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]

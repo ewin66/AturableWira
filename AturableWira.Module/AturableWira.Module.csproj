@@ -192,7 +192,7 @@
     <Compile Include="BusinessObjects\CRM\AccountNote.cs" />
     <Compile Include="BusinessObjects\CRM\Vendor.cs" />
     <Compile Include="BusinessObjects\ERP\Inventory\Carrier.cs" />
-    <Compile Include="BusinessObjects\ERP\Inventory\Inventory.cs" />
+    <Compile Include="BusinessObjects\ERP\Inventory\InventoryReceiptItem.cs" />
     <Compile Include="BusinessObjects\ERP\Inventory\InventoryReceipt.cs" />
     <Compile Include="BusinessObjects\ERP\Inventory\Warehouse.cs" />
     <Compile Include="BusinessObjects\ERP\Item.cs" />

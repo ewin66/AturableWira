@@ -18,7 +18,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Sales
    [DefaultClassOptions]
    [CreatableItem(false)]
    [NavigationItem(false)]
-   //[ImageName("BO_Contact")]
+   [ImageName("BO_Order_Item")]
    //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
    //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
    //[Persistent("DatabaseTableName")]

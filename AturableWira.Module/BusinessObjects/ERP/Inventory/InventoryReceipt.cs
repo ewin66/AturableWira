@@ -97,10 +97,6 @@ namespace AturableWira.Module.BusinessObjects.ERP.Inventory
                 if (SetPropertyValue("PurchaseOrder", ref purchaseOrder, value))
                     if (!IsLoading)
                     {
-                        //foreach (InventoryReceiptItem item in Items)
-                        //{
-                        //    item.Delete();
-                        //}
                         ArrayList objectsToDelete = new ArrayList();
                         foreach (InventoryReceiptItem item in Items)
                         {

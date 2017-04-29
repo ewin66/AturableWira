@@ -19,7 +19,7 @@ using AturableWira.Module.BusinessObjects.SYS;
 namespace AturableWira.Module.BusinessObjects.ERP.Purchase
 {
     [DefaultClassOptions]
-    //[ImageName("BO_Contact")]
+    [ImageName("BO_Order")]
     [DefaultProperty("OrderNumber")]
     [NavigationItem("Purchasing")]
     [ModelDefault("Caption", "Purchase Order")]
@@ -101,6 +101,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Purchase
         }
 
         Vendor vendor;
+        [RuleRequiredField]
         public Vendor Vendor
         {
             get
@@ -114,6 +115,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Purchase
         }
 
         DateTime oderDate;
+        [RuleRequiredField]
         public DateTime OderDate
         {
             get
@@ -126,6 +128,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Purchase
             }
         }
         DateTime requestedReceipt;
+        [RuleRequiredField]
         public DateTime RequestedReceipt
         {
             get
@@ -139,6 +142,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Purchase
         }
 
         Employee orderedBy;
+        [RuleRequiredField]
         public Employee OrderedBy
         {
             get
@@ -152,6 +156,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Purchase
         }
 
         Warehouse warehouse;
+        [RuleRequiredField]
         public Warehouse Warehouse
         {
             get

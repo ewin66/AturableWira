@@ -38,7 +38,7 @@
     <Inventory>1200</Inventory>
     <Purchased>TRUE</Purchased>
     <Sold>TRUE</Sold>
-    <Type>Inventory</Type>
+    <Type>Inventory Items</Type>
   </record>
   <record>
     <ItemNumber>1022</ItemNumber>
@@ -48,7 +48,7 @@
     <Inventory>1200</Inventory>
     <Purchased>TRUE</Purchased>
     <Sold>TRUE</Sold>
-    <Type>Inventory</Type>
+    <Type>Inventory Items</Type>
   </record>
   <record>
     <ItemNumber>1023</ItemNumber>
@@ -58,6 +58,6 @@
     <Inventory>1200</Inventory>
     <Purchased>TRUE</Purchased>
     <Sold>TRUE</Sold>
-    <Type>Inventory</Type>
+    <Type>Inventory Items</Type>
   </record>
 </data-set>
