@@ -14,6 +14,7 @@ using DevExpress.Persistent.Validation;
 using static AturableWira.Module.BusinessObjects.ETC.Enums;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.ConditionalAppearance;
+using DevExpress.XtraEditors;
 
 namespace AturableWira.Module.BusinessObjects.ACC.GL
 {
@@ -52,6 +53,12 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
         //    this.PersistentProperty = "Paid";
         //}
 
+
+        protected override void OnDeleting()
+        {
+            base.OnDeleting();
+        }
+
         private const string displayFormat = "{AccountNumber} - {AccountName}";
         [VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
         public string DisplayName
@@ -60,6 +67,8 @@ namespace AturableWira.Module.BusinessObjects.ACC.GL
             {
                 return ObjectFormatter.Format(displayFormat, this, EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
             }
+
+
         }
 
         string accountNumber;

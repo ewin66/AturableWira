@@ -13,6 +13,8 @@ using DevExpress.Persistent.Validation;
 using AturableWira.Module.BusinessObjects.ERP.Purchase;
 using System.Collections;
 using AturableWira.Module.BusinessObjects.ACC.AP;
+using AturableWira.Module.BusinessObjects.SYS;
+using DevExpress.ExpressApp.ConditionalAppearance;
 
 namespace AturableWira.Module.BusinessObjects.ERP.Inventory
 {
@@ -22,6 +24,8 @@ namespace AturableWira.Module.BusinessObjects.ERP.Inventory
     [DefaultProperty("ReceiptNumber")]
     [ModelDefault("Caption", "Receipt")]
     [NavigationItem("Purchasing")]
+    [Appearance("InventoryReceiptAppearancePosted", Criteria = "Posted = true", Enabled = false, TargetItems = "*")]
+    [Appearance("DisableDeletePosted", Criteria = "Posted = true", AppearanceItemType = "Action", TargetItems = "Delete", Enabled = false)]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
@@ -35,9 +39,19 @@ namespace AturableWira.Module.BusinessObjects.ERP.Inventory
         {
             base.AfterConstruction();
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+
             Date = DateTime.Now;
             PeriodMonth = DateTime.Now.Month;
             PeriodYear = DateTime.Now.Year;
+
+            using (UnitOfWork uow = new UnitOfWork(Session.DataLayer))
+            {
+                SystemSetting setting = uow.FindObject<SystemSetting>(null);
+                setting.InventoryReceiptNumber += 1;
+                string recNum = setting.InventoryReceiptNumber.ToString();
+                ReceiptNumber = recNum;
+                uow.CommitChanges();
+            }
         }
         //private string _PersistentProperty;
         //[XafDisplayName("My display name"), ToolTip("My hint message")]
@@ -71,6 +85,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Inventory
 
         APInvoice aPInvoice;
         [ModelDefault("Caption", "AP Invoice")]
+        [VisibleInDetailView(false), VisibleInListView(true)]
         public APInvoice APInvoice
         {
             get
@@ -119,6 +134,7 @@ namespace AturableWira.Module.BusinessObjects.ERP.Inventory
             }
         }
         DateTime date;
+        [RuleRequiredField]
         public DateTime Date
         {
             get
@@ -131,6 +147,8 @@ namespace AturableWira.Module.BusinessObjects.ERP.Inventory
             }
         }
         int periodMonth;
+        [RuleRange(1, 12)]
+        [ModelDefault("Caption", "Month")]
         public int PeriodMonth
         {
             get
@@ -143,6 +161,9 @@ namespace AturableWira.Module.BusinessObjects.ERP.Inventory
             }
         }
         int periodYear;
+        [ModelDefault("DisplayFormat", "{0:d0}")]
+        [ModelDefault("EditMask", "d0")]
+        [ModelDefault("Caption", "Year")]
         public int PeriodYear
         {
             get
