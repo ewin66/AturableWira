@@ -59,6 +59,7 @@ namespace AturableWira.Module.BusinessObjects.ACC
             SetPropertyValue("Name", ref name, value);
          }
       }
+
       GLAccount gLAccount;
       [ModelDefault("Caption", "GL Account")]
       [RuleRequiredField]
@@ -73,6 +74,7 @@ namespace AturableWira.Module.BusinessObjects.ACC
             SetPropertyValue("GLAccount", ref gLAccount, value);
          }
       }
+
       Currency currency;
       [RuleRequiredField]
       public Currency Currency

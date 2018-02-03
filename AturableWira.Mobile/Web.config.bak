@@ -50,7 +50,11 @@
       <assemblies>
       </assemblies>
     </compilation>
-  </system.web>
+  
+        <httpHandlers>
+            <add verb="*" path="Static*" type="DevExpress.ExpressApp.Mobile.StaticResourcesHttpHandler, DevExpress.ExpressApp.Mobile.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+        </httpHandlers>
+    </system.web>
   <system.serviceModel>
     <bindings>
       <webHttpBinding>
@@ -86,12 +90,12 @@
     <serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true" />
   </system.serviceModel>
   <system.webServer>
-    <validation validateIntegratedModeConfiguration="false"/>
-    <httpRedirect enabled="true" httpResponseStatus="Permanent" >
+    <validation validateIntegratedModeConfiguration="false" />
+    <httpRedirect enabled="true" httpResponseStatus="Permanent">
       <add wildcard="/" destination="Static" />
     </httpRedirect>
 	<handlers>
-      <add name="StaticResources" verb="GET" path="Static*" type="DevExpress.ExpressApp.Mobile.StaticResourcesHttpHandler, DevExpress.ExpressApp.Mobile.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+      <add name="MobileResources" verb="GET,POST" path="Static*" type="AturableWira.Mobile.ResourcesHttpHandler" />
     </handlers>
   </system.webServer>
   <runtime>
